@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Inscription — SKILLORA</title>
+<title>SKILLORA — Inscription</title>
 
 <style>
 *{
@@ -14,9 +14,12 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#061522,#0A2435);
-    color:#fff;
+    font-family:Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left,#12344a,transparent 35%),
+        radial-gradient(circle at bottom right,#17204b,transparent 35%),
+        #061522;
+    color:white;
     min-height:100vh;
 }
 
@@ -28,104 +31,190 @@ header{
 
 .logo{
     font-size:28px;
-    font-weight:bold;
+    font-weight:900;
     letter-spacing:2px;
     color:#00E5A8;
+}
+
+.logo span{
+    color:#00C8FF;
 }
 
 .container{
     width:92%;
     max-width:650px;
-    margin:40px auto;
+    margin:35px auto;
+}
+
+.promo{
+    text-align:center;
+    background:linear-gradient(
+        135deg,
+        rgba(0,229,168,.15),
+        rgba(0,200,255,.12)
+    );
+    border:1px solid rgba(0,229,168,.35);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.promo h1{
+    color:#00E5A8;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.promo p{
+    color:#cbd5e1;
+    line-height:1.6;
 }
 
 .card{
-    background:rgba(255,255,255,.08);
+    background:rgba(10,36,53,.78);
     backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.1);
     border-radius:25px;
-    padding:30px;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-}
-
-h1{
-    text-align:center;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#b9cbd3;
-    margin-bottom:30px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 .pack-box{
-    background:linear-gradient(135deg,#00E5A8,#00C8FF);
-    color:#061522;
-    padding:20px;
+    border:1px solid rgba(0,229,168,.35);
+    background:rgba(0,229,168,.06);
     border-radius:18px;
+    padding:20px;
     margin-bottom:25px;
 }
 
 .pack-box h2{
-    margin-bottom:8px;
+    color:#00E5A8;
+    margin-bottom:10px;
 }
 
-.price{
+.contenu{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.prix{
+    margin-top:15px;
+}
+
+.ancien{
+    text-decoration:line-through;
+    color:#94a3b8;
+    margin-right:10px;
+}
+
+.nouveau{
+    color:#00E5A8;
     font-size:25px;
     font-weight:bold;
-    margin-top:12px;
-}
-
-.field{
-    margin-bottom:20px;
 }
 
 label{
     display:block;
     margin-bottom:8px;
+    color:#e2e8f0;
     font-weight:bold;
 }
 
-input,select{
+input,
+select{
     width:100%;
     padding:15px;
-    border:none;
+    margin-bottom:20px;
     border-radius:12px;
-    font-size:16px;
+    border:1px solid rgba(255,255,255,.12);
+    background:#071d2c;
+    color:white;
     outline:none;
+    font-size:15px;
+}
+
+input:focus,
+select:focus{
+    border-color:#00E5A8;
+    box-shadow:0 0 0 2px rgba(0,229,168,.1);
+}
+
+.ref-box{
+    display:none;
+    background:rgba(0,200,255,.08);
+    border:1px solid rgba(0,200,255,.3);
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.ref-box strong{
+    color:#00C8FF;
 }
 
 button{
     width:100%;
-    padding:17px;
     border:none;
+    padding:17px;
     border-radius:14px;
-    background:#00E5A8;
-    color:#061522;
+    background:linear-gradient(90deg,#00E5A8,#00C8FF);
+    color:#04121c;
     font-size:17px;
-    font-weight:bold;
+    font-weight:900;
     cursor:pointer;
+    transition:.2s;
 }
 
 button:hover{
-    background:#00C8FF;
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(0,229,168,.25);
 }
 
 .info{
     text-align:center;
-    margin-top:18px;
-    color:#b9cbd3;
-    font-size:14px;
+    margin-top:20px;
+    color:#94a3b8;
+    font-size:13px;
     line-height:1.6;
 }
 
-.back{
-    display:block;
+.error{
+    display:none;
+    background:rgba(255,60,60,.1);
+    border:1px solid rgba(255,60,60,.35);
+    color:#ff8d8d;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.success{
+    display:none;
     text-align:center;
-    margin-top:25px;
+    padding:20px;
     color:#00E5A8;
-    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:30px 15px;
+    color:#64748b;
+    font-size:13px;
+}
+
+@media(max-width:500px){
+    .card{
+        padding:20px;
+    }
+
+    .promo h1{
+        font-size:21px;
+    }
+
+    .nouveau{
+        font-size:22px;
+    }
 }
 </style>
 </head>
@@ -133,212 +222,355 @@ button:hover{
 <body>
 
 <header>
-    <div class="logo">SKILLORA</div>
+    <div class="logo">
+        SKILL<span>ORA</span>
+    </div>
 </header>
 
 <div class="container">
 
-<div class="card">
+    <div class="promo">
+        <h1>🔥 OFFRE EXCEPTIONNELLE</h1>
+        <p>
+            Promotion valable du <strong>04 septembre</strong>
+            au <strong>07 septembre 2026 à 20h00</strong>.
+        </p>
+    </div>
 
-<h1>Inscription</h1>
+    <div class="card">
 
-<p class="subtitle">
-    Finalise ta commande en quelques secondes.
-</p>
+        <div class="pack-box">
 
-<div class="pack-box">
+            <h2 id="packNom">
+                Sélectionnez votre formation
+            </h2>
 
-<h2 id="packNom">Pack</h2>
+            <div class="contenu" id="packContenu">
+                Choisissez une formation depuis la page précédente.
+            </div>
 
-<p id="packContenu"></p>
+            <div class="prix">
+                <span class="ancien" id="ancienPrix"></span>
+                <span class="nouveau" id="nouveauPrix"></span>
+            </div>
 
-<div class="price" id="packPrix"></div>
+        </div>
+
+        <div class="error" id="error">
+            Veuillez remplir correctement le formulaire.
+        </div>
+
+        <div class="ref-box" id="refBox">
+            🎁 Code de parrainage :
+            <strong id="refCode"></strong>
+        </div>
+
+        <form id="inscriptionForm">
+
+            <label for="nom">
+                Nom et prénom
+            </label>
+
+            <input
+                type="text"
+                id="nom"
+                placeholder="Ex : Koné Ibrahim"
+                required
+            >
+
+            <label for="telephone">
+                Numéro WhatsApp
+            </label>
+
+            <input
+                type="tel"
+                id="telephone"
+                placeholder="Ex : 0712345678"
+                required
+            >
+
+            <label for="contact">
+                Choisir le contact WhatsApp
+            </label>
+
+            <select id="contact" required>
+
+                <option value="">
+                    -- Choisir un contact --
+                </option>
+
+                <option value="2250718169140">
+                    WhatsApp 1
+                </option>
+
+                <option value="2250769049109">
+                    WhatsApp 2
+                </option>
+
+            </select>
+
+            <button type="submit">
+                🚀 CONTINUER SUR WHATSAPP
+            </button>
+
+        </form>
+
+        <div class="success" id="success">
+            Redirection vers WhatsApp...
+        </div>
+
+        <div class="info">
+            Après votre inscription, vous serez redirigé vers
+            WhatsApp pour poursuivre votre commande.
+            <br><br>
+            SKILLORA — Formations digitales
+        </div>
+
+    </div>
 
 </div>
 
-<form id="commandeForm">
+<footer>
+    © 2026 SKILLORA — Tous droits réservés
+</footer>
 
-<div class="field">
-<label for="nom">Nom et prénom</label>
-<input
-    type="text"
-    id="nom"
-    placeholder="Ex : Koné Ibrahim"
-    required
->
-</div>
-
-<div class="field">
-<label for="telephone">Ton numéro WhatsApp</label>
-<input
-    type="tel"
-    id="telephone"
-    placeholder="Ex : 0700000000"
-    required
->
-</div>
-
-<div class="field">
-<label for="contact">Choisir le contact WhatsApp</label>
-
-<select id="contact" required>
-
-<option value="">
-    -- Choisir un contact --
-</option>
-
-<option value="2250718169140">
-    WhatsApp 1 — +225 07 18 16 91 40
-</option>
-
-<option value="2250769049109">
-    WhatsApp 2 — +225 07 69 04 91 09
-</option>
-
-</select>
-
-</div>
-
-<button type="submit">
-    💬 Commander sur WhatsApp
-</button>
-
-<div class="info">
-    Après ta commande, nous te communiquerons les instructions
-    pour effectuer le paiement.
-    <br>
-    La formation commence après vérification du paiement.
-</div>
-
-</form>
-
-<a href="index.html" class="back">
-    ← Retour à SKILLORA
-</a>
-
-</div>
-</div>
 
 <script>
 
+/* ==============================
+   CONFIGURATION DES PACKS
+================================ */
+
 const packs = {
 
-"Bureautique":{
-    nom:"🟢 Pack Bureautique",
-    contenu:"Word + Excel + PowerPoint",
-    prix:"8 000 F"
-},
+    "Bureautique":{
+        nom:"🟢 Pack Bureautique",
+        contenu:"Word + Excel + PowerPoint",
+        ancien:"8 000 F",
+        prix:"2 095 F"
+    },
 
-"Créateur Digital":{
-    nom:"🔵 Pack Créateur Digital",
-    contenu:"Canva + CapCut + IA + Suno AI",
-    prix:"12 000 F"
-},
+    "Créateur Digital":{
+        nom:"🔵 Pack Créateur Digital",
+        contenu:"Canva + CapCut + IA + Suno AI",
+        ancien:"12 000 F",
+        prix:"3 095 F"
+    },
 
-"Marketing & Vente":{
-    nom:"🟣 Pack Marketing & Vente",
-    contenu:"Marketing digital + Publicité + Vente en ligne + WhatsApp Business",
-    prix:"15 000 F"
-},
+    "Marketing & Vente":{
+        nom:"🟣 Pack Marketing & Vente",
+        contenu:"Marketing digital + Publicité + Vente en ligne + WhatsApp Business",
+        ancien:"15 000 F",
+        prix:"3 595 F"
+    },
 
-"Business Digital":{
-    nom:"🟠 Pack Business Digital",
-    contenu:"IA + Marketing + Création de contenu + Vente en ligne",
-    prix:"15 000 F"
-}
+    "Business Digital":{
+        nom:"🟠 Pack Business Digital",
+        contenu:"IA + Marketing + Création de contenu + Vente en ligne",
+        ancien:"15 000 F",
+        prix:"3 595 F"
+    },
+
+    "Pack Ultime":{
+        nom:"🔥 Pack Ultime",
+        contenu:"Toutes les formations SKILLORA",
+        ancien:"50 000 F",
+        prix:"5 595 F"
+    }
 
 };
 
 
-// Récupération du pack choisi
+/* ==============================
+   RÉCUPÉRATION DES PARAMÈTRES URL
+================================ */
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(
+    window.location.search
+);
 
 const packChoisi = params.get("pack");
+const codeParrain = params.get("ref");
 
-const pack = packs[packChoisi];
+
+/* ==============================
+   AFFICHAGE DU PACK
+================================ */
+
+const packNom =
+    document.getElementById("packNom");
+
+const packContenu =
+    document.getElementById("packContenu");
+
+const ancienPrix =
+    document.getElementById("ancienPrix");
+
+const nouveauPrix =
+    document.getElementById("nouveauPrix");
+
+const error =
+    document.getElementById("error");
+
+const refBox =
+    document.getElementById("refBox");
+
+const refCode =
+    document.getElementById("refCode");
 
 
-// Affichage du pack
+if(
+    packChoisi &&
+    packs[packChoisi]
+){
 
-if(pack){
+    const pack =
+        packs[packChoisi];
 
-    document.getElementById("packNom").textContent = pack.nom;
+    packNom.textContent =
+        pack.nom;
 
-    document.getElementById("packContenu").textContent =
+    packContenu.textContent =
         pack.contenu;
 
-    document.getElementById("packPrix").textContent =
+    ancienPrix.textContent =
+        pack.ancien;
+
+    nouveauPrix.textContent =
         pack.prix;
 
 }else{
 
-    document.getElementById("packNom").textContent =
-        "Aucun pack sélectionné";
+    packNom.textContent =
+        "⚠️ Formation non sélectionnée";
 
-    document.getElementById("packContenu").textContent =
-        "Retourne à la boutique pour choisir une formation.";
+    packContenu.textContent =
+        "Veuillez retourner sur la page d'accueil et choisir une formation.";
 
 }
 
 
-// Commande WhatsApp
+/* ==============================
+   CODE DE PARRAINAGE
+================================ */
 
-document.getElementById("commandeForm").addEventListener(
+if(codeParrain){
+
+    refBox.style.display =
+        "block";
+
+    refCode.textContent =
+        codeParrain;
+
+}
+
+
+/* ==============================
+   FORMULAIRE
+================================ */
+
+document
+.getElementById("inscriptionForm")
+.addEventListener(
     "submit",
     function(e){
 
         e.preventDefault();
 
+        error.style.display =
+            "none";
+
+
+        /* Vérification du pack */
+
+        if(
+            !packChoisi ||
+            !packs[packChoisi]
+        ){
+
+            error.textContent =
+                "Veuillez sélectionner une formation.";
+
+            error.style.display =
+                "block";
+
+            return;
+        }
+
+
+        /* Récupération des données */
 
         const nom =
-            document.getElementById("nom").value.trim();
+            document
+            .getElementById("nom")
+            .value
+            .trim();
 
         const telephone =
-            document.getElementById("telephone").value.trim();
+            document
+            .getElementById("telephone")
+            .value
+            .trim();
 
         const numero =
-            document.getElementById("contact").value;
+            document
+            .getElementById("contact")
+            .value;
 
 
-        if(!numero){
+        /* Vérification */
 
-            alert("Veuillez choisir un contact WhatsApp.");
+        if(
+            !nom ||
+            !telephone ||
+            !numero
+        ){
+
+            error.textContent =
+                "Veuillez remplir tous les champs.";
+
+            error.style.display =
+                "block";
 
             return;
-
         }
 
 
-        if(!pack){
+        /* ==========================
+           MESSAGE WHATSAPP
+        ========================== */
 
-            alert("Veuillez sélectionner un pack.");
+        const pack =
+            packs[packChoisi];
 
-            return;
-
-        }
-
-
-        const message =
-`Bonjour SKILLORA 👋
-
-Je souhaite commander une formation.
+        let message =
+`🔥 INSCRIPTION SKILLORA
 
 👤 Nom : ${nom}
 
-📱 Mon WhatsApp : ${telephone}
+📱 WhatsApp : ${telephone}
 
 🎓 Formation : ${pack.nom}
 
 📚 Contenu : ${pack.contenu}
 
-💰 Prix : ${pack.prix}
+💰 Prix promotionnel : ${pack.prix}
 
-Je souhaite recevoir les instructions pour effectuer le paiement.
+🎁 Code de parrainage : ${
+    codeParrain
+    ? codeParrain
+    : "Aucun"
+}
 
-Merci.`;
+📅 Offre promotionnelle :
+Du 04/09/2026 au 07/09/2026 à 20h00.
+
+Je souhaite poursuivre mon inscription et recevoir les informations pour le paiement.`;
 
 
+        /* ==========================
+           REDIRECTION WHATSAPP
+        ========================== */
 
         const url =
             "https://wa.me/" +
@@ -347,7 +579,26 @@ Merci.`;
             encodeURIComponent(message);
 
 
-        window.location.href = url;
+        document
+        .getElementById("inscriptionForm")
+        .style.display =
+            "none";
+
+        document
+        .getElementById("success")
+        .style.display =
+            "block";
+
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    url;
+
+            },
+            500
+        );
 
     }
 );
