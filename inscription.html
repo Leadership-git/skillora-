@@ -4,23 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Commander — SKILLORA</title>
+<title>Inscription — SKILLORA</title>
 
 <style>
-:root{
-    --night:#061522;
-    --night2:#0A2435;
-    --green:#00E5A8;
-    --cyan:#00C8FF;
-    --purple:#8B5CF6;
-    --orange:#FF9F43;
-    --light:#F3F8FA;
-    --white:#fff;
-    --text:#10202B;
-    --muted:#64748B;
-    --border:#DDE8EC;
-}
-
 *{
     margin:0;
     padding:0;
@@ -29,108 +15,66 @@
 
 body{
     font-family:Arial,sans-serif;
-    background:var(--light);
-    color:var(--text);
+    background:linear-gradient(135deg,#061522,#0A2435);
+    color:#fff;
+    min-height:100vh;
 }
-
-/* HEADER */
 
 header{
-    background:var(--night);
-    padding:16px 20px;
-}
-
-.navbar{
-    max-width:850px;
-    margin:auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    padding:20px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
-    color:white;
-    font-size:26px;
-    font-weight:900;
-}
-
-.logo span{
-    color:var(--green);
-}
-
-.back{
-    color:#C9D9E0;
-    text-decoration:none;
+    font-size:28px;
     font-weight:bold;
+    letter-spacing:2px;
+    color:#00E5A8;
 }
-
-/* CONTAINER */
 
 .container{
+    width:92%;
     max-width:650px;
-    margin:auto;
-    padding:55px 18px 80px;
+    margin:40px auto;
 }
 
-.title{
+.card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+h1{
     text-align:center;
-    margin-bottom:30px;
-}
-
-.title h1{
-    color:var(--night);
-    font-size:35px;
     margin-bottom:10px;
 }
 
-.title p{
-    color:var(--muted);
+.subtitle{
+    text-align:center;
+    color:#b9cbd3;
+    margin-bottom:30px;
 }
 
-/* FORM */
-
-.box{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:28px;
-
-    box-shadow:
-        0 15px 45px rgba(6,21,34,.08);
-}
-
-.selected{
+.pack-box{
+    background:linear-gradient(135deg,#00E5A8,#00C8FF);
+    color:#061522;
     padding:20px;
-    border-radius:15px;
+    border-radius:18px;
     margin-bottom:25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,229,168,.10),
-            rgba(0,200,255,.10)
-        );
-
-    border:1px solid #CDEDE8;
 }
 
-.selected-label{
-    color:var(--muted);
-    font-size:12px;
+.pack-box h2{
+    margin-bottom:8px;
+}
+
+.price{
+    font-size:25px;
     font-weight:bold;
-    margin-bottom:7px;
-}
-
-.selected h2{
-    color:var(--night);
-    font-size:22px;
-}
-
-.selected p{
-    color:var(--muted);
-    margin-top:7px;
-    line-height:1.5;
+    margin-top:12px;
 }
 
 .field{
@@ -140,151 +84,48 @@ header{
 label{
     display:block;
     margin-bottom:8px;
-
-    font-size:14px;
-    font-weight:800;
+    font-weight:bold;
 }
 
-input{
+input,select{
     width:100%;
-
-    padding:14px;
-
-    border:1px solid var(--border);
-    border-radius:9px;
-
-    font-size:15px;
-
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
     outline:none;
 }
 
-input:focus{
-    border-color:var(--cyan);
-}
-
-/* PRICE */
-
-.price-box{
-    margin:25px 0;
-
-    padding:20px;
-
-    border-radius:14px;
-
-    background:#F8FAFC;
-
-    border:1px solid var(--border);
-}
-
-.price-line{
-    display:flex;
-    justify-content:space-between;
-
-    padding:8px 0;
-}
-
-.total{
-    margin-top:8px;
-    padding-top:15px;
-
-    border-top:1px solid var(--border);
-
-    font-size:19px;
-}
-
-.total strong{
-    color:var(--green);
-    font-size:24px;
-}
-
-/* BUTTON */
-
-.whatsapp{
+button{
     width:100%;
-
-    border:0;
-
-    padding:16px;
-
-    border-radius:10px;
-
+    padding:17px;
+    border:none;
+    border-radius:14px;
+    background:#00E5A8;
+    color:#061522;
+    font-size:17px;
+    font-weight:bold;
     cursor:pointer;
-
-    color:#03151E;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--green),
-            var(--cyan)
-        );
-
-    font-size:16px;
-    font-weight:900;
 }
 
-.whatsapp:hover{
-    opacity:.9;
+button:hover{
+    background:#00C8FF;
 }
-
-/* INFO */
 
 .info{
+    text-align:center;
     margin-top:18px;
-
-    padding:15px;
-
-    border-radius:10px;
-
-    background:#ECFEFF;
-
-    border:1px solid #A5F3FC;
-
-    color:#155E75;
-
-    font-size:13px;
-
+    color:#b9cbd3;
+    font-size:14px;
     line-height:1.6;
 }
 
-/* FOOTER */
-
-footer{
-    background:var(--night);
-
-    color:#8EA5B0;
-
+.back{
+    display:block;
     text-align:center;
-
-    padding:40px 20px;
-
-    font-size:13px;
-}
-
-.footer-logo{
-    color:white;
-    font-size:23px;
-    font-weight:900;
-    margin-bottom:8px;
-}
-
-.footer-logo span{
-    color:var(--green);
-}
-
-@media(max-width:600px){
-
-    .container{
-        padding:40px 15px 60px;
-    }
-
-    .box{
-        padding:20px;
-    }
-
-    .title h1{
-        font-size:29px;
-    }
+    margin-top:25px;
+    color:#00E5A8;
+    text-decoration:none;
 }
 </style>
 </head>
@@ -292,163 +133,93 @@ footer{
 <body>
 
 <header>
-
-<div class="navbar">
-
-<div class="logo">
-SKILL<span>ORA</span>
-</div>
-
-<a href="index.html" class="back">
-← Retour
-</a>
-
-</div>
-
+    <div class="logo">SKILLORA</div>
 </header>
 
+<div class="container">
 
-<main class="container">
+<div class="card">
 
-<div class="title">
+<h1>Inscription</h1>
 
-<h1>
-Finaliser ma commande
-</h1>
-
-<p>
-Vérifie les informations avant de commander.
+<p class="subtitle">
+    Finalise ta commande en quelques secondes.
 </p>
 
-</div>
+<div class="pack-box">
 
+<h2 id="packNom">Pack</h2>
 
-<div class="box">
+<p id="packContenu"></p>
 
-<!-- PACK CHOISI -->
-
-<div class="selected">
-
-<div class="selected-label">
-PACK SÉLECTIONNÉ
-</div>
-
-<h2 id="packNom">
-Chargement...
-</h2>
-
-<p id="packContenu">
-Chargement...
-</p>
+<div class="price" id="packPrix"></div>
 
 </div>
-
 
 <form id="commandeForm">
 
 <div class="field">
-
-<label for="nom">
-Nom et prénom
-</label>
-
+<label for="nom">Nom et prénom</label>
 <input
-type="text"
-id="nom"
-placeholder="Ex : Jean Kouassi"
-required
+    type="text"
+    id="nom"
+    placeholder="Ex : Koné Ibrahim"
+    required
 >
-
 </div>
-
 
 <div class="field">
-
-<label for="telephone">
-Ton numéro WhatsApp
-</label>
-
+<label for="telephone">Ton numéro WhatsApp</label>
 <input
-type="tel"
-id="telephone"
-placeholder="Ex : 0712345678"
-required
+    type="tel"
+    id="telephone"
+    placeholder="Ex : 0700000000"
+    required
 >
+</div>
+
+<div class="field">
+<label for="contact">Choisir le contact WhatsApp</label>
+
+<select id="contact" required>
+
+<option value="">
+    -- Choisir un contact --
+</option>
+
+<option value="2250718169140">
+    WhatsApp 1 — +225 07 18 16 91 40
+</option>
+
+<option value="2250769049109">
+    WhatsApp 2 — +225 07 69 04 91 09
+</option>
+
+</select>
 
 </div>
 
-
-<div class="price-box">
-
-<div class="price-line">
-
-<span>
-Pack
-</span>
-
-<strong id="packResume">
-—
-</strong>
-
-</div>
-
-
-<div class="price-line total">
-
-<span>
-Total
-</span>
-
-<strong id="prix">
-—
-</strong>
-
-</div>
-
-</div>
-
-
-<button
-type="submit"
-class="whatsapp"
->
-💬 Commander sur WhatsApp
+<button type="submit">
+    💬 Commander sur WhatsApp
 </button>
 
-
 <div class="info">
-
-Après avoir cliqué, WhatsApp s'ouvrira
-avec le récapitulatif de ta commande.
-
-Tu pourras ensuite recevoir les instructions
-pour effectuer ton paiement Wave.
-
+    Après ta commande, nous te communiquerons les instructions
+    pour effectuer le paiement.
+    <br>
+    La formation commence après vérification du paiement.
 </div>
 
 </form>
 
+<a href="index.html" class="back">
+    ← Retour à SKILLORA
+</a>
+
 </div>
-
-</main>
-
-
-<footer>
-
-<div class="footer-logo">
-SKILL<span>ORA</span>
 </div>
-
-<p>
-Formations digitales • Apprendre • Créer • Évoluer
-</p>
-
-</footer>
-
 
 <script>
-
-/* ================= PACKS ================= */
 
 const packs = {
 
@@ -479,119 +250,94 @@ const packs = {
 };
 
 
-/* ================= RÉCUPÉRER LE PACK ================= */
+// Récupération du pack choisi
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+const params = new URLSearchParams(window.location.search);
 
-const packChoisi =
-params.get("pack");
+const packChoisi = params.get("pack");
+
+const pack = packs[packChoisi];
 
 
-const pack =
-packs[packChoisi];
-
-
-/* ================= AFFICHAGE ================= */
+// Affichage du pack
 
 if(pack){
 
-    document.getElementById(
-        "packNom"
-    ).textContent =
-        pack.nom;
+    document.getElementById("packNom").textContent = pack.nom;
 
-    document.getElementById(
-        "packContenu"
-    ).textContent =
+    document.getElementById("packContenu").textContent =
         pack.contenu;
 
-    document.getElementById(
-        "packResume"
-    ).textContent =
-        pack.nom;
-
-    document.getElementById(
-        "prix"
-    ).textContent =
+    document.getElementById("packPrix").textContent =
         pack.prix;
 
 }else{
 
-    document.getElementById(
-        "packNom"
-    ).textContent =
+    document.getElementById("packNom").textContent =
         "Aucun pack sélectionné";
 
-    document.getElementById(
-        "packContenu"
-    ).textContent =
-        "Retourne à la boutique pour choisir un pack.";
+    document.getElementById("packContenu").textContent =
+        "Retourne à la boutique pour choisir une formation.";
 
 }
 
 
-/* ================= WHATSAPP ================= */
+// Commande WhatsApp
 
-document.getElementById(
-    "commandeForm"
-).addEventListener(
+document.getElementById("commandeForm").addEventListener(
     "submit",
     function(e){
 
         e.preventDefault();
 
-        if(!pack){
 
-            alert(
-                "Veuillez sélectionner un pack depuis la boutique."
-            );
+        const nom =
+            document.getElementById("nom").value.trim();
+
+        const telephone =
+            document.getElementById("telephone").value.trim();
+
+        const numero =
+            document.getElementById("contact").value;
+
+
+        if(!numero){
+
+            alert("Veuillez choisir un contact WhatsApp.");
 
             return;
+
         }
 
 
-        const nom =
-            document.getElementById(
-                "nom"
-            ).value.trim();
+        if(!pack){
 
-
-        const telephone =
-            document.getElementById(
-                "telephone"
-            ).value.trim();
-
-
-        if(!nom || !telephone){
-
-            alert(
-                "Veuillez remplir tous les champs."
-            );
+            alert("Veuillez sélectionner un pack.");
 
             return;
+
         }
 
 
         const message =
 `Bonjour SKILLORA 👋
 
-Je souhaite commander le pack suivant :
-
-📦 Pack : ${pack.nom}
-📚 Contenu : ${pack.contenu}
-💰 Montant : ${pack.prix}
+Je souhaite commander une formation.
 
 👤 Nom : ${nom}
+
 📱 Mon WhatsApp : ${telephone}
 
-Je souhaite recevoir les instructions pour effectuer le paiement Wave.`;
+🎓 Formation : ${pack.nom}
 
+📚 Contenu : ${pack.contenu}
 
-        constnumero1 = "2250769049109";
-           
+💰 Prix : ${pack.prix}
+
+Je souhaite recevoir les instructions pour effectuer le paiement.
+
+Merci.`;
+
 
 
         const url =
