@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SKILLORA — Formations digitales</title>
+<title>SKILLORA — Offre Exceptionnelle</title>
 
 <style>
 :root{
-    --night:#061522;
-    --night2:#0A2435;
-    --green:#00E5A8;
-    --cyan:#00C8FF;
+    --dark:#050816;
+    --dark2:#0B1228;
+    --green:#00F5A0;
+    --cyan:#00D9FF;
     --purple:#8B5CF6;
-    --orange:#FF9F43;
-    --white:#FFFFFF;
-    --text:#10202B;
+    --orange:#FFB347;
+    --white:#fff;
+    --text:#101827;
     --muted:#64748B;
-    --light:#F3F8FA;
-    --border:#DDE8EC;
+    --light:#F5F7FB;
+    --border:#E5EAF1;
+    --red:#FF4D67;
 }
 
 *{
@@ -43,18 +44,15 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-
-    background:rgba(6,21,34,.94);
-    backdrop-filter:blur(14px);
-
+    background:rgba(5,8,22,.88);
+    backdrop-filter:blur(18px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .navbar{
     max-width:1150px;
     margin:auto;
-    padding:16px 20px;
-
+    padding:15px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -64,7 +62,6 @@ header{
     color:white;
     font-size:27px;
     font-weight:900;
-    letter-spacing:.5px;
 }
 
 .logo span{
@@ -74,27 +71,21 @@ header{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:25px;
+    gap:22px;
 }
 
 .nav-links a{
-    color:#DCECF2;
+    color:#DDE7F0;
     text-decoration:none;
     font-size:14px;
     font-weight:bold;
 }
 
 .nav-button{
-    background:linear-gradient(
-        135deg,
-        var(--green),
-        var(--cyan)
-    );
-
-    color:#04131D !important;
-
-    padding:11px 18px;
-    border-radius:9px;
+    background:linear-gradient(135deg,var(--green),var(--cyan));
+    color:#03121B !important;
+    padding:11px 17px;
+    border-radius:10px;
 }
 
 /* ================= HERO ================= */
@@ -102,100 +93,69 @@ header{
 .hero{
     position:relative;
     overflow:hidden;
-
-    min-height:650px;
-
-    display:flex;
-    align-items:center;
-
+    min-height:760px;
     color:white;
 
     background:
-        radial-gradient(
-            ellipse at 15% 80%,
-            rgba(0,229,168,.35),
-            transparent 38%
-        ),
-        radial-gradient(
-            ellipse at 75% 20%,
-            rgba(0,200,255,.30),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 55% 65%,
-            rgba(139,92,246,.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            var(--night),
-            var(--night2)
-        );
+        radial-gradient(circle at 10% 80%,rgba(0,245,160,.25),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(0,217,255,.25),transparent 30%),
+        radial-gradient(circle at 55% 50%,rgba(139,92,246,.18),transparent 35%),
+        linear-gradient(135deg,var(--dark),var(--dark2));
 }
-
-/* effet aurore */
 
 .hero::before{
     content:"";
-
     position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    border:1px solid rgba(0,245,160,.12);
+    right:-150px;
+    top:100px;
+}
 
-    width:750px;
-    height:260px;
-
-    left:15%;
-    top:15%;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(0,229,168,.22),
-        rgba(0,200,255,.20),
-        rgba(139,92,246,.18),
-        transparent
-    );
-
-    filter:blur(45px);
-
-    transform:rotate(-12deg);
+.hero::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    border:1px solid rgba(0,217,255,.12);
+    left:-120px;
+    bottom:40px;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-
     max-width:1150px;
-    width:100%;
     margin:auto;
-
-    padding:90px 20px;
-
+    padding:85px 20px;
     display:grid;
-    grid-template-columns:1.15fr .85fr;
+    grid-template-columns:1.1fr .9fr;
     gap:55px;
     align-items:center;
 }
 
-.hero-badge{
-    display:inline-block;
+/* badge */
 
-    padding:9px 15px;
-    margin-bottom:20px;
-
-    border:1px solid rgba(0,229,168,.35);
+.offer-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
     border-radius:30px;
-
-    background:rgba(0,229,168,.08);
-
-    color:#7FFFD4;
-
+    background:rgba(255,77,103,.12);
+    border:1px solid rgba(255,77,103,.35);
+    color:#FF8294;
     font-size:13px;
-    font-weight:bold;
+    font-weight:900;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:58px;
-    line-height:1.04;
+    font-size:61px;
+    line-height:1.02;
     margin-bottom:22px;
 }
 
@@ -214,112 +174,113 @@ header{
 
 .hero-text{
     max-width:650px;
-
-    color:#C9D9E0;
-
+    color:#C7D3DE;
     font-size:18px;
     line-height:1.7;
 }
 
+/* date */
+
+.date-box{
+    display:inline-block;
+    margin-top:25px;
+    padding:13px 17px;
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    font-weight:bold;
+}
+
+.date-box strong{
+    color:var(--green);
+}
+
+/* buttons */
+
 .hero-buttons{
     display:flex;
-    gap:14px;
+    gap:13px;
     flex-wrap:wrap;
-
-    margin-top:32px;
+    margin-top:28px;
 }
 
 .button{
     display:inline-block;
-
     padding:15px 22px;
-
-    border-radius:10px;
-
+    border-radius:11px;
     text-decoration:none;
-
-    font-weight:800;
+    font-weight:900;
 }
 
 .button-main{
-    color:#03151E;
-
-    background:linear-gradient(
-        135deg,
-        var(--green),
-        var(--cyan)
-    );
+    color:#03131B;
+    background:linear-gradient(135deg,var(--green),var(--cyan));
+    box-shadow:0 10px 30px rgba(0,245,160,.18);
 }
 
 .button-light{
     color:white;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
 }
 
-/* ================= HERO CARD ================= */
+/* ================= COUNTDOWN ================= */
 
-.hero-card{
-    position:relative;
-
+.countdown-card{
     padding:30px;
-
-    border-radius:24px;
-
+    border-radius:28px;
     background:rgba(255,255,255,.07);
-
-    border:1px solid rgba(255,255,255,.14);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.25);
-
-    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.13);
+    backdrop-filter:blur(20px);
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
 }
 
-.hero-card-title{
-    font-size:23px;
-    font-weight:900;
-    margin-bottom:22px;
+.countdown-card h2{
+    font-size:24px;
+    margin-bottom:8px;
 }
 
-.hero-pack{
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    padding:15px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.09);
+.countdown-card p{
+    color:#AFC0CB;
+    font-size:14px;
+    margin-bottom:25px;
 }
 
-.hero-pack:last-child{
-    border-bottom:0;
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
 }
 
-.pack-icon{
-    width:44px;
-    height:44px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:12px;
-
-    background:rgba(255,255,255,.09);
-
-    font-size:21px;
+.time-box{
+    padding:18px 8px;
+    text-align:center;
+    border-radius:15px;
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.hero-pack strong{
+.time-box strong{
     display:block;
-    margin-bottom:4px;
+    font-size:30px;
+    color:white;
 }
 
-.hero-pack small{
-    color:#AFC3CC;
+.time-box span{
+    color:#91A6B2;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+.urgent{
+    margin-top:20px;
+    padding:13px;
+    text-align:center;
+    border-radius:10px;
+    background:rgba(255,77,103,.1);
+    color:#FF91A0;
+    font-size:13px;
+    font-weight:bold;
 }
 
 /* ================= SECTION ================= */
@@ -327,7 +288,6 @@ header{
 .section{
     max-width:1150px;
     margin:auto;
-
     padding:80px 20px;
 }
 
@@ -337,10 +297,8 @@ header{
 }
 
 .section-title h2{
-    color:var(--night);
-
-    font-size:36px;
-
+    font-size:38px;
+    color:var(--dark);
     margin-bottom:10px;
 }
 
@@ -353,41 +311,29 @@ header{
 .packs{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:25px;
+    gap:24px;
 }
 
 .pack{
     position:relative;
-
     background:white;
-
     border:1px solid var(--border);
-
-    border-radius:22px;
-
+    border-radius:24px;
     padding:28px;
-
     overflow:hidden;
-
-    box-shadow:
-        0 10px 35px rgba(6,21,34,.07);
-
-    transition:.25s;
+    box-shadow:0 12px 35px rgba(15,23,42,.07);
+    transition:.3s;
 }
 
 .pack:hover{
-    transform:translateY(-7px);
-
-    box-shadow:
-        0 20px 45px rgba(6,21,34,.13);
+    transform:translateY(-8px);
+    box-shadow:0 22px 50px rgba(15,23,42,.13);
 }
 
 .pack-line{
     position:absolute;
-
-    left:0;
     top:0;
-
+    left:0;
     width:100%;
     height:5px;
 }
@@ -412,89 +358,125 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     margin-bottom:20px;
 }
 
 .pack-emoji{
-    font-size:32px;
+    font-size:35px;
 }
 
 .pack-tag{
-    font-size:12px;
-    font-weight:bold;
-
-    padding:7px 10px;
-
+    padding:7px 11px;
     border-radius:20px;
-
     background:#F1F5F9;
     color:var(--muted);
+    font-size:11px;
+    font-weight:900;
 }
 
 .pack h3{
-    color:var(--night);
-
+    color:var(--dark);
     font-size:23px;
-
-    margin-bottom:13px;
+    margin-bottom:12px;
 }
 
 .pack-content{
     color:var(--muted);
-
     line-height:1.7;
-
-    min-height:58px;
+    min-height:55px;
 }
 
-.pack-price{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-
-    margin-top:25px;
+.price-area{
+    margin-top:22px;
     padding-top:20px;
-
     border-top:1px solid var(--border);
 }
 
-.price small{
-    display:block;
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    margin-bottom:3px;
+.old-price{
+    color:#94A3B8;
+    text-decoration:line-through;
+    font-size:14px;
+    margin-bottom:4px;
 }
 
-.price strong{
-    color:var(--night);
-
-    font-size:27px;
+.new-price{
+    color:var(--dark);
+    font-size:31px;
+    font-weight:900;
 }
 
 .pack-button{
+    display:block;
+    text-align:center;
+    margin-top:18px;
+    padding:13px;
+    border-radius:10px;
     text-decoration:none;
-
     color:white;
-
-    background:var(--night);
-
-    padding:13px 18px;
-
-    border-radius:9px;
-
-    font-weight:bold;
+    background:var(--dark);
+    font-weight:900;
+    transition:.2s;
 }
 
 .pack-button:hover{
-    background:var(--cyan);
-    color:var(--night);
+    background:linear-gradient(135deg,var(--green),var(--cyan));
+    color:#03131B;
 }
 
-/* ================= POURQUOI ================= */
+/* ================= ULTIME ================= */
+
+.ultimate{
+    margin-top:25px;
+    position:relative;
+    padding:35px;
+    border-radius:25px;
+    overflow:hidden;
+    color:white;
+
+    background:
+        radial-gradient(circle at 15% 50%,rgba(0,245,160,.3),transparent 30%),
+        radial-gradient(circle at 85% 50%,rgba(139,92,246,.3),transparent 30%),
+        linear-gradient(135deg,#07101D,#101A39);
+}
+
+.ultimate-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.ultimate h3{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.ultimate p{
+    color:#B9C8D2;
+    line-height:1.6;
+}
+
+.ultimate-price{
+    text-align:right;
+    white-space:nowrap;
+}
+
+.ultimate-old{
+    text-decoration:line-through;
+    color:#91A0B0;
+    font-size:14px;
+}
+
+.ultimate-new{
+    display:block;
+    color:var(--green);
+    font-size:38px;
+    font-weight:900;
+}
+
+/* ================= BENEFITS ================= */
 
 .why{
     background:white;
@@ -503,83 +485,28 @@ header{
 .why-grid{
     max-width:1150px;
     margin:auto;
-
     padding:75px 20px;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
 }
 
 .why-card{
-    padding:25px;
-
     text-align:center;
+    padding:25px;
 }
 
 .why-icon{
     font-size:38px;
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 .why-card h3{
-    color:var(--night);
-    margin-bottom:10px;
-}
-
-.why-card p{
-    color:var(--muted);
-    line-height:1.6;
-    font-size:14px;
-}
-
-/* ================= COMMENT ================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.step{
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:17px;
-
-    padding:25px;
-}
-
-.step-number{
-    width:40px;
-    height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    color:#04131D;
-
-    background:linear-gradient(
-        135deg,
-        var(--green),
-        var(--cyan)
-    );
-
-    font-weight:900;
-
-    margin-bottom:17px;
-}
-
-.step h3{
-    color:var(--night);
+    color:var(--dark);
     margin-bottom:9px;
 }
 
-.step p{
+.why-card p{
     color:var(--muted);
     font-size:14px;
     line-height:1.6;
@@ -589,64 +516,41 @@ header{
 
 .cta{
     max-width:1100px;
-
-    margin:30px auto 80px;
-
+    margin:40px auto 80px;
     padding:65px 25px;
-
-    border-radius:25px;
-
+    border-radius:28px;
     text-align:center;
-
     color:white;
 
     background:
-        radial-gradient(
-            circle at 20% 50%,
-            rgba(0,229,168,.3),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 50%,
-            rgba(139,92,246,.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            var(--night),
-            #0C3043
-        );
+        radial-gradient(circle at 20% 50%,rgba(0,245,160,.28),transparent 35%),
+        radial-gradient(circle at 80% 50%,rgba(0,217,255,.25),transparent 35%),
+        linear-gradient(135deg,#050816,#0D2840);
 }
 
 .cta h2{
-    font-size:35px;
-    margin-bottom:13px;
+    font-size:37px;
+    margin-bottom:12px;
 }
 
 .cta p{
-    color:#C5D7DE;
+    color:#C0D0D9;
     margin-bottom:25px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-    background:var(--night);
-
-    color:#8EA5B0;
-
+    background:var(--dark);
+    color:#8195A1;
     text-align:center;
-
     padding:45px 20px;
 }
 
 .footer-logo{
     color:white;
-
-    font-size:25px;
-
+    font-size:26px;
     font-weight:900;
-
     margin-bottom:10px;
 }
 
@@ -667,7 +571,7 @@ footer p{
     }
 
     .hero h1{
-        font-size:46px;
+        font-size:48px;
     }
 
     .packs{
@@ -678,8 +582,13 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .steps{
-        grid-template-columns:repeat(2,1fr);
+    .ultimate-content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .ultimate-price{
+        text-align:center;
     }
 }
 
@@ -694,15 +603,27 @@ footer p{
     }
 
     .hero-content{
-        padding:70px 17px;
+        padding:65px 16px;
     }
 
     .hero h1{
-        font-size:39px;
+        font-size:40px;
     }
 
     .hero-text{
         font-size:16px;
+    }
+
+    .countdown{
+        gap:6px;
+    }
+
+    .time-box{
+        padding:14px 4px;
+    }
+
+    .time-box strong{
+        font-size:24px;
     }
 
     .section{
@@ -713,8 +634,9 @@ footer p{
         font-size:30px;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .ultimate{
+        margin:20px 15px;
+        padding:30px 20px;
     }
 
     .cta{
@@ -747,12 +669,12 @@ SKILL<span>ORA</span>
 Packs
 </a>
 
-<a href="#pourquoi">
-Pourquoi nous ?
+<a href="#avantages">
+Avantages
 </a>
 
 <a href="inscription.html" class="nav-button">
-Commander
+Profiter
 </a>
 
 </div>
@@ -770,27 +692,31 @@ Commander
 
 <div>
 
-<div class="hero-badge">
-🌌 FORMATIONS DIGITALES
+<div class="offer-badge">
+🔥 OFFRE EXCEPTIONNELLE
 </div>
 
 <h1>
-Apprends.<br>
-<span>Crée.</span><br>
-Construis ton avenir.
+Les compétences<br>
+digitales à <span>prix réduit.</span>
 </h1>
 
 <p class="hero-text">
-Développe des compétences numériques pratiques
-avec des formations accessibles en bureautique,
+Profite de nos formations digitales et développe
+des compétences pratiques en bureautique,
 création digitale, intelligence artificielle,
 marketing et business en ligne.
 </p>
 
+<div class="date-box">
+📅 Du <strong>04 SEPTEMBRE</strong>
+au <strong>07 SEPTEMBRE 2026 à 20H00</strong>
+</div>
+
 <div class="hero-buttons">
 
 <a href="#packs" class="button button-main">
-Découvrir les packs
+🔥 Voir les offres
 </a>
 
 <a href="inscription.html" class="button button-light">
@@ -802,54 +728,44 @@ Commander
 </div>
 
 
-<div class="hero-card">
+<!-- COUNTDOWN -->
 
-<div class="hero-card-title">
-✨ Nos packs
+<div class="countdown-card">
+
+<h2>
+⏳ L'offre se termine bientôt
+</h2>
+
+<p>
+Ne rate pas les tarifs exceptionnels.
+</p>
+
+<div class="countdown">
+
+<div class="time-box">
+<strong id="days">00</strong>
+<span>Jours</span>
 </div>
 
-<div class="hero-pack">
-
-<div class="pack-icon">💻</div>
-
-<div>
-<strong>Bureautique</strong>
-<small>Word + Excel + PowerPoint</small>
+<div class="time-box">
+<strong id="hours">00</strong>
+<span>Heures</span>
 </div>
 
+<div class="time-box">
+<strong id="minutes">00</strong>
+<span>Minutes</span>
 </div>
 
-<div class="hero-pack">
-
-<div class="pack-icon">🎨</div>
-
-<div>
-<strong>Créateur Digital</strong>
-<small>Canva + CapCut + IA + Suno AI</small>
-</div>
-
-</div>
-
-<div class="hero-pack">
-
-<div class="pack-icon">📈</div>
-
-<div>
-<strong>Marketing & Vente</strong>
-<small>Marketing + Publicité + Vente</small>
+<div class="time-box">
+<strong id="seconds">00</strong>
+<span>Secondes</span>
 </div>
 
 </div>
 
-<div class="hero-pack">
-
-<div class="pack-icon">🚀</div>
-
-<div>
-<strong>Business Digital</strong>
-<small>IA + Marketing + Contenu + Vente</small>
-</div>
-
+<div class="urgent">
+🚨 Offre limitée jusqu'au 07/09 à 20H00
 </div>
 
 </div>
@@ -866,11 +782,11 @@ Commander
 <div class="section-title">
 
 <h2>
-Choisis ton pack
+🔥 Nos offres exceptionnelles
 </h2>
 
 <p>
-Une seule formation ou plusieurs compétences réunies.
+Des formations pratiques à des prix spécialement réduits.
 </p>
 
 </div>
@@ -878,7 +794,8 @@ Une seule formation ou plusieurs compétences réunies.
 
 <div class="packs">
 
-<!-- PACK 1 -->
+
+<!-- BUREAUTIQUE -->
 
 <div class="pack green">
 
@@ -897,38 +814,34 @@ POPULAIRE
 </div>
 
 <h3>
-🟢 Pack Bureautique
+Pack Bureautique
 </h3>
 
 <p class="pack-content">
 Word + Excel + PowerPoint
 </p>
 
-<div class="pack-price">
+<div class="price-area">
 
-<div class="price">
+<div class="old-price">
+Prix normal : 8 000 F
+</div>
 
-<small>
-Prix du pack
-</small>
-
-<strong>
-8 000 F
-</strong>
+<div class="new-price">
+2 095 F
+</div>
 
 </div>
 
 <a href="inscription.html?pack=Bureautique"
 class="pack-button">
-Commander
+🔥 Profiter de l'offre
 </a>
 
 </div>
 
-</div>
 
-
-<!-- PACK 2 -->
+<!-- CREATEUR -->
 
 <div class="pack blue">
 
@@ -947,38 +860,34 @@ CRÉATION
 </div>
 
 <h3>
-🔵 Pack Créateur Digital
+Pack Créateur Digital
 </h3>
 
 <p class="pack-content">
 Canva + CapCut + IA + Suno AI
 </p>
 
-<div class="pack-price">
+<div class="price-area">
 
-<div class="price">
+<div class="old-price">
+Prix normal : 12 000 F
+</div>
 
-<small>
-Prix du pack
-</small>
-
-<strong>
-12 000 F
-</strong>
+<div class="new-price">
+3 095 F
+</div>
 
 </div>
 
 <a href="inscription.html?pack=Créateur%20Digital"
 class="pack-button">
-Commander
+🔥 Profiter de l'offre
 </a>
 
 </div>
 
-</div>
 
-
-<!-- PACK 3 -->
+<!-- MARKETING -->
 
 <div class="pack purple">
 
@@ -997,38 +906,34 @@ BUSINESS
 </div>
 
 <h3>
-🟣 Pack Marketing & Vente
+Pack Marketing & Vente
 </h3>
 
 <p class="pack-content">
 Marketing digital + Publicité + Vente en ligne + WhatsApp Business
 </p>
 
-<div class="pack-price">
+<div class="price-area">
 
-<div class="price">
+<div class="old-price">
+Prix normal : 15 000 F
+</div>
 
-<small>
-Prix du pack
-</small>
-
-<strong>
-15 000 F
-</strong>
+<div class="new-price">
+3 595 F
+</div>
 
 </div>
 
 <a href="inscription.html?pack=Marketing%20%26%20Vente"
 class="pack-button">
-Commander
+🔥 Profiter de l'offre
 </a>
 
 </div>
 
-</div>
 
-
-<!-- PACK 4 -->
+<!-- BUSINESS -->
 
 <div class="pack orange">
 
@@ -1047,30 +952,67 @@ BUSINESS PRO
 </div>
 
 <h3>
-🟠 Pack Business Digital
+Pack Business Digital
 </h3>
 
 <p class="pack-content">
 IA + Marketing + Création de contenu + Vente en ligne
 </p>
 
-<div class="pack-price">
+<div class="price-area">
 
-<div class="price">
+<div class="old-price">
+Prix normal : 15 000 F
+</div>
 
-<small>
-Prix du pack
-</small>
-
-<strong>
-15 000 F
-</strong>
+<div class="new-price">
+3 595 F
+</div>
 
 </div>
 
 <a href="inscription.html?pack=Business%20Digital"
 class="pack-button">
-Commander
+🔥 Profiter de l'offre
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PACK ULTIME -->
+
+<div class="ultimate">
+
+<div class="ultimate-content">
+
+<div>
+
+<h3>
+👑 PACK ULTIME — TOUTES LES FORMATIONS
+</h3>
+
+<p>
+Bureautique + Créateur Digital + Marketing & Vente
++ Business Digital.
+</p>
+
+</div>
+
+<div class="ultimate-price">
+
+<div class="ultimate-old">
+Prix normal : 50 000 F
+</div>
+
+<span class="ultimate-new">
+5 595 F
+</span>
+
+<a href="inscription.html?pack=Pack%20Ultime"
+class="button button-main">
+🚀 JE VEUX TOUT
 </a>
 
 </div>
@@ -1082,9 +1024,9 @@ Commander
 </section>
 
 
-<!-- POURQUOI -->
+<!-- AVANTAGES -->
 
-<section class="why" id="pourquoi">
+<section class="why" id="avantages">
 
 <div class="why-grid">
 
@@ -1117,7 +1059,7 @@ Pratique
 </h3>
 
 <p>
-Des compétences numériques directement
+Développe des compétences numériques
 utilisables dans tes projets.
 </p>
 
@@ -1127,111 +1069,16 @@ utilisables dans tes projets.
 <div class="why-card">
 
 <div class="why-icon">
-💬
+🔥
 </div>
 
 <h3>
-Commande simple
+Offre limitée
 </h3>
 
 <p>
-Tu commandes sur WhatsApp et tu effectues
-ton paiement via Wave.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- COMMENT ÇA MARCHE -->
-
-<section class="section">
-
-<div class="section-title">
-
-<h2>
-Comment ça marche ?
-</h2>
-
-<p>
-Quatre étapes simples pour commencer.
-</p>
-
-</div>
-
-
-<div class="steps">
-
-<div class="step">
-
-<div class="step-number">
-1
-</div>
-
-<h3>
-Choisis
-</h3>
-
-<p>
-Sélectionne le pack qui correspond
-à tes objectifs.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-2
-</div>
-
-<h3>
-Commande
-</h3>
-
-<p>
-Remplis les informations nécessaires
-et commande sur WhatsApp.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-3
-</div>
-
-<h3>
-Paie
-</h3>
-
-<p>
-Effectue ton paiement selon les
-instructions Wave reçues.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-4
-</div>
-
-<h3>
-Commence
-</h3>
-
-<p>
-Après vérification du paiement,
-tu reçois les informations de formation.
+Les tarifs promotionnels sont disponibles
+jusqu'au 7 septembre à 20H00.
 </p>
 
 </div>
@@ -1246,16 +1093,17 @@ tu reçois les informations de formation.
 <div class="cta">
 
 <h2>
-Prêt à développer tes compétences ?
+🔥 Ne laisse pas passer cette offre
 </h2>
 
 <p>
-Choisis ton pack et passe à l'action.
+Choisis ta formation et profite du tarif exceptionnel
+avant la fin du compte à rebours.
 </p>
 
 <a href="inscription.html"
 class="button button-main">
-Commencer maintenant
+PROFITER DE L'OFFRE
 </a>
 
 </div>
@@ -1278,6 +1126,66 @@ Formations digitales • Apprendre • Créer • Évoluer
 </p>
 
 </footer>
+
+
+<!-- COMPTE À REBOURS -->
+
+<script>
+
+const dateFin = new Date("September 7, 2026 20:00:00").getTime();
+
+const compteur = setInterval(function(){
+
+    const maintenant = new Date().getTime();
+
+    const difference = dateFin - maintenant;
+
+    if(difference <= 0){
+
+        clearInterval(compteur);
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+    }
+
+    const jours = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const heures = Math.floor(
+        (difference % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const secondes = Math.floor(
+        (difference % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("days").textContent =
+        String(jours).padStart(2,"0");
+
+    document.getElementById("hours").textContent =
+        String(heures).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(secondes).padStart(2,"0");
+
+},1000);
+
+</script>
 
 </body>
 </html>
