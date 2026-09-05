@@ -8,31 +8,44 @@
 
 <style>
 
+:root{
+    --bg:#02040a;
+    --card:rgba(10,20,35,.78);
+    --green:#00f5a0;
+    --cyan:#00d9ff;
+    --purple:#9b6cff;
+    --white:#fff;
+    --muted:#9aaabd;
+    --border:rgba(255,255,255,.10);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-:root{
-    --green:#00f5a0;
-    --blue:#00c8ff;
-    --dark:#030712;
-    --card:#081827;
-    --text:#f8fafc;
-    --muted:#94a3b8;
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--white);
+    background:
+        radial-gradient(circle at 15% 10%,rgba(0,245,160,.12),transparent 30%),
+        radial-gradient(circle at 90% 30%,rgba(0,217,255,.10),transparent 30%),
+        var(--bg);
+    overflow-x:hidden;
 }
 
-body{
-    font-family:Arial, sans-serif;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
     background:
-        radial-gradient(circle at 10% 10%,rgba(0,245,160,.18),transparent 30%),
-        radial-gradient(circle at 90% 30%,rgba(0,200,255,.16),transparent 30%),
-        radial-gradient(circle at 50% 100%,rgba(124,58,237,.12),transparent 35%),
-        var(--dark);
-    color:var(--text);
-    min-height:100vh;
-    overflow-x:hidden;
+        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size:45px 45px;
+    z-index:-1;
 }
 
 /* HEADER */
@@ -41,279 +54,176 @@ header{
     position:sticky;
     top:0;
     z-index:100;
-    padding:18px 20px;
-    text-align:center;
-    background:rgba(3,7,18,.82);
-    backdrop-filter:blur(15px);
+    padding:16px 20px;
+    background:rgba(2,4,10,.78);
+    backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
+.navbar{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
 .logo{
-    font-size:30px;
+    font-size:27px;
     font-weight:1000;
     letter-spacing:3px;
-    color:var(--green);
-    text-shadow:0 0 25px rgba(0,245,160,.35);
 }
 
 .logo span{
-    color:var(--blue);
+    color:var(--green);
+    text-shadow:0 0 20px rgba(0,245,160,.5);
 }
 
-/* CONTAINER */
-
-.container{
-    width:92%;
-    max-width:680px;
-    margin:30px auto 60px;
+.back{
+    color:#dbe7ef;
+    text-decoration:none;
+    font-size:13px;
+    padding:10px 15px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
 }
 
-/* HERO */
+/* MAIN */
 
-.hero{
+.main{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:65px 20px 80px;
+}
+
+.intro{
     text-align:center;
-    padding:30px 20px 25px;
+    margin-bottom:40px;
 }
 
 .badge{
     display:inline-block;
-    padding:8px 14px;
+    padding:9px 15px;
     border-radius:50px;
-    background:rgba(0,245,160,.1);
-    border:1px solid rgba(0,245,160,.35);
-    color:var(--green);
-    font-size:12px;
-    font-weight:bold;
+    background:rgba(255,77,103,.08);
+    border:1px solid rgba(255,77,103,.22);
+    color:#ff9aaa;
+    font-size:11px;
+    font-weight:900;
     letter-spacing:1px;
-    margin-bottom:15px;
-    animation:pulse 2s infinite;
 }
 
-@keyframes pulse{
-    0%,100%{
-        box-shadow:0 0 0 rgba(0,245,160,0);
-    }
-    50%{
-        box-shadow:0 0 25px rgba(0,245,160,.25);
-    }
+.intro h1{
+    margin-top:20px;
+    font-size:45px;
+    line-height:1.1;
 }
 
-.hero h1{
-    font-size:34px;
-    line-height:1.15;
-    margin-bottom:12px;
-}
-
-.hero h1 span{
-    background:linear-gradient(90deg,var(--green),var(--blue));
+.gradient{
+    background:linear-gradient(
+        90deg,
+        var(--green),
+        var(--cyan),
+        var(--purple)
+    );
     -webkit-background-clip:text;
+    background-clip:text;
     color:transparent;
 }
 
-.hero p{
+.intro p{
+    max-width:650px;
+    margin:15px auto 0;
     color:var(--muted);
-    line-height:1.6;
-    font-size:15px;
-}
-
-/* COUNTDOWN */
-
-.countdown-box{
-    margin:15px 0 25px;
-    padding:18px;
-    border-radius:20px;
-    text-align:center;
-    background:linear-gradient(
-        135deg,
-        rgba(0,245,160,.09),
-        rgba(0,200,255,.08)
-    );
-    border:1px solid rgba(0,245,160,.2);
-}
-
-.countdown-title{
-    color:#cbd5e1;
-    font-size:13px;
-    margin-bottom:12px;
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-
-.time{
-    min-width:65px;
-    padding:10px 7px;
-    border-radius:12px;
-    background:#06111e;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.time strong{
-    display:block;
-    color:var(--green);
-    font-size:22px;
-}
-
-.time small{
-    color:#64748b;
-    font-size:10px;
-}
-
-/* PROMO */
-
-.promo{
-    position:relative;
-    overflow:hidden;
-    text-align:center;
-    background:linear-gradient(
-        135deg,
-        rgba(0,245,160,.15),
-        rgba(0,200,255,.12)
-    );
-    border:1px solid rgba(0,245,160,.35);
-    border-radius:24px;
-    padding:22px;
-    margin-bottom:22px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.35),
-        0 0 40px rgba(0,245,160,.06);
-}
-
-.promo::before{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    background:rgba(0,245,160,.12);
-    border-radius:50%;
-    filter:blur(50px);
-    top:-100px;
-    left:-80px;
-}
-
-.promo h2{
-    position:relative;
-    color:var(--green);
-    font-size:24px;
-    margin-bottom:8px;
-}
-
-.promo p{
-    position:relative;
-    color:#cbd5e1;
-    line-height:1.6;
-    font-size:14px;
-}
-
-/* CARD */
-
-.card{
-    background:rgba(8,24,39,.86);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:28px;
-    padding:25px;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
-}
-
-/* PACK */
-
-.pack-box{
-    position:relative;
-    border-radius:20px;
-    padding:22px;
-    margin-bottom:25px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,245,160,.1),
-            rgba(0,200,255,.06)
-        );
-    border:1px solid rgba(0,245,160,.3);
-    overflow:hidden;
-}
-
-.pack-box::after{
-    content:"";
-    position:absolute;
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:rgba(0,200,255,.1);
-    filter:blur(35px);
-    right:-50px;
-    top:-50px;
-}
-
-.pack-label{
-    color:#64748b;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    margin-bottom:8px;
-}
-
-.pack-box h2{
-    color:var(--green);
-    font-size:25px;
-    margin-bottom:12px;
-}
-
-.contenu{
-    position:relative;
-    z-index:2;
-    color:#cbd5e1;
     line-height:1.7;
     font-size:15px;
 }
 
-.features{
-    margin-top:17px;
+/* GRID */
+
+.content{
     display:grid;
-    gap:8px;
+    grid-template-columns:.85fr 1.15fr;
+    gap:25px;
 }
 
-.feature{
-    color:#dbeafe;
-    font-size:13px;
-}
+/* PACK */
 
-.feature span{
-    color:var(--green);
-    margin-right:7px;
-}
-
-.prix{
+.pack-card{
     position:relative;
-    z-index:2;
-    margin-top:20px;
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:8px;
+    padding:30px;
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.02)
+        );
+    border:1px solid var(--border);
+    overflow:hidden;
 }
 
-.ancien{
-    text-decoration:line-through;
-    color:#64748b;
-    font-size:14px;
+.pack-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(
+        90deg,
+        var(--green),
+        var(--cyan),
+        var(--purple)
+    );
 }
 
-.nouveau{
+.pack-label{
     color:var(--green);
-    font-size:30px;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.pack-name{
+    margin-top:12px;
+    font-size:28px;
     font-weight:1000;
 }
 
-.promo-tag{
-    background:rgba(255,180,0,.12);
-    border:1px solid rgba(255,180,0,.3);
-    color:#ffd166;
-    padding:5px 9px;
-    border-radius:20px;
+.pack-content{
+    margin-top:15px;
+    color:#a9bac8;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.price-box{
+    margin-top:25px;
+    padding:20px;
+    border-radius:17px;
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.old-price{
+    color:#697b8b;
+    text-decoration:line-through;
+    font-size:13px;
+}
+
+.new-price{
+    margin-top:5px;
+    color:var(--green);
+    font-size:38px;
+    font-weight:1000;
+}
+
+.promo{
+    margin-top:10px;
+    color:#ffcf70;
     font-size:11px;
     font-weight:bold;
 }
@@ -322,197 +232,216 @@ header{
 
 .ref-box{
     display:none;
-    background:rgba(0,200,255,.08);
-    border:1px solid rgba(0,200,255,.3);
+    margin-top:20px;
     padding:15px;
-    border-radius:14px;
-    margin-bottom:20px;
-    color:#cbd5e1;
+    border-radius:13px;
+    background:rgba(155,108,255,.08);
+    border:1px solid rgba(155,108,255,.2);
 }
 
 .ref-box strong{
-    color:var(--blue);
+    color:#c5adff;
+    font-size:12px;
+}
+
+.ref-code{
+    margin-top:6px;
+    color:white;
+    font-size:14px;
+    font-weight:bold;
 }
 
 /* FORM */
 
+.form-card{
+    padding:30px;
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.02)
+        );
+    border:1px solid var(--border);
+}
+
+.form-card h2{
+    font-size:25px;
+}
+
+.form-card > p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.form-group{
+    margin-top:20px;
+}
+
 label{
     display:block;
     margin-bottom:8px;
-    color:#e2e8f0;
+    color:#dce7ee;
+    font-size:12px;
     font-weight:bold;
-    font-size:14px;
 }
 
 input,
 select{
     width:100%;
-    padding:16px;
-    margin-bottom:20px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,.1);
-    background:#041321;
-    color:white;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
     outline:none;
-    font-size:15px;
-    transition:.2s;
-}
-
-input::placeholder{
-    color:#64748b;
+    background:rgba(0,0,0,.28);
+    color:white;
+    font-size:14px;
 }
 
 input:focus,
 select:focus{
     border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(0,245,160,.08);
+    box-shadow:0 0 0 3px rgba(0,245,160,.07);
 }
 
-/* BUTTON */
+select option{
+    background:#07111f;
+    color:white;
+}
 
-button{
-    position:relative;
-    overflow:hidden;
+.submit{
     width:100%;
+    margin-top:25px;
+    padding:17px;
     border:none;
-    padding:18px;
-    border-radius:15px;
-    background:linear-gradient(
-        90deg,
-        var(--green),
-        var(--blue)
-    );
-    color:#021017;
-    font-size:17px;
-    font-weight:1000;
-    cursor:pointer;
-    transition:.25s;
-    box-shadow:0 12px 35px rgba(0,245,160,.18);
-}
-
-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 18px 45px rgba(0,245,160,.28);
-}
-
-button:active{
-    transform:scale(.98);
-}
-
-/* TRUST */
-
-.trust{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:20px;
-}
-
-.trust-item{
-    text-align:center;
-    padding:13px 5px;
     border-radius:13px;
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.06);
+    cursor:pointer;
+    color:#00130e;
+    background:linear-gradient(
+        135deg,
+        var(--green),
+        var(--cyan)
+    );
+    font-size:14px;
+    font-weight:1000;
+    box-shadow:0 15px 40px rgba(0,245,160,.12);
+    transition:.25s;
 }
 
-.trust-item strong{
+.submit:hover{
+    transform:translateY(-3px);
+}
+
+.security{
+    margin-top:17px;
+    text-align:center;
+    color:#687b8b;
+    font-size:11px;
+    line-height:1.6;
+}
+
+/* COUNTDOWN */
+
+.countdown-card{
+    margin-top:25px;
+    padding:22px;
+    border-radius:20px;
+    background:rgba(0,0,0,.23);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.countdown-title{
+    text-align:center;
+    color:#aebdca;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.countdown{
+    margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+}
+
+.time{
+    padding:12px 3px;
+    text-align:center;
+    border-radius:11px;
+    background:rgba(255,255,255,.04);
+}
+
+.time strong{
     display:block;
-    color:var(--green);
-    font-size:18px;
+    font-size:22px;
 }
 
-.trust-item small{
-    color:#64748b;
-    font-size:9px;
-}
-
-/* INFO */
-
-.info{
-    text-align:center;
-    margin-top:20px;
-    color:#64748b;
-    font-size:12px;
-    line-height:1.7;
-}
-
-/* ERROR */
-
-.error{
-    display:none;
-    background:rgba(255,60,60,.1);
-    border:1px solid rgba(255,60,60,.35);
-    color:#ff8d8d;
-    padding:12px;
-    border-radius:12px;
-    margin-bottom:15px;
-    font-size:13px;
-}
-
-/* SUCCESS */
-
-.success{
-    display:none;
-    text-align:center;
-    padding:25px 10px;
-    color:var(--green);
-}
-
-.success .icon{
-    font-size:42px;
-    margin-bottom:10px;
+.time span{
+    color:#718494;
+    font-size:8px;
+    text-transform:uppercase;
 }
 
 /* FOOTER */
 
 footer{
+    padding:35px 20px;
     text-align:center;
-    padding:30px 15px;
-    color:#475569;
-    font-size:12px;
+    border-top:1px solid rgba(255,255,255,.07);
+    background:#010309;
+}
+
+footer strong{
+    letter-spacing:2px;
+}
+
+footer strong span{
+    color:var(--green);
+}
+
+footer p{
+    margin-top:8px;
+    color:#526576;
+    font-size:11px;
 }
 
 /* MOBILE */
 
-@media(max-width:500px){
+@media(max-width:800px){
 
-    .container{
-        width:94%;
-        margin-top:20px;
+    .content{
+        grid-template-columns:1fr;
     }
 
-    .hero{
-        padding:25px 10px 20px;
+}
+
+@media(max-width:600px){
+
+    .main{
+        padding:45px 15px 60px;
     }
 
-    .hero h1{
-        font-size:29px;
+    .intro h1{
+        font-size:34px;
     }
 
-    .card{
-        padding:19px;
-        border-radius:23px;
+    .pack-card,
+    .form-card{
+        padding:23px 18px;
     }
 
-    .pack-box{
-        padding:18px;
+    .pack-name{
+        font-size:24px;
     }
 
-    .pack-box h2{
-        font-size:22px;
+    .new-price{
+        font-size:33px;
     }
 
-    .nouveau{
-        font-size:27px;
-    }
-
-    .time{
-        min-width:58px;
-    }
-
-    .time strong{
-        font-size:19px;
+    .logo{
+        font-size:23px;
     }
 
 }
@@ -523,284 +452,243 @@ footer{
 <body>
 
 <header>
-    <div class="logo">
-        SKILL<span>ORA</span>
-    </div>
+
+<div class="navbar">
+
+<div class="logo">
+SKILL<span>ORA</span>
+</div>
+
+<a href="index.html" class="back">
+← Retour
+</a>
+
+</div>
+
 </header>
 
-<div class="container">
 
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="badge">
-            🔥 OFFRE LIMITÉE
-        </div>
-
-        <h1>
-            Transforme tes compétences.<br>
-            <span>Construis ton avenir.</span>
-        </h1>
-
-        <p>
-            Rejoins SKILLORA et développe des compétences
-            digitales utiles pour tes projets, tes études
-            et ton activité.
-        </p>
-
-    </section>
-
-
-    <!-- COMPTE À REBOURS -->
-
-    <div class="countdown-box">
-
-        <div class="countdown-title">
-            ⏳ La promotion se termine dans
-        </div>
-
-        <div class="countdown">
-
-            <div class="time">
-                <strong id="jours">00</strong>
-                <small>JOURS</small>
-            </div>
-
-            <div class="time">
-                <strong id="heures">00</strong>
-                <small>HEURES</small>
-            </div>
-
-            <div class="time">
-                <strong id="minutes">00</strong>
-                <small>MIN</small>
-            </div>
-
-            <div class="time">
-                <strong id="secondes">00</strong>
-                <small>SEC</small>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PROMOTION -->
-
-    <div class="promo">
-
-        <h2>
-            🔥 OFFRE EXCEPTIONNELLE
-        </h2>
-
-        <p>
-            Promotion valable du
-            <strong>04 septembre</strong>
-            au
-            <strong>07 septembre 2026 à 20h00</strong>.
-        </p>
-
-    </div>
-
-
-    <!-- CARD -->
-
-    <div class="card">
-
-        <div class="pack-box">
-
-            <div class="pack-label">
-                Votre sélection
-            </div>
-
-            <h2 id="packNom">
-                Sélectionnez votre formation
-            </h2>
-
-            <div class="contenu" id="packContenu">
-                Choisissez une formation depuis la page précédente.
-            </div>
-
-            <div class="features">
-
-                <div class="feature">
-                    <span>✓</span>
-                    Formation digitale
-                </div>
-
-                <div class="feature">
-                    <span>✓</span>
-                    Contenu pratique
-                </div>
-
-                <div class="feature">
-                    <span>✓</span>
-                    Accompagnement WhatsApp
-                </div>
-
-            </div>
-
-            <div class="prix">
-
-                <span class="ancien" id="ancienPrix"></span>
-
-                <span class="nouveau" id="nouveauPrix"></span>
-
-                <span class="promo-tag">
-                    PROMO
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="error" id="error">
-            Veuillez remplir correctement le formulaire.
-        </div>
-
-
-        <!-- PARRAINAGE -->
-
-        <div class="ref-box" id="refBox">
-
-            🎁 Code de parrainage :
-            <strong id="refCode"></strong>
-
-        </div>
-
-
-        <!-- FORMULAIRE -->
-
-        <form id="inscriptionForm">
-
-            <label for="nom">
-                👤 Nom et prénom
-            </label>
-
-            <input
-                type="text"
-                id="nom"
-                placeholder="Ex : Koné Ibrahim"
-                required
-            >
-
-
-            <label for="telephone">
-                📱 Numéro WhatsApp
-            </label>
-
-            <input
-                type="tel"
-                id="telephone"
-                placeholder="Ex : 0712345678"
-                required
-            >
-
-
-            <label for="contact">
-                💬 Choisir le contact WhatsApp
-            </label>
-
-            <select id="contact" required>
-
-                <option value="">
-                    -- Choisir un contact --
-                </option>
-
-                <option value="2250503123533">
-                    WhatsApp 1
-                </option>
-
-                <option value="2250585564273">
-                    WhatsApp 2
-                </option>
-
-            </select>
-
-
-            <button type="submit">
-                🚀 CONTINUER SUR WHATSAPP
-            </button>
-
-        </form>
-
-
-        <!-- CONFIANCE -->
-
-        <div class="trust">
-
-            <div class="trust-item">
-                <strong>⚡</strong>
-                <small>INSCRIPTION<br>SIMPLE</small>
-            </div>
-
-            <div class="trust-item">
-                <strong>🎓</strong>
-                <small>FORMATIONS<br>DIGITALES</small>
-            </div>
-
-            <div class="trust-item">
-                <strong>💬</strong>
-                <small>SUPPORT<br>WHATSAPP</small>
-            </div>
-
-        </div>
-
-
-        <div class="success" id="success">
-
-            <div class="icon">
-                ✅
-            </div>
-
-            <strong>
-                Inscription enregistrée !
-            </strong>
-
-            <br><br>
-
-            Redirection vers WhatsApp...
-
-        </div>
-
-
-        <div class="info">
-
-            Après votre inscription, vous serez redirigé
-            vers WhatsApp pour poursuivre votre commande
-            et recevoir les informations de paiement.
-
-            <br><br>
-
-            🔐 Vos informations sont utilisées uniquement
-            pour traiter votre inscription.
-
-            <br><br>
-
-            SKILLORA — Formations digitales
-
-        </div>
-
-    </div>
+<main class="main">
+
+<div class="intro">
+
+<div class="badge">
+🔥 OFFRE LIMITÉE
+</div>
+
+<h1>
+Inscris-toi sur
+<span class="gradient">
+SKILLORA
+</span>
+</h1>
+
+<p>
+Remplis le formulaire ci-dessous pour confirmer
+ta demande. Tu seras ensuite redirigé vers WhatsApp
+pour finaliser ta commande.
+</p>
 
 </div>
 
 
+<div class="content">
+
+
+<!-- PACK -->
+
+<div>
+
+<div class="pack-card">
+
+<div class="pack-label">
+FORMATION SÉLECTIONNÉE
+</div>
+
+<div class="pack-name" id="packNom">
+Pack SKILLORA
+</div>
+
+<div class="pack-content" id="packContenu">
+Toutes les formations digitales SKILLORA.
+</div>
+
+<div class="price-box">
+
+<div class="old-price" id="ancienPrix">
+Prix normal
+</div>
+
+<div class="new-price" id="prix">
+Prix promotionnel
+</div>
+
+<div class="promo">
+🔥 Tarif spécial jusqu'au 07 septembre 2026 à 20h00
+</div>
+
+</div>
+
+<div class="ref-box" id="refBox">
+
+<strong>🎁 Parrainage détecté</strong>
+
+<div class="ref-code" id="refCode"></div>
+
+</div>
+
+</div>
+
+
+<div class="countdown-card">
+
+<div class="countdown-title">
+⏳ TEMPS RESTANT POUR PROFITER DE L'OFFRE
+</div>
+
+<div class="countdown">
+
+<div class="time">
+<strong id="days">00</strong>
+<span>Jours</span>
+</div>
+
+<div class="time">
+<strong id="hours">00</strong>
+<span>Heures</span>
+</div>
+
+<div class="time">
+<strong id="minutes">00</strong>
+<span>Minutes</span>
+</div>
+
+<div class="time">
+<strong id="seconds">00</strong>
+<span>Secondes</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FORMULAIRE -->
+
+<div class="form-card">
+
+<h2>
+📝 Finaliser l'inscription
+</h2>
+
+<p>
+Entre tes informations. Après validation,
+WhatsApp s'ouvrira automatiquement.
+</p>
+
+
+<form id="inscriptionForm">
+
+
+<div class="form-group">
+
+<label for="nom">
+Nom et prénom
+</label>
+
+<input
+type="text"
+id="nom"
+placeholder="Ex : Koné Ibrahim"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="telephone">
+Ton numéro WhatsApp
+</label>
+
+<input
+type="tel"
+id="telephone"
+placeholder="Ex : 07 XX XX XX XX"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="contact">
+Choisir le numéro SKILLORA
+</label>
+
+<select id="contact" required>
+
+<option value="">
+-- Choisir un contact --
+</option>
+
+<option value="2250503123533">
+WhatsApp 1 — 05 03 12 35 33
+</option>
+
+<option value="2250585564273">
+WhatsApp 2 — 05 85 56 42 73
+</option>
+
+</select>
+
+</div>
+
+
+<button
+type="submit"
+class="submit"
+>
+🚀 CONTINUER SUR WHATSAPP
+</button>
+
+</form>
+
+
+<div class="security">
+🔒 Tes informations servent uniquement à traiter
+ta demande d'inscription.
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
 <footer>
 
-    © 2026 SKILLORA — Tous droits réservés
+<strong>
+SKILL<span>ORA</span>
+</strong>
+
+<p>
+INSPIRER. FORMER ET TRANSFORMER.
+</p>
 
 </footer>
 
 
 <script>
 
-/* ==============================
-   CONFIGURATION DES PACKS
-================================ */
+/* =========================================
+   PACKS SKILLORA
+========================================= */
 
 const packs = {
 
@@ -836,303 +724,235 @@ const packs = {
         nom:"🔥 Pack Ultime",
         contenu:"Toutes les formations SKILLORA",
         ancien:"50 000 F",
-        prix:"5 595 F"
+        prix:"12 380 F"
     }
 
 };
 
 
-/* ==============================
-   PARAMÈTRES URL
-================================ */
+/* =========================================
+   RÉCUPÉRATION DES PARAMÈTRES
+========================================= */
 
 const params =
-    new URLSearchParams(
-        window.location.search
-    );
+new URLSearchParams(window.location.search);
 
 const packChoisi =
-    params.get("pack");
+params.get("pack");
 
-const codeParrain =
-    params.get("ref");
-
-
-/* ==============================
-   ELEMENTS
-================================ */
-
-const packNom =
-    document.getElementById("packNom");
-
-const packContenu =
-    document.getElementById("packContenu");
-
-const ancienPrix =
-    document.getElementById("ancienPrix");
-
-const nouveauPrix =
-    document.getElementById("nouveauPrix");
-
-const error =
-    document.getElementById("error");
-
-const refBox =
-    document.getElementById("refBox");
-
-const refCode =
-    document.getElementById("refCode");
+const codeParrainage =
+params.get("ref");
 
 
-/* ==============================
-   AFFICHAGE PACK
-================================ */
+/* =========================================
+   AFFICHAGE DU PACK
+========================================= */
 
-if(
-    packChoisi &&
-    packs[packChoisi]
-){
+const pack =
+packs[packChoisi] || packs["Pack Ultime"];
 
-    const pack =
-        packs[packChoisi];
+document.getElementById("packNom").textContent =
+pack.nom;
 
-    packNom.textContent =
-        pack.nom;
+document.getElementById("packContenu").textContent =
+pack.contenu;
 
-    packContenu.textContent =
-        pack.contenu;
+document.getElementById("ancienPrix").textContent =
+"Prix normal : " + pack.ancien;
 
-    ancienPrix.textContent =
-        pack.ancien;
-
-    nouveauPrix.textContent =
-        pack.prix;
-
-}else{
-
-    packNom.textContent =
-        "⚠️ Formation non sélectionnée";
-
-    packContenu.textContent =
-        "Veuillez retourner sur la page d'accueil et choisir une formation.";
-
-}
+document.getElementById("prix").textContent =
+pack.prix;
 
 
-/* ==============================
+/* =========================================
    PARRAINAGE
-================================ */
+========================================= */
 
-if(codeParrain){
+if(codeParrainage){
 
-    refBox.style.display =
-        "block";
+    document.getElementById("refBox").style.display =
+    "block";
 
-    refCode.textContent =
-        codeParrain;
+    document.getElementById("refCode").textContent =
+    "Code : " + codeParrainage;
 
 }
 
 
-/* ==============================
+/* =========================================
    COMPTE À REBOURS
-================================ */
+   Côte d'Ivoire = UTC+0
+========================================= */
 
 const dateFin =
-    new Date(
-        "2026-09-07T20:00:00"
-    ).getTime();
+new Date("2026-09-07T20:00:00+00:00").getTime();
 
-function countdown(){
-
-    const maintenant =
-        new Date().getTime();
+function mettreAJourCompteur(){
 
     const difference =
-        dateFin - maintenant;
+    dateFin - Date.now();
+
+    const days =
+    document.getElementById("days");
+
+    const hours =
+    document.getElementById("hours");
+
+    const minutes =
+    document.getElementById("minutes");
+
+    const seconds =
+    document.getElementById("seconds");
 
     if(difference <= 0){
 
-        document.getElementById("jours").textContent="00";
-        document.getElementById("heures").textContent="00";
-        document.getElementById("minutes").textContent="00";
-        document.getElementById("secondes").textContent="00";
+        days.textContent = "00";
+        hours.textContent = "00";
+        minutes.textContent = "00";
+        seconds.textContent = "00";
 
         return;
     }
 
-    const jours =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
+    const d =
+    Math.floor(
+        difference /
+        (1000 * 60 * 60 * 24)
+    );
 
-    const heures =
-        Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
-        );
+    const h =
+    Math.floor(
+        (difference /
+        (1000 * 60 * 60)) % 24
+    );
 
-    const minutes =
-        Math.floor(
-            (difference /
-            (1000 * 60)) % 60
-        );
+    const m =
+    Math.floor(
+        (difference /
+        (1000 * 60)) % 60
+    );
 
-    const secondes =
-        Math.floor(
-            (difference /
-            1000) % 60
-        );
+    const s =
+    Math.floor(
+        (difference / 1000) % 60
+    );
 
-    document.getElementById("jours").textContent =
-        String(jours).padStart(2,"0");
+    days.textContent =
+    String(d).padStart(2,"0");
 
-    document.getElementById("heures").textContent =
-        String(heures).padStart(2,"0");
+    hours.textContent =
+    String(h).padStart(2,"0");
 
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2,"0");
+    minutes.textContent =
+    String(m).padStart(2,"0");
 
-    document.getElementById("secondes").textContent =
-        String(secondes).padStart(2,"0");
-
+    seconds.textContent =
+    String(s).padStart(2,"0");
 }
 
-countdown();
+mettreAJourCompteur();
 
 setInterval(
-    countdown,
+    mettreAJourCompteur,
     1000
 );
 
 
-/* ==============================
-   FORMULAIRE
-================================ */
+/* =========================================
+   FORMULAIRE → WHATSAPP
+========================================= */
 
 document
 .getElementById("inscriptionForm")
 .addEventListener(
-    "submit",
-    function(e){
+"submit",
+function(event){
 
-        e.preventDefault();
+    event.preventDefault();
 
-        error.style.display =
-            "none";
+    const nom =
+    document.getElementById("nom")
+    .value
+    .trim();
 
+    const telephone =
+    document.getElementById("telephone")
+    .value
+    .trim();
 
-        /* Vérification pack */
-
-        if(
-            !packChoisi ||
-            !packs[packChoisi]
-        ){
-
-            error.textContent =
-                "Veuillez sélectionner une formation.";
-
-            error.style.display =
-                "block";
-
-            return;
-        }
+    const numero =
+    document.getElementById("contact")
+    .value;
 
 
-        /* Données */
+    if(!nom || !telephone || !numero){
 
-        const nom =
-            document
-            .getElementById("nom")
-            .value
-            .trim();
+        alert(
+        "Veuillez remplir tous les champs."
+        );
 
-        const telephone =
-            document
-            .getElementById("telephone")
-            .value
-            .trim();
-
-        const numero =
-            document
-            .getElementById("contact")
-            .value;
+        return;
+    }
 
 
-        /* Vérification */
+    let message =
+    "🔥 *NOUVELLE INSCRIPTION SKILLORA*%0A%0A";
 
-        if(
-            !nom ||
-            !telephone ||
-            !numero
-        ){
+    message +=
+    "👤 *Nom :* " +
+    nom +
+    "%0A";
 
-            error.textContent =
-                "Veuillez remplir tous les champs.";
+    message +=
+    "📱 *WhatsApp :* " +
+    telephone +
+    "%0A%0A";
 
-            error.style.display =
-                "block";
+    message +=
+    "🎓 *Formation :* " +
+    pack.nom +
+    "%0A";
 
-            return;
-        }
+    message +=
+    "📚 *Contenu :* " +
+    pack.contenu +
+    "%0A";
 
-
-        /* Message WhatsApp */
-
-        const pack =
-            packs[packChoisi];
-
-        const message =
-`🔥 INSCRIPTION SKILLORA
-
-👤 Nom : ${nom}
-
-📱 WhatsApp : ${telephone}
-
-🎓 Formation : ${pack.nom}
-
-📚 Contenu : ${pack.contenu}
-
-💰 Prix promotionnel : ${pack.prix}
-
-🎁 Code de parrainage : ${
-    codeParrain
-    ? codeParrain
-    : "Aucun"
-}
-
-📅 Offre promotionnelle :
-Du 04/09/2026 au 07/09/2026 à 20h00.
-
-Je souhaite poursuivre mon inscription et recevoir les informations pour le paiement.`;
+    message +=
+    "💰 *Prix promotionnel :* " +
+    pack.prix +
+    "%0A";
 
 
-        /* URL WhatsApp */
+    if(codeParrainage){
 
-        const url =
-            "https://wa.me/" +
-            numero +
-            "?text=" +
-            encodeURIComponent(message);
+        message +=
+        "🎁 *Code parrainage :* " +
+        codeParrainage +
+        "%0A";
 
-
-        /* Interface */
-
-        document
-        .getElementById("inscriptionForm")
-        .style.display =
-            "none";
-
-        document
-        .getElementById("success")
-        .style.display =
-            "block";
+    }
 
 
-        /* Redirection */
+    message +=
+    "%0A🔥 *Promotion :* " +
+    "du 04 septembre au 07 septembre 2026 à 20h00.";
 
-        setTimeout(
-            function(){
 
-               
+    const url =
+    "https://wa.me/" +
+    numero +
+    "?text=" +
+    encodeURIComponent(
+        decodeURIComponent(message)
+    );
+
+
+    window.location.href = url;
+
+});
+
+</script>
+
+</body>
+</html>
