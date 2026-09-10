@@ -1,126 +1,2529 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SKILLORA — Fermé temporairement</title>
+<title>Skillora — Test & Orientation</title>
 
 <style>
+
+/* =========================================================
+   SKILLORA — DESIGN NOIR & JAUNE
+========================================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    font-family:Arial,sans-serif;
-    background:
-        radial-gradient(circle at top left,#12344a,transparent 40%),
-        radial-gradient(circle at bottom right,#17204b,transparent 40%),
-        #020812;
-    color:white;
+html{
+    scroll-behavior:smooth;
 }
 
-.card{
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050505;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --black:#050505;
+    --black2:#0b0b0b;
+    --yellow:#ffd21c;
+    --yellow2:#ffb800;
+    --white:#ffffff;
+    --gray:#a5a5a5;
+    --border:rgba(255,210,28,.25);
+}
+
+
+/* =========================================================
+   FOND
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(255,210,28,.08);
+    border-radius:50%;
+    filter:blur(100px);
+    top:-180px;
+    right:-150px;
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:rgba(255,184,0,.06);
+    border-radius:50%;
+    filter:blur(110px);
+    bottom:-200px;
+    left:-150px;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
     width:100%;
-    max-width:600px;
-    text-align:center;
-    padding:45px 25px;
-    border-radius:28px;
-    background:rgba(10,30,45,.8);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 25px 80px rgba(0,0,0,.5);
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,210,28,.15);
 }
 
 .logo{
-    font-size:38px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logoIcon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--yellow),
+        var(--yellow2)
+    );
+
+    color:#050505;
+    font-size:21px;
     font-weight:900;
-    letter-spacing:3px;
-    margin-bottom:30px;
-    color:#00E5A8;
+
+    box-shadow:
+        0 0 25px rgba(255,210,28,.25);
 }
 
-.logo span{
-    color:#00C8FF;
+.logoText{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
-.icon{
-    font-size:65px;
+.logoText span{
+    color:var(--yellow);
+}
+
+.headerBadge{
+    padding:9px 15px;
+    border:1px solid rgba(255,210,28,.35);
+    border-radius:30px;
+
+    color:var(--yellow);
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    background:rgba(255,210,28,.05);
+}
+
+
+/* =========================================================
+   ÉCRANS
+========================================================= */
+
+.screen{
+    min-height:calc(100vh - 80px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:60px 20px;
+}
+
+.container{
+    width:100%;
+    max-width:1150px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
+
+.btn{
+    border:none;
+    padding:15px 23px;
+    border-radius:14px;
+
+    font-size:15px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:.25s;
+
+    min-height:52px;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.primary{
+    background:linear-gradient(
+        135deg,
+        var(--yellow),
+        var(--yellow2)
+    );
+
+    color:#050505;
+
+    box-shadow:
+        0 10px 35px rgba(255,210,28,.20);
+}
+
+.secondary{
+    background:#151515;
+    color:white;
+    border:1px solid #292929;
+}
+
+.whatsapp{
+    background:#19c968;
+    color:white;
+
+    box-shadow:
+        0 10px 30px rgba(25,201,104,.18);
+}
+
+
+/* =========================================================
+   PAGE VERROUILLAGE
+========================================================= */
+
+#lock{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.lockBackground{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.lockCircle{
+    position:absolute;
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,210,28,.15),
+            transparent 65%
+        );
+}
+
+.lockCircle.one{
+    top:-250px;
+    right:-180px;
+}
+
+.lockCircle.two{
+    bottom:-280px;
+    left:-180px;
+}
+
+.lockContent{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1050px;
+
+    display:grid;
+    grid-template-columns:1fr 430px;
+    gap:70px;
+    align-items:center;
+}
+
+.lockIntro .mini{
+    display:inline-block;
+
+    padding:9px 14px;
+
+    background:rgba(255,210,28,.08);
+    border:1px solid rgba(255,210,28,.25);
+
+    border-radius:30px;
+
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:bold;
+
+    margin-bottom:22px;
+}
+
+.lockIntro h1{
+    font-size:clamp(45px,6vw,76px);
+    line-height:.98;
+
+    letter-spacing:-3px;
+
+    margin-bottom:25px;
+}
+
+.lockIntro h1 span{
+    color:var(--yellow);
+}
+
+.lockIntro p{
+    max-width:580px;
+
+    color:#a6a6a6;
+
+    font-size:17px;
+    line-height:1.7;
+}
+
+.lockFeatures{
+    display:flex;
+    gap:30px;
+
+    margin-top:40px;
+}
+
+.feature{
+    border-left:1px solid rgba(255,210,28,.35);
+    padding-left:15px;
+}
+
+.feature strong{
+    display:block;
+    color:var(--yellow);
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.feature span{
+    color:#999;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   CARTE MOT DE PASSE
+========================================================= */
+
+.lockCard{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(255,210,28,.35);
+
+    border-radius:30px;
+
+    padding:38px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        0 0 60px rgba(255,210,28,.06);
+
+    backdrop-filter:blur(20px);
+}
+
+.lockIcon{
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 25px;
+
+    background:rgba(255,210,28,.08);
+
+    border:1px solid rgba(255,210,28,.5);
+
+    color:var(--yellow);
+
+    font-size:31px;
+
+    box-shadow:
+        0 0 35px rgba(255,210,28,.12);
+}
+
+.lockCard h2{
+    text-align:center;
+
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.lockCard .description{
+    text-align:center;
+
+    color:#999;
+
+    font-size:14px;
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+.passwordBox{
+    position:relative;
+}
+
+.passwordBox input{
+    width:100%;
+
+    padding:17px 50px 17px 18px;
+
+    border-radius:14px;
+
+    border:1px solid #333;
+
+    background:#080808;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+.passwordBox input:focus{
+    border-color:var(--yellow);
+
+    box-shadow:
+        0 0 0 3px rgba(255,210,28,.08);
+}
+
+.togglePassword{
+    position:absolute;
+
+    right:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color:#888;
+
+    font-size:18px;
+}
+
+.lockCard .btn{
+    width:100%;
+    margin-top:15px;
+}
+
+.lockError{
+    margin-top:15px;
+    padding:12px;
+
+    border-radius:12px;
+
+    background:rgba(255,50,70,.08);
+
+    border:1px solid rgba(255,50,70,.2);
+
+    color:#ff7584;
+
+    font-size:13px;
+
+    text-align:center;
+}
+
+.lockFooter{
+    text-align:center;
+
+    color:#666;
+
+    font-size:11px;
+
+    margin-top:22px;
+}
+
+
+/* =========================================================
+   ACCUEIL
+========================================================= */
+
+.hero{
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.tag{
+    display:inline-block;
+
+    background:rgba(255,210,28,.09);
+
+    border:1px solid rgba(255,210,28,.25);
+
+    color:var(--yellow);
+
+    padding:9px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:bold;
+
     margin-bottom:20px;
 }
 
-h1{
-    font-size:30px;
-    margin-bottom:15px;
+.hero h1{
+    font-size:clamp(48px,7vw,78px);
+
+    line-height:.98;
+
+    letter-spacing:-3px;
+
+    margin-bottom:25px;
 }
 
-p{
-    color:#b9cbd3;
+.hero h1 span{
+    color:var(--yellow);
+}
+
+.hero p{
+    color:#a5a5a5;
+
+    font-size:17px;
+
     line-height:1.7;
-    font-size:16px;
+
+    max-width:600px;
+
+    margin-bottom:30px;
 }
 
-.badge{
-    display:inline-block;
-    margin-top:25px;
-    padding:10px 18px;
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview{
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #080808
+        );
+
+    border:1px solid rgba(255,210,28,.3);
+
+    border-radius:32px;
+
+    padding:30px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        0 0 70px rgba(255,210,28,.06);
+
+    overflow:hidden;
+}
+
+.preview::before{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    background:rgba(255,210,28,.12);
+
+    filter:blur(70px);
+
+    right:-100px;
+    top:-100px;
+}
+
+.previewTop{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.previewTop small{
+    color:#777;
+
+    letter-spacing:2px;
+}
+
+.previewTop h3{
+    margin-top:5px;
+    font-size:22px;
+}
+
+.circle{
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--yellow),
+        var(--yellow2)
+    );
+
+    color:#050505;
+
+    font-weight:900;
+    font-size:23px;
+}
+
+.previewItem{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px;
+
+    margin-bottom:12px;
+
+    border-radius:16px;
+
+    background:#111;
+
+    border:1px solid #222;
+}
+
+.previewItem strong{
+    color:var(--yellow);
+}
+
+.previewBottom{
+    margin-top:20px;
+
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   CARTE FORMULAIRE
+========================================================= */
+
+.card{
+    width:100%;
+    max-width:700px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #080808
+        );
+
+    border:1px solid rgba(255,210,28,.22);
+
     border-radius:30px;
-    background:rgba(255,180,0,.12);
-    border:1px solid rgba(255,180,0,.35);
-    color:#ffd166;
-    font-weight:bold;
+
+    padding:35px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4);
 }
 
-.footer{
-    margin-top:35px;
-    color:#64748b;
+.step{
+    color:var(--yellow);
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:10px;
+}
+
+.card h2{
+    font-size:31px;
+
+    margin-bottom:8px;
+}
+
+.description{
+    color:#999;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+.formGroup{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+
+    color:#ddd;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+}
+
+input,
+select{
+    width:100%;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    border:1px solid #2d2d2d;
+
+    background:#0b0b0b;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+select option{
+    background:#111;
+    color:white;
+}
+
+input:focus,
+select:focus{
+    border-color:var(--yellow);
+
+    box-shadow:
+        0 0 0 3px rgba(255,210,28,.07);
+}
+
+.grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+
+/* =========================================================
+   MATIÈRES
+========================================================= */
+
+.subjects{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+}
+
+.subject input{
+    display:none;
+}
+
+.subject label{
+    padding:18px;
+
+    border:1px solid #292929;
+
+    border-radius:16px;
+
+    background:#0b0b0b;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.subject label strong{
+    display:block;
+
+    font-size:15px;
+
+    margin-bottom:5px;
+}
+
+.subject label small{
+    color:#777;
+}
+
+.subject input:checked + label{
+    border:2px solid var(--yellow);
+
+    background:rgba(255,210,28,.08);
+
+    color:var(--yellow);
+
+    box-shadow:
+        0 0 20px rgba(255,210,28,.07);
+}
+
+.counter{
+    text-align:center;
+
+    margin:20px 0;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    background:#101010;
+
+    color:#777;
+
+    border:1px solid #222;
+}
+
+.counter strong{
+    color:var(--yellow);
+}
+
+
+/* =========================================================
+   CODE D'ACCÈS
+========================================================= */
+
+.code{
+    text-align:center;
+}
+
+.code input{
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.whatsappBox{
+    margin-top:20px;
+
+    padding:18px;
+
+    background:rgba(25,201,104,.07);
+
+    border:1px solid rgba(25,201,104,.18);
+
+    border-radius:17px;
+
+    color:#78dfa5;
+}
+
+.whatsappBox p{
+    font-size:13px;
+
+    line-height:1.5;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================================================
+   ERREUR
+========================================================= */
+
+.error{
+    background:rgba(255,50,70,.08);
+
+    border:1px solid rgba(255,50,70,.2);
+
+    color:#ff7584;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
     font-size:13px;
 }
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions{
+    display:flex;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.actions button{
+    flex:1;
+}
+
+
+/* =========================================================
+   CONTACT BAS DE PAGE
+========================================================= */
+
+.contactBar{
+    background:#080808;
+
+    border-top:1px solid rgba(255,210,28,.18);
+
+    padding:25px 6%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.contactText strong{
+    display:block;
+
+    color:white;
+
+    margin-bottom:5px;
+}
+
+.contactText span{
+    color:#777;
+
+    font-size:13px;
+}
+
+.contactNumber{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    background:rgba(255,210,28,.08);
+
+    border:1px solid rgba(255,210,28,.3);
+
+    color:var(--yellow);
+
+    font-weight:bold;
+
+    text-decoration:none;
+}
+
+.contactIcon{
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--yellow);
+
+    color:#050505;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    text-align:center;
+
+    padding:18px;
+
+    background:#050505;
+
+    color:#555;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .lockContent{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        max-width:600px;
+    }
+
+    .lockIntro{
+        text-align:center;
+    }
+
+    .lockIntro p{
+        margin:auto;
+    }
+
+    .lockFeatures{
+        justify-content:center;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .preview{
+        max-width:650px;
+        width:100%;
+        margin:auto;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    header{
+        padding:15px 18px;
+    }
+
+    .headerBadge{
+        display:none;
+    }
+
+    .screen{
+        padding:40px 16px;
+    }
+
+    .lockIntro h1{
+        font-size:48px;
+
+        letter-spacing:-2px;
+    }
+
+    .lockFeatures{
+        gap:15px;
+    }
+
+    .lockCard{
+        padding:25px;
+    }
+
+    .hero h1{
+        font-size:49px;
+
+        letter-spacing:-2px;
+    }
+
+    .card{
+        padding:24px;
+    }
+
+    .grid,
+    .subjects{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .contactBar{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .contactNumber{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="card">
+
+<!-- =========================================================
+     VERROUILLAGE DU SITE
+========================================================= -->
+
+<section id="lock" class="screen">
+
+    <div class="lockBackground">
+
+        <div class="lockCircle one"></div>
+        <div class="lockCircle two"></div>
+
+    </div>
+
+
+    <div class="lockContent">
+
+
+        <!-- TEXTE -->
+
+        <div class="lockIntro">
+
+            <div class="mini">
+                🎯 TEST & ORIENTATION
+            </div>
+
+            <h1>
+                Découvre ton
+                <span>vrai niveau.</span>
+            </h1>
+
+            <p>
+                Bienvenue sur Skillora, ta plateforme
+                d'évaluation et d'orientation scolaire.
+                Évalue tes connaissances, découvre ton
+                niveau et trouve la meilleure orientation
+                pour ton avenir.
+            </p>
+
+
+            <div class="lockFeatures">
+
+                <div class="feature">
+                    <strong>01</strong>
+                    <span>Évaluation</span>
+                </div>
+
+                <div class="feature">
+                    <strong>02</strong>
+                    <span>Résultats</span>
+                </div>
+
+                <div class="feature">
+                    <strong>03</strong>
+                    <span>Orientation</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARTE MOT DE PASSE -->
+
+        <div class="lockCard">
+
+            <div class="lockIcon">
+                🔒
+            </div>
+
+            <h2>
+                Accès sécurisé
+            </h2>
+
+            <p class="description">
+                Entrez le mot de passe pour
+                accéder à la plateforme Skillora.
+            </p>
+
+            <div class="passwordBox">
+
+                <input
+                    id="sitePassword"
+                    type="password"
+                    placeholder="Mot de passe"
+                    onkeydown="passwordEnter(event)"
+                >
+
+                <span
+                    class="togglePassword"
+                    onclick="togglePassword()"
+                    id="eye">
+                    👁
+                </span>
+
+            </div>
+
+
+            <div
+                id="lockError"
+                class="hidden">
+            </div>
+
+
+            <button
+                class="btn primary"
+                onclick="unlockSite()">
+
+                Se connecter →
+                
+            </button>
+
+
+            <div class="lockFooter">
+                🔐 Accès réservé aux utilisateurs autorisés
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HEADER DU SITE
+========================================================= -->
+
+<header id="mainHeader" class="hidden">
 
     <div class="logo">
-        SKILL<span>ORA</span>
+
+        <div class="logoIcon">
+            S
+        </div>
+
+        <div class="logoText">
+            SKILL<span>ORA</span>
+        </div>
+
     </div>
 
-    <div class="icon">
-        🔒
+    <div class="headerBadge">
+        TEST & ORIENTATION
     </div>
 
-    <h1>
-        Site temporairement fermé
-    </h1>
+</header>
 
-    <p>
-        Merci à tous ceux qui ont participé à notre
-        offre exceptionnelle.
-    </p>
 
-    <p style="margin-top:12px;">
-        Les inscriptions sont actuellement suspendues.
-        <br>
-        SKILLORA prépare la prochaine étape.
-    </p>
 
-    <div class="badge">
-        🚧 Maintenance en cours
+<!-- =========================================================
+     ACCUEIL
+========================================================= -->
+
+<section
+    id="home"
+    class="screen hidden">
+
+    <div class="container hero">
+
+
+        <div>
+
+            <div class="tag">
+                🎯 ÉVALUATION SCOLAIRE
+            </div>
+
+
+            <h1>
+                Évalue ton niveau,
+                <span>trouve ta voie.</span>
+            </h1>
+
+
+            <p>
+                Passe une évaluation personnalisée
+                sur trois matières et découvre ton
+                niveau ainsi que ton orientation.
+            </p>
+
+
+            <button
+                class="btn primary"
+                onclick="goTo('profile')">
+
+                Commencer le test →
+
+            </button>
+
+        </div>
+
+
+        <!-- PREVIEW -->
+
+        <div class="preview">
+
+            <div class="previewTop">
+
+                <div>
+
+                    <small>
+                        SKILLORA
+                    </small>
+
+                    <h3>
+                        Ton évaluation
+                    </h3>
+
+                </div>
+
+
+                <div class="circle">
+                    S
+                </div>
+
+            </div>
+
+
+            <div class="previewItem">
+
+                <span>
+                    📐 Mathématiques
+                </span>
+
+                <strong>
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="previewItem">
+
+                <span>
+                    📖 Français
+                </span>
+
+                <strong>
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="previewItem">
+
+                <span>
+                    🌍 Anglais
+                </span>
+
+                <strong>
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="previewBottom">
+
+                3 matières →
+                une moyenne générale →
+                une orientation.
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="footer">
-        © 2026 SKILLORA — Formations digitales
+</section>
+
+
+
+<!-- =========================================================
+     PROFIL
+========================================================= -->
+
+<section
+    id="profile"
+    class="screen hidden">
+
+    <div class="card">
+
+        <div class="step">
+            ÉTAPE 1
+        </div>
+
+        <h2>
+            Créons ton profil
+        </h2>
+
+        <p class="description">
+            Entre tes informations pour commencer
+            ton évaluation.
+        </p>
+
+
+        <div id="profileError"></div>
+
+
+        <div class="grid">
+
+
+            <div class="formGroup">
+
+                <label>
+                    Prénom
+                </label>
+
+                <input
+                    id="prenom"
+                    type="text"
+                    placeholder="Ex : Jean">
+
+            </div>
+
+
+            <div class="formGroup">
+
+                <label>
+                    Nom
+                </label>
+
+                <input
+                    id="nom"
+                    type="text"
+                    placeholder="Ex : Kouassi">
+
+            </div>
+
+        </div>
+
+
+        <div class="formGroup">
+
+            <label>
+                Classe
+            </label>
+
+            <select
+                id="classe"
+                onchange="handleClasse()">
+
+                <option value="">
+                    Sélectionner ta classe
+                </option>
+
+                <option value="CM2">
+                    CM2
+                </option>
+
+                <option value="6e">
+                    6e
+                </option>
+
+                <option value="5e">
+                    5e
+                </option>
+
+                <option value="4e">
+                    4e
+                </option>
+
+                <option value="3e">
+                    3e
+                </option>
+
+                <option value="2nde">
+                    2nde
+                </option>
+
+                <option value="1ère">
+                    1ère
+                </option>
+
+                <option value="Terminale">
+                    Terminale
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            id="serieContainer"
+            class="formGroup hidden">
+
+            <label>
+                Série
+            </label>
+
+            <select id="serie">
+
+                <option value="">
+                    Sélectionner ta série
+                </option>
+
+                <option value="A1">
+                    A1
+                </option>
+
+                <option value="A2">
+                    A2
+                </option>
+
+                <option value="C">
+                    C
+                </option>
+
+                <option value="D">
+                    D
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                class="btn secondary"
+                onclick="goTo('home')">
+
+                Retour
+
+            </button>
+
+
+            <button
+                class="btn primary"
+                onclick="continueProfile()">
+
+                Continuer →
+
+            </button>
+
+        </div>
+
     </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MATIÈRES
+========================================================= -->
+
+<section
+    id="subjects"
+    class="screen hidden">
+
+    <div class="card">
+
+        <div class="step">
+            ÉTAPE 2
+        </div>
+
+        <h2>
+            Choisis tes matières
+        </h2>
+
+        <p class="description">
+
+            Sélectionne
+            <strong>
+                exactement 3 matières
+            </strong>
+            pour ton évaluation.
+
+        </p>
+
+
+        <div id="subjectError"></div>
+
+
+        <div
+            id="subjectList"
+            class="subjects">
+        </div>
+
+
+        <div class="counter">
+
+            <strong id="count">
+                0
+            </strong>
+
+            / 3 sélectionnées
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                class="btn secondary"
+                onclick="goTo('profile')">
+
+                Retour
+
+            </button>
+
+
+            <button
+                id="continueSubjects"
+                class="btn primary"
+                disabled
+                onclick="continueSubjects()">
+
+                Continuer →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CODE D'ACCÈS
+========================================================= -->
+
+<section
+    id="access"
+    class="screen hidden">
+
+    <div class="card code">
+
+        <div class="step">
+            ÉTAPE 3
+        </div>
+
+        <h2>
+            Ton code d'accès
+        </h2>
+
+        <p class="description">
+
+            Entre le code reçu sur WhatsApp
+            pour débloquer ton évaluation.
+
+        </p>
+
+
+        <div id="codeError"></div>
+
+
+        <input
+            id="accessCode"
+            maxlength="13"
+            placeholder="SKL-XXXX-XXXX">
+
+
+        <div class="whatsappBox">
+
+            <p>
+
+                Tu n'as pas encore ton code ?
+                Contacte Skillora directement
+                sur WhatsApp.
+
+            </p>
+
+
+            <button
+                class="btn whatsapp"
+                onclick="openWhatsApp()">
+
+                📲 Obtenir mon code
+
+            </button>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                class="btn secondary"
+                onclick="goTo('subjects')">
+
+                Retour
+
+            </button>
+
+
+            <button
+                class="btn primary"
+                onclick="verifyCode()">
+
+                Vérifier le code →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<div
+    id="contactBar"
+    class="contactBar hidden">
+
+    <div class="contactText">
+
+        <strong>
+            Besoin d'aide ?
+        </strong>
+
+        <span>
+            Contacte-nous sur WhatsApp
+            pour les cours en ligne.
+        </span>
+
+    </div>
+
+
+    <a
+        class="contactNumber"
+        href="https://wa.me/2250508123533"
+        target="_blank">
+
+        <span class="contactIcon">
+            ☎
+        </span>
+
+        +225 05 08 12 35 33
+
+    </a>
 
 </div>
+
+
+
+<footer
+    id="mainFooter"
+    class="hidden">
+
+    Skillora — Test & Orientation
+    © 2026
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================================
+   MOT DE PASSE DU SITE
+========================================================= */
+
+/*
+   IMPORTANT :
+
+   Change uniquement la valeur entre les guillemets
+   pour mettre TON véritable mot de passe.
+
+   Exemple :
+
+   const SITE_PASSWORD = "Skillora2026";
+
+*/
+
+const SITE_PASSWORD = "skillora";
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+const whatsappNumber =
+    "2250508123533";
+
+
+/* =========================================================
+   PROFIL
+========================================================= */
+
+let profile = {
+
+    prenom:"",
+    nom:"",
+    classe:"",
+    serie:""
+
+};
+
+
+let selectedSubjects = [];
+
+
+/* =========================================================
+   VERROUILLAGE
+========================================================= */
+
+function unlockSite(){
+
+    const password =
+        document
+        .getElementById("sitePassword")
+        .value
+        .trim();
+
+
+    if(!password){
+
+        showLockError(
+            "Veuillez entrer le mot de passe."
+        );
+
+        return;
+    }
+
+
+    if(password !== SITE_PASSWORD){
+
+        showLockError(
+            "Mot de passe incorrect."
+        );
+
+        return;
+    }
+
+
+    document
+        .getElementById("lock")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("mainHeader")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("home")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("contactBar")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("mainFooter")
+        .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function passwordEnter(event){
+
+    if(event.key === "Enter"){
+
+        unlockSite();
+
+    }
+
+}
+
+
+function togglePassword(){
+
+    const input =
+        document.getElementById("sitePassword");
+
+    const eye =
+        document.getElementById("eye");
+
+
+    if(input.type === "password"){
+
+        input.type = "text";
+
+        eye.textContent = "🙈";
+
+    }else{
+
+        input.type = "password";
+
+        eye.textContent = "👁";
+
+    }
+
+}
+
+
+function showLockError(message){
+
+    const error =
+        document.getElementById("lockError");
+
+
+    error.innerHTML =
+        "⚠️ " + message;
+
+
+    error.classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goTo(screen){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(element => {
+
+            if(element.id !== "lock"){
+
+                element.classList.add("hidden");
+
+            }
+
+        });
+
+
+    document
+        .getElementById(screen)
+        .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   AFFICHAGE SÉRIE
+========================================================= */
+
+function handleClasse(){
+
+    const classe =
+        document
+        .getElementById("classe")
+        .value;
+
+
+    const serieContainer =
+        document
+        .getElementById("serieContainer");
+
+
+    if(
+        classe === "2nde" ||
+        classe === "1ère" ||
+        classe === "Terminale"
+    ){
+
+        serieContainer
+        .classList
+        .remove("hidden");
+
+    }else{
+
+        serieContainer
+        .classList
+        .add("hidden");
+
+
+        document
+        .getElementById("serie")
+        .value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   PROFIL
+========================================================= */
+
+function continueProfile(){
+
+    const prenom =
+        document
+        .getElementById("prenom")
+        .value
+        .trim();
+
+
+    const nom =
+        document
+        .getElementById("nom")
+        .value
+        .trim();
+
+
+    const classe =
+        document
+        .getElementById("classe")
+        .value;
+
+
+    const serie =
+        document
+        .getElementById("serie")
+        .value;
+
+
+    if(
+        !prenom ||
+        !nom ||
+        !classe
+    ){
+
+        showError(
+            "profileError",
+            "Veuillez remplir votre prénom, votre nom et votre classe."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        (
+            classe === "2nde" ||
+            classe === "1ère" ||
+            classe === "Terminale"
+        )
+        &&
+        !serie
+    ){
+
+        showError(
+            "profileError",
+            "Veuillez sélectionner votre série."
+        );
+
+        return;
+
+    }
+
+
+    profile = {
+
+        prenom,
+        nom,
+        classe,
+        serie
+
+    };
+
+
+    loadSubjects();
+
+    goTo("subjects");
+
+}
+
+
+/* =========================================================
+   MATIÈRES
+========================================================= */
+
+function getSubjects(){
+
+    const classe =
+        profile.classe;
+
+
+    const serie =
+        profile.serie;
+
+
+    /* CM2 */
+
+    if(classe === "CM2"){
+
+        return [
+
+            "Mathématiques",
+            "Français",
+            "Sciences",
+            "Histoire-Géographie"
+
+        ];
+
+    }
+
+
+    /* 6e à 3e */
+
+    if(
+        classe === "6e" ||
+        classe === "5e" ||
+        classe === "4e" ||
+        classe === "3e"
+    ){
+
+        return [
+
+            "Mathématiques",
+            "Français",
+            "Anglais",
+            "Physique-Chimie",
+            "SVT",
+            "Histoire-Géographie"
+
+        ];
+
+    }
+
+
+    /* 2nde A1 / A2 */
+
+    if(classe === "2nde"){
+
+        if(
+            serie === "A1" ||
+            serie === "A2"
+        ){
+
+            return [
+
+                "Mathématiques",
+                "Français",
+                "Anglais",
+                "Histoire-Géographie",
+                "Philosophie"
+
+            ];
+
+        }
+
+
+        /* 2nde C */
+
+        if(serie === "C"){
+
+            return [
+
+                "Mathématiques",
+                "Français",
+                "Anglais",
+                "Physique-Chimie",
+                "SVT"
+
+            ];
+
+        }
+
+    }
+
+
+    /* 1ère et Terminale A1/A2 */
+
+    if(
+        classe === "1ère" ||
+        classe === "Terminale"
+    ){
+
+        if(
+            serie === "A1" ||
+            serie === "A2"
+        ){
+
+            return [
+
+                "Mathématiques",
+                "Français",
+                "Anglais",
+                "Histoire-Géographie",
+                "Philosophie"
+
+            ];
+
+        }
+
+
+        /* C et D */
+
+        if(
+            serie === "C" ||
+            serie === "D"
+        ){
+
+            return [
+
+                "Mathématiques",
+                "Français",
+                "Anglais",
+                "Physique-Chimie",
+                "SVT"
+
+            ];
+
+        }
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   AFFICHAGE DES MATIÈRES
+========================================================= */
+
+function loadSubjects(){
+
+    const list =
+        document
+        .getElementById("subjectList");
+
+
+    list.innerHTML = "";
+
+
+    selectedSubjects = [];
+
+
+    updateCounter();
+
+
+    const subjects =
+        getSubjects();
+
+
+    subjects.forEach(
+        (subject,index) => {
+
+
+        const id =
+            "subject_" + index;
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "subject";
+
+
+        div.innerHTML = `
+
+            <input
+                type="checkbox"
+                id="${id}"
+                value="${subject}"
+            >
+
+            <label for="${id}">
+
+                <strong>
+                    ${subject}
+                </strong>
+
+                <small>
+                    Évaluation Skillora
+                </small>
+
+            </label>
+
+        `;
+
+
+        const checkbox =
+            div.querySelector("input");
+
+
+        checkbox.addEventListener(
+            "change",
+            function(){
+
+
+                if(this.checked){
+
+
+                    if(
+                        selectedSubjects.length >= 3
+                    ){
+
+                        this.checked = false;
+
+
+                        showError(
+                            "subjectError",
+                            "Tu peux sélectionner seulement 3 matières."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    selectedSubjects.push(
+                        this.value
+                    );
+
+
+                }else{
+
+
+                    selectedSubjects =
+                        selectedSubjects.filter(
+                            subject =>
+                            subject !== this.value
+                        );
+
+                }
+
+
+                updateCounter();
+
+
+            }
+        );
+
+
+        list.appendChild(div);
+
+
+    });
+
+}
+
+
+/* =========================================================
+   COMPTEUR
+========================================================= */
+
+function updateCounter(){
+
+    document
+        .getElementById("count")
+        .textContent =
+        selectedSubjects.length;
+
+
+    document
+        .getElementById("continueSubjects")
+        .disabled =
+        selectedSubjects.length !== 3;
+
+}
+
+
+/* =========================================================
+   CONTINUER MATIÈRES
+========================================================= */
+
+function continueSubjects(){
+
+    if(
+        selectedSubjects.length !== 3
+    ){
+
+        showError(
+            "subjectError",
+            "Tu dois choisir exactement 3 matières."
+        );
+
+        return;
+
+    }
+
+
+    goTo("access");
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function openWhatsApp(){
+
+    const message =
+`Bonjour Skillora 👋
+
+Je souhaite obtenir mon code d'accès pour passer le test.
+
+Nom : ${profile.nom || ""}
+Prénom : ${profile.prenom || ""}
+Classe : ${profile.classe || ""}
+Série : ${profile.serie || ""}
+
+Merci.`;
+
+    const url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================================================
+   CODE D'ACCÈS
+========================================================= */
+
+function verifyCode(){
+
+    const code =
+        document
+        .getElementById("accessCode")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    if(!code){
+
+        showError(
+            "codeError",
+            "Veuillez entrer votre code d'accès."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       La vérification réelle du code
+       sera connectée à Supabase.
+
+       Pour l'instant on ne valide pas
+       un faux code côté navigateur.
+    */
+
+    alert(
+        "La vérification Supabase du code d'accès sera connectée à cette étape."
+    );
+
+}
+
+
+/* =========================================================
+   ERREURS
+========================================================= */
+
+function showError(id,message){
+
+    document
+        .getElementById(id)
+        .innerHTML =
+        `<div class="error">⚠️ ${message}</div>`;
+
+}
+
+</script>
+
 
 </body>
 </html>
