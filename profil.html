@@ -1,0 +1,993 @@
+<!DOCTYPE html><html lang="fr">
+<head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<title>Profil — SKILLORA</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body{
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:white;
+    min-height:100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    background:#000;
+    border-bottom:1px solid #d4af37;
+    padding:20px;
+    text-align:center;
+}
+
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+
+.logo span{
+    color:#d4af37;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:94%;
+    max-width:850px;
+    margin:30px auto;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+    background:#101010;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 0 25px rgba(212,175,55,.08);
+}
+
+
+/* =========================================================
+   TITRES
+========================================================= */
+
+h1{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+
+h2{
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+
+.center{
+    text-align:center;
+}
+
+
+/* =========================================================
+   PROFIL
+========================================================= */
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin:0 auto 15px auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#181818;
+    border:2px solid #d4af37;
+
+    color:#d4af37;
+    font-size:38px;
+    font-weight:bold;
+}
+
+
+.nom-eleve{
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+
+.sous-titre{
+    color:#999;
+}
+
+
+/* =========================================================
+   INFORMATIONS
+========================================================= */
+
+.infos{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(200px,1fr));
+
+    gap:12px;
+    margin-top:20px;
+}
+
+
+.info{
+    background:#181818;
+    border:1px solid #292929;
+    border-radius:10px;
+    padding:15px;
+}
+
+
+.info strong{
+    color:#d4af37;
+    display:block;
+    margin-bottom:7px;
+}
+
+
+.info span{
+    color:#fff;
+    word-break:break-word;
+}
+
+
+/* =========================================================
+   STATUT
+========================================================= */
+
+.statut{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 18px;
+    border-radius:30px;
+
+    color:#d4af37;
+    background:#211d0e;
+    border:1px solid #d4af37;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#d4af37;
+    color:#000;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+button:hover{
+    background:#f0cc55;
+}
+
+
+button.secondaire{
+    background:#181818;
+    color:#d4af37;
+    border:1px solid #d4af37;
+}
+
+
+button.secondaire:hover{
+    background:#211d0e;
+}
+
+
+/* =========================================================
+   RESULTAT RAPIDE
+========================================================= */
+
+.resultat-rapide{
+    text-align:center;
+    background:#181818;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:25px;
+    margin-top:20px;
+}
+
+
+.note{
+    font-size:48px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+
+.sur{
+    color:#999;
+    font-size:18px;
+}
+
+
+.groupe{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    color:#d4af37;
+    background:#211d0e;
+
+    border:1px solid #d4af37;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   CHARGEMENT
+========================================================= */
+
+.loading{
+    text-align:center;
+    padding:30px;
+    color:#d4af37;
+}
+
+
+/* =========================================================
+   ERREUR
+========================================================= */
+
+.error{
+    color:#ff6666;
+}
+
+
+.hidden{
+    display:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:500px){
+
+    .logo{
+        font-size:26px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .nom-eleve{
+        font-size:21px;
+    }
+
+    .note{
+        font-size:42px;
+    }
+
+}
+
+</style></head><body><!-- =======================================================
+     HEADER
+======================================================= --><header><div class="logo">
+    SKILL<span>ORA</span>
+</div>
+
+</header><!-- =======================================================
+     CONTENU
+======================================================= --><div class="container"><!-- PRESENTATION -->
+
+<div class="card center">
+
+    <div class="avatar">
+        👤
+    </div>
+
+    <div
+        id="nomEleve"
+        class="nom-eleve"
+    >
+        Élève SKILLORA
+    </div>
+
+    <div class="sous-titre">
+        Mon espace personnel
+    </div>
+
+</div>
+
+
+<!-- CHARGEMENT -->
+
+<div
+    id="chargement"
+    class="card loading"
+>
+
+    Chargement de votre profil...
+
+</div>
+
+
+<!-- PROFIL -->
+
+<div
+    id="profil"
+    class="hidden"
+>
+
+
+    <!-- INFORMATIONS PERSONNELLES -->
+
+    <div class="card">
+
+        <h2>
+            👤 Mes informations
+        </h2>
+
+
+        <div class="infos">
+
+
+            <div class="info">
+
+                <strong>
+                    Nom
+                </strong>
+
+                <span id="nom">
+                    ---
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    Prénom
+                </strong>
+
+                <span id="prenom">
+                    ---
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    WhatsApp
+                </strong>
+
+                <span id="whatsapp">
+                    ---
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    Niveau
+                </strong>
+
+                <span id="niveau">
+                    ---
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    Série
+                </strong>
+
+                <span id="serie">
+                    Aucune
+                </span>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    Code d'accès
+                </strong>
+
+                <span id="code">
+                    ---
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="center">
+
+            <div class="statut">
+                Profil enregistré
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTAT RAPIDE -->
+
+    <div class="card">
+
+        <h2>
+            📊 Mon résultat
+        </h2>
+
+
+        <div
+            id="resultatRapide"
+            class="resultat-rapide"
+        >
+
+            <div
+                id="chargementResultat"
+                class="loading"
+            >
+                Recherche du résultat...
+            </div>
+
+
+            <div
+                id="resultatDisponible"
+                class="hidden"
+            >
+
+                <div class="note">
+
+                    <span id="note">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="sur">
+                    / 20
+                </div>
+
+
+                <div class="groupe">
+
+                    <span id="groupe">
+                        ---
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="aucunResultat"
+                class="hidden"
+            >
+
+                <p style="color:#aaa;">
+                    Aucun résultat disponible pour le moment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="boutonResultat"
+            onclick="voirResultat()"
+        >
+            📊 Voir mon résultat
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="card">
+
+        <button
+            class="secondaire"
+            onclick="window.location.href='test.html'"
+        >
+            📝 Retour à l'évaluation
+        </button>
+
+
+        <button
+            class="secondaire"
+            onclick="window.location.href='index.html'"
+        >
+            🏠 Retour à l'accueil
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<!-- ERREUR -->
+
+<div
+    id="erreur"
+    class="card center hidden"
+>
+
+    <h2 class="error">
+        Profil introuvable
+    </h2>
+
+    <p style="margin-top:15px;color:#aaa;">
+        Votre session élève n'a pas été trouvée.
+    </p>
+
+
+    <button
+        onclick="window.location.href='inscription.html'"
+    >
+        Refaire l'inscription
+    </button>
+
+</div>
+
+</div><script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://wvwlotoczizpmcllqeyd.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
+
+
+const db =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================================
+   DONNEES ELEVE
+========================================================= */
+
+const studentId =
+    localStorage.getItem(
+        "skillora_student_id"
+    );
+
+
+const codeId =
+    localStorage.getItem(
+        "skillora_code_id"
+    );
+
+
+const nom =
+    localStorage.getItem(
+        "skillora_nom"
+    ) || "";
+
+
+const prenom =
+    localStorage.getItem(
+        "skillora_prenom"
+    ) || "";
+
+
+const whatsapp =
+    localStorage.getItem(
+        "skillora_whatsapp"
+    ) || "";
+
+
+const niveau =
+    localStorage.getItem(
+        "skillora_niveau"
+    ) || "";
+
+
+const serie =
+    localStorage.getItem(
+        "skillora_serie"
+    ) || "Aucune";
+
+
+const code =
+    localStorage.getItem(
+        "skillora_code"
+    ) || "";
+
+
+/* =========================================================
+   AFFICHAGE LOCAL
+========================================================= */
+
+document.getElementById(
+    "nomEleve"
+).textContent =
+    (prenom + " " + nom).trim()
+    || "Élève SKILLORA";
+
+
+document.getElementById(
+    "nom"
+).textContent =
+    nom || "---";
+
+
+document.getElementById(
+    "prenom"
+).textContent =
+    prenom || "---";
+
+
+document.getElementById(
+    "whatsapp"
+).textContent =
+    whatsapp || "---";
+
+
+document.getElementById(
+    "niveau"
+).textContent =
+    niveau || "---";
+
+
+document.getElementById(
+    "serie"
+).textContent =
+    serie || "Aucune";
+
+
+document.getElementById(
+    "code"
+).textContent =
+    code || "---";
+
+
+/* =========================================================
+   CHARGER RESULTAT
+========================================================= */
+
+async function chargerResultat(){
+
+    try{
+
+        if(!studentId){
+
+            afficherProfil();
+
+            afficherAucunResultat();
+
+            return;
+
+        }
+
+
+        const { data: attempts, error } =
+            await db
+            .from("attempts")
+            .select(
+                "id,student_id,termine,termine_at"
+            )
+            .eq(
+                "student_id",
+                studentId
+            )
+            .eq(
+                "termine",
+                true
+            )
+            .order(
+                "termine_at",
+                {
+                    ascending:false
+                }
+            )
+            .limit(1);
+
+
+        if(error){
+
+            console.error(
+                "Erreur attempts :",
+                error
+            );
+
+            afficherProfil();
+
+            afficherAucunResultat();
+
+            return;
+
+        }
+
+
+        if(!attempts || attempts.length === 0){
+
+            afficherProfil();
+
+            afficherAucunResultat();
+
+            return;
+
+        }
+
+
+        const attemptId =
+            attempts[0].id;
+
+
+        const { data: resultat, error: erreurResultat } =
+            await db
+            .from("results")
+            .select(`
+                id,
+                attempt_id,
+                score,
+                total,
+                note,
+                niveau_estime
+            `)
+            .eq(
+                "attempt_id",
+                attemptId
+            )
+            .maybeSingle();
+
+
+        afficherProfil();
+
+
+        if(erreurResultat){
+
+            console.error(
+                "Erreur results :",
+                erreurResultat
+            );
+
+            afficherAucunResultat();
+
+            return;
+
+        }
+
+
+        if(!resultat){
+
+            afficherAucunResultat();
+
+            return;
+
+        }
+
+
+        afficherResultatRapide(
+            resultat
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        afficherProfil();
+
+        afficherAucunResultat();
+
+    }
+
+}
+
+
+/* =========================================================
+   AFFICHER PROFIL
+========================================================= */
+
+function afficherProfil(){
+
+    document.getElementById(
+        "chargement"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "profil"
+    ).classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   AFFICHER RESULTAT
+========================================================= */
+
+function afficherResultatRapide(data){
+
+    document.getElementById(
+        "chargementResultat"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "resultatDisponible"
+    ).classList.remove("hidden");
+
+
+    const note =
+        Number(data.note || 0);
+
+
+    document.getElementById(
+        "note"
+    ).textContent =
+        note.toFixed(2);
+
+
+    let groupe =
+        data.niveau_estime || "";
+
+
+    if(!groupe){
+
+        if(note >= 16){
+
+            groupe =
+                "Groupe Étoile ⭐";
+
+        }else if(note >= 10){
+
+            groupe =
+                "Groupe Intermédiaire";
+
+        }else{
+
+            groupe =
+                "Non retenu";
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "groupe"
+    ).textContent =
+        groupe;
+
+}
+
+
+/* =========================================================
+   AUCUN RESULTAT
+========================================================= */
+
+function afficherAucunResultat(){
+
+    document.getElementById(
+        "chargementResultat"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "resultatDisponible"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "aucunResultat"
+    ).classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   VOIR RESULTAT
+========================================================= */
+
+function voirResultat(){
+
+    const attemptId =
+        localStorage.getItem(
+            "skillora_attempt_id"
+        );
+
+
+    if(!attemptId){
+
+        alert(
+            "Aucun résultat n'est encore disponible."
+        );
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "resultat.html";
+
+}
+
+
+/* =========================================================
+   LANCEMENT
+========================================================= */
+
+chargerResultat();
+
+</script></body>
+</html>
