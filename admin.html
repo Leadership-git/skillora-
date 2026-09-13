@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Administration — SKILLORA</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:#050505;
+
+    color:#fff;
+
+    min-height:100vh;
+}
+
+header{
+
+    background:#080808;
+
+    border-bottom:1px solid #c99700;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+}
+
+.admin-title{
+
+    color:#f5c518;
+
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+.admin-subtitle{
+
+    color:#aaa;
+
+    font-size:13px;
+
+    margin-top:5px;
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.btn{
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:11px 15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.btn-refresh{
+
+    background:#f5c518;
+
+    color:#000;
+}
+
+.btn-logout{
+
+    background:#b00020;
+
+    color:#fff;
+}
+
+.container{
+
+    width:95%;
+
+    max-width:1200px;
+
+    margin:25px auto;
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.stat{
+
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.stat-number{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#f5c518;
+
+    margin-bottom:8px;
+}
+
+.stat-label{
+
+    color:#aaa;
+
+    font-size:14px;
+}
+
+.search-box{
+
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:20px;
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:13px;
+
+    background:#050505;
+
+    color:#fff;
+
+    border:1px solid #444;
+
+    border-radius:8px;
+
+    outline:none;
+}
+
+.search-box input:focus{
+
+    border-color:#f5c518;
+}
+
+.table-container{
+
+    overflow-x:auto;
+
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:12px;
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:900px;
+}
+
+th{
+
+    background:#151515;
+
+    color:#f5c518;
+
+    padding:14px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    border-bottom:1px solid #333;
+}
+
+td{
+
+    padding:13px;
+
+    border-bottom:1px solid #222;
+
+    font-size:13px;
+}
+
+tr:hover{
+
+    background:#151515;
+}
+
+.note{
+
+    font-weight:bold;
+
+    color:#f5c518;
+}
+
+.groupe{
+
+    font-weight:bold;
+}
+
+.loading{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#aaa;
+}
+
+.message{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#aaa;
+}
+
+@media(max-width:700px){
+
+    header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .header-right{
+
+        width:100%;
+    }
+
+    .btn{
+
+        flex:1;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div>
+
+        <div class="admin-title">
+            SKILLORA — ADMINISTRATION
+        </div>
+
+        <div class="admin-subtitle">
+            Tableau de bord des candidats
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button
+            class="btn btn-refresh"
+            onclick="chargerDonnees()"
+        >
+            Actualiser
+        </button>
+
+        <button
+            class="btn btn-logout"
+            onclick="deconnexion()"
+        >
+            Déconnexion
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="totalCandidats"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Candidats
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="totalEtoile"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Groupe Étoile ⭐
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="totalIntermediaire"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Groupe Intermédiaire
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div
+                class="stat-number"
+                id="totalNonRetenu"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Non retenus
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="recherche"
+            placeholder="Rechercher par nom, prénom, niveau, série ou WhatsApp..."
+            oninput="filtrerTableau()"
+        >
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Nom</th>
+
+                    <th>Prénom</th>
+
+                    <th>WhatsApp</th>
+
+                    <th>Niveau</th>
+
+                    <th>Série</th>
+
+                    <th>Note</th>
+
+                    <th>Groupe</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tableau">
+
+                <tr>
+
+                    <td
+                        colspan="9"
+                        class="loading"
+                    >
+                        Chargement...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+    "https://wvwlotoczizpmcllqeyd.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
+
+const db =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+let toutesLesDonnees = [];
+
+
+/* =========================
+   VÉRIFICATION ADMIN
+========================= */
+
+async function verifierAdministrateur(){
+
+    const {
+        data: { session },
+        error
+    } = await db.auth.getSession();
+
+
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "admin-login.html";
+
+        return false;
+    }
+
+
+    if(!session){
+
+        window.location.href =
+            "admin-login.html";
+
+        return false;
+    }
+
+
+    return true;
+}
+
+
+/* =========================
+   DÉCONNEXION
+========================= */
+
+async function deconnexion(){
+
+    const { error } =
+        await db.auth.signOut();
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Impossible de se déconnecter."
+        );
+
+        return;
+    }
+
+
+    window.location.href =
+        "admin-login.html";
+}
+
+
+/* =========================
+   CHARGEMENT DES DONNÉES
+========================= */
+
+async function chargerDonnees(){
+
+    const tableau =
+        document.getElementById("tableau");
+
+
+    tableau.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="9"
+                class="loading"
+            >
+                Chargement des données...
+            </td>
+
+        </tr>
+
+    `;
+
+
+    try{
+
+        /* =========================
+           ÉTUDIANTS
+        ========================= */
+
+        const {
+            data: students,
+            error: studentsError
+        } = await db
+            .from("students")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(studentsError){
+
+            throw studentsError;
+        }
+
+
+        /* =========================
+           CLASSES
+        ========================= */
+
+        const {
+            data: classes,
+            error: classesError
+        } = await db
+            .from("classes")
+            .select("*");
+
+
+        if(classesError){
+
+            throw classesError;
+        }
+
+
+        /* =========================
+           SERIES
+        ========================= */
+
+        const {
+            data: series,
+            error: seriesError
+        } = await db
+            .from("series")
+            .select("*");
+
+
+        if(seriesError){
+
+            throw seriesError;
+        }
+
+
+        /* =========================
+           ATTEMPTS
+        ========================= */
+
+        const {
+            data: attempts,
+            error: attemptsError
+        } = await db
+            .from("attempts")
+            .select("*");
+
+
+        if(attemptsError){
+
+            throw attemptsError;
+        }
+
+
+        /* =========================
+           RESULTS
+        ========================= */
+
+        const {
+            data: results,
+            error: resultsError
+        } = await db
+            .from("results")
+            .select("*");
+
+
+        if(resultsError){
+
+            throw resultsError;
+        }
+
+
+        /* =========================
+           ASSEMBLAGE
+        ========================= */
+
+        toutesLesDonnees =
+            (students || []).map(
+                student => {
+
+                    const classe =
+                        (classes || []).find(
+                            c =>
+                                Number(c.id) ===
+                                Number(student.classe_id)
+                        );
+
+
+                    const serie =
+                        (series || []).find(
+                            s =>
+                                Number(s.id) ===
+                                Number(student.serie_id)
+                        );
+
+
+                    const studentAttempts =
+                        (attempts || []).filter(
+                            a =>
+                                a.student_id ===
+                                student.id
+                        );
+
+
+                    let result = null;
+
+
+                    for(
+                        const attempt
+                        of studentAttempts
+                    ){
+
+                        const trouve =
+                            (results || []).find(
+                                r =>
+                                    r.attempt_id ===
+                                    attempt.id
+                            );
+
+
+                        if(trouve){
+
+                            result = trouve;
+
+                            break;
+                        }
+
+                    }
+
+
+                    let groupe =
+                        "";
+
+
+                    if(result){
+
+                        const note =
+                            Number(result.note);
+
+
+                        if(note >= 16){
+
+                            groupe =
+                                "Groupe Étoile ⭐";
+
+                        }
+                        else if(note >= 10){
+
+                            groupe =
+                                "Groupe Intermédiaire";
+
+                        }
+                        else{
+
+                            groupe =
+                                "Non retenu";
+                        }
+
+                    }
+
+
+                    return {
+
+                        student,
+
+                        classe,
+
+                        serie,
+
+                        result,
+
+                        groupe
+
+                    };
+
+                }
+            );
+
+
+        afficherTableau(
+            toutesLesDonnees
+        );
+
+
+        mettreAJourStatistiques(
+            toutesLesDonnees
+        );
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        tableau.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="9"
+                    class="message"
+                >
+                    Erreur lors du chargement
+                    des données.
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================
+   AFFICHER TABLEAU
+========================= */
+
+function afficherTableau(
+    donnees
+){
+
+    const tableau =
+        document.getElementById(
+            "tableau"
+        );
+
+
+    if(
+        !donnees ||
+        donnees.length === 0
+    ){
+
+        tableau.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="9"
+                    class="message"
+                >
+                    Aucun candidat enregistré.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+    }
+
+
+    tableau.innerHTML =
+        donnees.map(
+            (item,index) => {
+
+                const student =
+                    item.student;
+
+
+                const classe =
+                    item.classe;
+
+
+                const serie =
+                    item.serie;
+
+
+                const result =
+                    item.result;
+
+
+                const note =
+                    result
+                    ? Number(
+                        result.note
+                    ).toFixed(2)
+                    : "—";
+
+
+                const groupe =
+                    item.groupe || "—";
+
+
+                const date =
+                    student.created_at
+                    ? new Date(
+                        student.created_at
+                    ).toLocaleString(
+                        "fr-FR"
+                    )
+                    : "—";
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${index + 1}
+                        </td>
+
+                        <td>
+                            ${echapperHTML(
+                                student.nom || ""
+                            )}
+                        </td>
+
+                        <td>
+                            ${echapperHTML(
+                                student.prenom || ""
+                            )}
+                        </td>
+
+                        <td>
+                            ${echapperHTML(
+                                student.whatsapp_eleve || "—"
+                            )}
+                        </td>
+
+                        <td>
+                            ${echapperHTML(
+                                classe
+                                ? classe.nom
+                                : "—"
+                            )}
+                        </td>
+
+                        <td>
+                            ${echapperHTML(
+                                serie
+                                ? serie.nom
+                                : "—"
+                            )}
+                        </td>
+
+                        <td class="note">
+
+                            ${
+                                note === "—"
+                                ? "—"
+                                : note + " /20"
+                            }
+
+                        </td>
+
+                        <td class="groupe">
+
+                            ${echapperHTML(
+                                groupe
+                            )}
+
+                        </td>
+
+                        <td>
+                            ${date}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+function mettreAJourStatistiques(
+    donnees
+){
+
+    document.getElementById(
+        "totalCandidats"
+    ).textContent =
+        donnees.length;
+
+
+    let etoile = 0;
+
+    let intermediaire = 0;
+
+    let nonRetenu = 0;
+
+
+    donnees.forEach(
+        item => {
+
+            if(
+                item.groupe ===
+                "Groupe Étoile ⭐"
+            ){
+
+                etoile++;
+
+            }
+            else if(
+                item.groupe ===
+                "Groupe Intermédiaire"
+            ){
+
+                intermediaire++;
+
+            }
+            else if(
+                item.groupe ===
+                "Non retenu"
+            ){
+
+                nonRetenu++;
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalEtoile"
+    ).textContent =
+        etoile;
+
+
+    document.getElementById(
+        "totalIntermediaire"
+    ).textContent =
+        intermediaire;
+
+
+    document.getElementById(
+        "totalNonRetenu"
+    ).textContent =
+        nonRetenu;
+
+}
+
+
+/* =========================
+   RECHERCHE
+========================= */
+
+function filtrerTableau(){
+
+    const recherche =
+        document
+        .getElementById(
+            "recherche"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if(!recherche){
+
+        afficherTableau(
+            toutesLesDonnees
+        );
+
+        return;
+    }
+
+
+    const resultats =
+        toutesLesDonnees.filter(
+            item => {
+
+                const student =
+                    item.student;
+
+
+                const classe =
+                    item.classe;
+
+
+                const serie =
+                    item.serie;
+
+
+                const texte = [
+
+                    student.nom,
+
+                    student.prenom,
+
+                    student.whatsapp_eleve,
+
+                    classe
+                    ? classe.nom
+                    : "",
+
+                    serie
+                    ? serie.nom
+                    : "",
+
+                    item.result
+                    ? item.result.note
+                    : "",
+
+                    item.groupe
+
+                ]
+                .join(" ")
+                .toLowerCase();
+
+
+                return texte.includes(
+                    recherche
+                );
+
+            }
+        );
+
+
+    afficherTableau(
+        resultats
+    );
+
+}
+
+
+/* =========================
+   PROTECTION CONTRE HTML
+========================= */
+
+function echapperHTML(
+    texte
+){
+
+    return String(texte)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================
+   DÉMARRAGE
+========================= */
+
+verifierAdministrateur().then(
+    autorise => {
+
+        if(autorise){
+
+            chargerDonnees();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

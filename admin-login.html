@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Connexion Admin — SKILLORA</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #050505;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: #111;
+    border: 1px solid #d4af37;
+    border-radius: 18px;
+    padding: 30px 24px;
+    box-shadow: 0 0 30px rgba(212,175,55,0.15);
+}
+
+.logo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.logo span {
+    color: #d4af37;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+h2 {
+    text-align: center;
+    color: #d4af37;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ddd;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background: #080808;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #d4af37;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #d4af37;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #f1cc4f;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.message {
+    display: none;
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.error {
+    display: block;
+    background: #3a1111;
+    color: #ff8c8c;
+    border: 1px solid #8b3030;
+}
+
+.success {
+    display: block;
+    background: #113a1d;
+    color: #8cffaa;
+    border: 1px solid #308b48;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.back:hover {
+    color: #d4af37;
+}
+</style></head><body><div class="container"><div class="logo">
+    SKILL<span>ORA</span>
+</div>
+
+<div class="subtitle">
+    Espace sécurisé
+</div>
+
+<h2>Connexion administrateur</h2>
+
+<form id="loginForm">
+
+    <label for="email">adresse email</label>
+    <input
+        type="email"
+        id="email"
+        placeholder="Votre adresse e-mail"
+        required
+        autocomplete="email"
+    >
+
+    <label for="password">mode de passe</label>
+    <input
+        type="password"
+        id="password"
+        placeholder="Votre mot de passe"
+        required
+        autocomplete="current-password"
+    >
+
+    <button type="submit" id="loginButton">
+        Se connecter
+    </button>
+
+</form>
+
+<div id="message" class="message"></div>
+
+<a href="index.html" class="back">
+    ← Retour à SKILLORA
+</a>
+
+</div><script>
+
+const SUPABASE_URL =
+    "https://wvwlotoczizpmcllqeyd.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
+
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+const form = document.getElementById("loginForm");
+const button = document.getElementById("loginButton");
+const message = document.getElementById("message");
+
+function afficherMessage(texte, type) {
+    message.textContent = texte;
+    message.className = "message " + type;
+}
+
+async function verifierSession() {
+
+    const {
+        data: { session }
+    } = await db.auth.getSession();
+
+    if (session) {
+        window.location.href = "admin.html";
+    }
+}
+
+verifierSession();
+
+form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    button.disabled = true;
+    button.textContent = "Connexion...";
+
+    message.className = "message";
+    message.textContent = "";
+
+    const { data, error } =
+        await db.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+    if (error) {
+
+        console.error(error);
+
+        afficherMessage(
+            "E-mail ou mot de passe incorrect.",
+            "error"
+        );
+
+        button.disabled = false;
+        button.textContent = "Se connecter";
+
+        return;
+    }
+
+    if (data.session) {
+
+        afficherMessage(
+            "Connexion réussie. Ouverture de l'administration...",
+            "success"
+        );
+
+        setTimeout(function() {
+            window.location.href = "admin.html";
+        }, 800);
+
+    } else {
+
+        afficherMessage(
+            "Connexion impossible.",
+            "error"
+        );
+
+        button.disabled = false;
+        button.textContent = "Se connecter";
+    }
+
+});
+
+</script></body>
+</html>
