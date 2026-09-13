@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Résultat — SKILLORA</title>
 
@@ -17,263 +22,305 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
     background:#050505;
-    color:white;
+    color:#fff;
     min-height:100vh;
 }
 
 header{
-    background:#000;
+    background:#080808;
     border-bottom:1px solid #d4af37;
-    padding:20px;
+    padding:18px 20px;
     text-align:center;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:bold;
+    color:#d4af37;
+    font-size:28px;
+    font-weight:900;
     letter-spacing:2px;
 }
 
-.logo span{
-    color:#d4af37;
-}
-
 .container{
-    width:94%;
-    max-width:850px;
-    margin:30px auto;
+    width:92%;
+    max-width:1000px;
+    margin:25px auto 50px;
 }
 
 .card{
     background:#101010;
-    border:1px solid #292929;
-    border-radius:18px;
-    padding:25px;
+    border:1px solid #2b2b2b;
+    border-radius:15px;
+    padding:20px;
     margin-bottom:20px;
-    box-shadow:0 0 25px rgba(212,175,55,.08);
 }
 
-.center{
-    text-align:center;
-}
-
-h1{
-    color:#d4af37;
-    margin-bottom:10px;
-}
-
-h2{
+.card h2{
     color:#d4af37;
     margin-bottom:15px;
+    font-size:20px;
 }
 
 .loading{
     text-align:center;
-    padding:40px 10px;
-    color:#d4af37;
-}
-
-.infos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
-    margin-top:20px;
-}
-
-.info{
-    background:#181818;
-    border:1px solid #292929;
-    border-radius:10px;
-    padding:14px;
-}
-
-.info strong{
-    color:#d4af37;
-}
-
-.result-box{
-    text-align:center;
-    padding:30px 15px;
-    background:#181818;
-    border:1px solid #333;
-    border-radius:15px;
-    margin-top:20px;
-}
-
-.note{
-    font-size:58px;
-    font-weight:bold;
-    color:#d4af37;
-}
-
-.sur{
-    font-size:22px;
+    padding:50px 20px;
     color:#aaa;
 }
 
+.error{
+    background:#260d0d;
+    border:1px solid #8d2c2c;
+    color:#ffb0b0;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.student-info{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.info-box{
+    background:#080808;
+    border-radius:10px;
+    padding:13px;
+}
+
+.info-label{
+    color:#888;
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.info-value{
+    font-weight:bold;
+}
+
+.global-result{
+    text-align:center;
+}
+
+.note{
+    font-size:65px;
+    font-weight:900;
+    color:#d4af37;
+    line-height:1;
+    margin:15px 0;
+}
+
 .score{
-    margin-top:10px;
-    font-size:18px;
+    color:#ccc;
+    font-size:17px;
 }
 
 .groupe{
     display:inline-block;
-    margin-top:20px;
-    padding:12px 22px;
+    margin-top:15px;
+    padding:10px 20px;
     border-radius:30px;
-    font-size:20px;
-    font-weight:bold;
+    background:#171717;
     border:1px solid #d4af37;
     color:#d4af37;
-    background:#211d0e;
+    font-weight:bold;
 }
 
-.message{
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
     margin-top:20px;
-    padding:16px;
+}
+
+.stat{
+    background:#080808;
+    padding:15px;
     border-radius:10px;
-    background:#181818;
-    border:1px solid #333;
+    text-align:center;
+}
+
+.stat-number{
+    display:block;
+    font-size:25px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+.stat-label{
+    color:#999;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.subject-card{
+    background:#080808;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:17px;
+}
+
+.subject-name{
+    color:#d4af37;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:13px;
+}
+
+.subject-note{
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.subject-line{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid #1d1d1d;
+    font-size:13px;
+}
+
+.subject-line:last-child{
+    border-bottom:none;
+}
+
+.subject-line span:first-child{
+    color:#999;
+}
+
+.correct{
+    color:#58d68d;
+}
+
+.incorrect{
+    color:#ff7676;
+}
+
+.unanswered{
+    color:#f4c542;
+}
+
+.recommendation{
+    background:#080808;
+    border-left:4px solid #d4af37;
+    padding:17px;
+    line-height:1.6;
+    color:#ddd;
+}
+
+.strengths{
+    color:#58d68d;
     line-height:1.6;
 }
 
-.recommandation{
-    margin-top:20px;
-    background:#181818;
-    border-left:3px solid #d4af37;
-    padding:16px;
+.weaknesses{
+    color:#ff9292;
     line-height:1.6;
+}
+
+.date-info{
+    color:#aaa;
+    font-size:13px;
+    margin-top:12px;
+}
+
+.button-container{
+    text-align:center;
+    margin-top:25px;
 }
 
 button{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
     border:none;
-    border-radius:10px;
     background:#d4af37;
     color:#000;
-    font-size:16px;
     font-weight:bold;
+    padding:13px 25px;
+    border-radius:10px;
     cursor:pointer;
+    font-size:15px;
 }
 
 button:hover{
-    background:#f0cc55;
-}
-
-.error{
-    color:#ff6666;
+    background:#f0ce58;
 }
 
 .hidden{
     display:none;
 }
 
-</style>
-</head>
+@media(max-width:700px){
 
+    .student-info{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .subject-grid{
+        grid-template-columns:1fr;
+    }
+
+    .note{
+        font-size:55px;
+    }
+}
+
+</style>
+
+</head>
 
 <body>
 
 <header>
-
-    <div class="logo">
-        SKILL<span>ORA</span>
-    </div>
-
+    <div class="logo">SKILLORA</div>
 </header>
-
 
 <div class="container">
 
-    <div class="card center">
-
-        <h1>Résultat de votre évaluation</h1>
-
-        <p>
-            Voici votre résultat à l'évaluation SKILLORA.
-        </p>
-
-    </div>
-
-
-    <!-- CHARGEMENT -->
-
-    <div
-        id="chargement"
-        class="card loading"
-    >
+    <div id="chargement" class="card loading">
         Chargement de votre résultat...
     </div>
 
+    <div id="erreur" class="card error hidden"></div>
 
-    <!-- RESULTAT -->
+    <div id="resultat" class="hidden">
 
-    <div
-        id="resultat"
-        class="hidden"
-    >
-
-        <!-- INFORMATIONS -->
+        <!-- INFORMATIONS ÉLÈVE -->
 
         <div class="card">
 
-            <h2>Informations du candidat</h2>
+            <h2>Informations de l'élève</h2>
 
-            <div class="infos">
+            <div class="student-info">
 
-                <div class="info">
-
-                    <strong>Nom</strong>
-
-                    <br>
-
-                    <span id="nom">
-                        ---
-                    </span>
-
+                <div class="info-box">
+                    <div class="info-label">Nom</div>
+                    <div id="nom" class="info-value">—</div>
                 </div>
 
-
-                <div class="info">
-
-                    <strong>Prénom</strong>
-
-                    <br>
-
-                    <span id="prenom">
-                        ---
-                    </span>
-
+                <div class="info-box">
+                    <div class="info-label">Prénom</div>
+                    <div id="prenom" class="info-value">—</div>
                 </div>
 
-
-                <div class="info">
-
-                    <strong>Niveau</strong>
-
-                    <br>
-
-                    <span id="niveau">
-                        ---
-                    </span>
-
+                <div class="info-box">
+                    <div class="info-label">Niveau</div>
+                    <div id="niveau" class="info-value">—</div>
                 </div>
 
-
-                <div class="info">
-
-                    <strong>Série</strong>
-
-                    <br>
-
-                    <span id="serie">
-                        ---
-                    </span>
-
+                <div class="info-box">
+                    <div class="info-label">Série</div>
+                    <div id="serie" class="info-value">—</div>
                 </div>
 
             </div>
@@ -281,105 +328,102 @@ button:hover{
         </div>
 
 
-        <!-- NOTE -->
+        <!-- RESULTAT GLOBAL -->
+
+        <div class="card global-result">
+
+            <h2>Résultat global</h2>
+
+            <div id="note" class="note">—</div>
+
+            <div id="score" class="score">
+                Score : —
+            </div>
+
+            <div id="groupe" class="groupe">
+                —
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span id="nbCorrect" class="stat-number">0</span>
+                    <span class="stat-label">Bonnes réponses</span>
+                </div>
+
+                <div class="stat">
+                    <span id="nbIncorrect" class="stat-number">0</span>
+                    <span class="stat-label">Mauvaises réponses</span>
+                </div>
+
+                <div class="stat">
+                    <span id="nbNonRepondu" class="stat-number">0</span>
+                    <span class="stat-label">Non répondues</span>
+                </div>
+
+            </div>
+
+            <div id="dateTest" class="date-info"></div>
+            <div id="dureeTest" class="date-info"></div>
+
+        </div>
+
+
+        <!-- MATIERES -->
 
         <div class="card">
 
-            <div class="result-box">
+            <h2>Résultats par matière</h2>
 
-                <h2>Votre note</h2>
+            <div id="matieres" class="subject-grid"></div>
 
-                <div class="note">
-                    <span id="note">
-                        0
-                    </span>
-                </div>
-
-                <div class="sur">
-                    / 20
-                </div>
-
-                <div class="score">
-
-                    Score :
-                    <strong id="score">
-                        0
-                    </strong>
-                    /
-                    <strong id="total">
-                        0
-                    </strong>
-
-                </div>
+        </div>
 
 
-                <div
-                    id="groupe"
-                    class="groupe"
-                >
-                    ---
-                </div>
+        <!-- POINTS FORTS -->
 
+        <div class="card">
+
+            <h2>Points forts</h2>
+
+            <div id="pointsForts" class="strengths">
+                —
             </div>
 
         </div>
 
 
-        <!-- MESSAGE -->
+        <!-- POINTS FAIBLES -->
 
         <div class="card">
 
-            <h2>Évaluation</h2>
+            <h2>Points à améliorer</h2>
 
-            <div
-                id="messageResultat"
-                class="message"
-            >
-            </div>
-
-
-            <div
-                id="recommandation"
-                class="recommandation"
-            >
+            <div id="pointsFaibles" class="weaknesses">
+                —
             </div>
 
         </div>
 
 
+        <!-- RECOMMANDATIONS -->
+
         <div class="card">
 
-            <button
-                onclick="window.location.href='index.html'"
-            >
-                Retour à l'accueil
+            <h2>Recommandations</h2>
+
+            <div id="recommandations" class="recommendation">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="button-container">
+            <button onclick="window.print()">
+                Imprimer le résultat
             </button>
-
         </div>
-
-    </div>
-
-
-    <!-- ERREUR -->
-
-    <div
-        id="erreur"
-        class="card center hidden"
-    >
-
-        <h2 class="error">
-            Résultat introuvable
-        </h2>
-
-        <p style="margin-top:15px;">
-            Impossible de récupérer votre résultat.
-        </p>
-
-        <button
-            onclick="window.location.href='inscription.html'"
-        >
-            Recommencer
-        </button>
 
     </div>
 
@@ -398,420 +442,1011 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
     "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
 
-const db =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
 /* =========================================================
-   SESSION
+   ELEMENTS
 ========================================================= */
 
-const studentId =
-    localStorage.getItem(
-        "skillora_student_id"
-    );
+const chargement =
+    document.getElementById("chargement");
 
-const attemptId =
-    localStorage.getItem(
+const erreur =
+    document.getElementById("erreur");
+
+const resultat =
+    document.getElementById("resultat");
+
+
+/* =========================================================
+   OUTILS
+========================================================= */
+
+function afficherErreur(message){
+
+    chargement.classList.add("hidden");
+
+    resultat.classList.add("hidden");
+
+    erreur.textContent = message;
+
+    erreur.classList.remove("hidden");
+}
+
+
+function afficherResultat(){
+
+    chargement.classList.add("hidden");
+
+    erreur.classList.add("hidden");
+
+    resultat.classList.remove("hidden");
+}
+
+
+function echapper(value){
+
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function formatDate(date){
+
+    if(!date){
+        return "Date inconnue";
+    }
+
+    try{
+
+        return new Date(date).toLocaleString(
+            "fr-FR",
+            {
+                day:"2-digit",
+                month:"2-digit",
+                year:"numeric",
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    }catch(e){
+
+        return date;
+    }
+}
+
+
+function calculerDuree(debut, fin){
+
+    if(!debut || !fin){
+        return null;
+    }
+
+    const d1 = new Date(debut);
+    const d2 = new Date(fin);
+
+    const secondes =
+        Math.max(
+            0,
+            Math.floor((d2 - d1) / 1000)
+        );
+
+    const minutes =
+        Math.floor(secondes / 60);
+
+    const sec =
+        secondes % 60;
+
+    return minutes + " min " + sec + " s";
+}
+
+
+function obtenirGroupe(note){
+
+    const n = Number(note);
+
+    if(n >= 16){
+        return "Groupe Étoile";
+    }
+
+    if(n >= 10){
+        return "Groupe Intermédiaire";
+    }
+
+    return "Non retenu";
+}
+
+
+/* =========================================================
+   RECUPERATION ATTEMPT ID
+========================================================= */
+
+function obtenirAttemptId(){
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const depuisUrl =
+        params.get("attempt");
+
+    if(depuisUrl){
+        return depuisUrl;
+    }
+
+    return localStorage.getItem(
         "skillora_attempt_id"
     );
-
-
-const nom =
-    localStorage.getItem(
-        "skillora_nom"
-    ) || "";
-
-const prenom =
-    localStorage.getItem(
-        "skillora_prenom"
-    ) || "";
-
-const niveau =
-    localStorage.getItem(
-        "skillora_niveau"
-    ) || "";
-
-const serie =
-    localStorage.getItem(
-        "skillora_serie"
-    ) || "Aucune";
+}
 
 
 /* =========================================================
-   AFFICHAGE INFOS
-========================================================= */
-
-document.getElementById("nom").textContent =
-    nom || "---";
-
-document.getElementById("prenom").textContent =
-    prenom || "---";
-
-document.getElementById("niveau").textContent =
-    niveau || "---";
-
-document.getElementById("serie").textContent =
-    serie || "Aucune";
-
-
-/* =========================================================
-   CHARGER RESULTAT
+   CHARGEMENT DU RESULTAT
 ========================================================= */
 
 async function chargerResultat(){
 
     try{
 
-        if(!studentId || !attemptId){
+        const attemptId =
+            obtenirAttemptId();
 
-            afficherErreur();
+        if(!attemptId){
 
-            return;
-        }
-
-
-        /*
-           On recherche le résultat correspondant
-           à l attempt actuel.
-        */
-
-        const { data, error } =
-            await db
-            .from("results")
-            .select(`
-                id,
-                attempt_id,
-                score,
-                total,
-                note,
-                classe_resultat,
-                niveau_estime,
-                points_forts,
-                points_faibles,
-                recommandations,
-                created_at
-            `)
-            .eq(
-                "attempt_id",
-                attemptId
-            )
-            .maybeSingle();
-
-
-        if(error){
-
-            console.error(
-                "Erreur résultat :",
-                error
+            afficherErreur(
+                "Impossible de trouver la tentative du test."
             );
 
-            afficherErreur();
-
             return;
         }
 
 
-        if(!data){
+        /* =================================================
+           1. RECUPERER LA TENTATIVE
+        ================================================= */
 
-            /*
-               Si le résultat n'est pas encore trouvé,
-               on essaie une seconde méthode avec
-               l attempt.
-            */
+        const {
+            data: attempt,
+            error: attemptError
+        } = await db
+            .from("attempts")
+            .select("*")
+            .eq("id", attemptId)
+            .maybeSingle();
 
-            const { data: attemptData } =
-                await db
-                .from("attempts")
-                .select("id,student_id")
-                .eq("id",attemptId)
-                .eq("student_id",studentId)
+        if(attemptError){
+
+            console.error(attemptError);
+
+            throw new Error(
+                "Erreur lors de la récupération de la tentative."
+            );
+        }
+
+        if(!attempt){
+
+            throw new Error(
+                "Cette tentative n'existe pas."
+            );
+        }
+
+
+        /* =================================================
+           2. RECUPERER LE RESULTAT
+        ================================================= */
+
+        const {
+            data: result,
+            error: resultError
+        } = await db
+            .from("results")
+            .select("*")
+            .eq("attempt_id", attempt.id)
+            .maybeSingle();
+
+        if(resultError){
+
+            console.error(resultError);
+
+            throw new Error(
+                "Erreur lors de la récupération du résultat."
+            );
+        }
+
+        if(!result){
+
+            throw new Error(
+                "Le résultat n'est pas encore disponible."
+            );
+        }
+
+
+        /* =================================================
+           3. RECUPERER L'ELEVE
+        ================================================= */
+
+        let student = null;
+
+        if(attempt.student_id){
+
+            const {
+                data,
+                error
+            } = await db
+                .from("students")
+                .select("*")
+                .eq("id", attempt.student_id)
                 .maybeSingle();
 
+            if(error){
 
-            if(!attemptData){
+                console.error(
+                    "Erreur étudiant :",
+                    error
+                );
 
-                afficherErreur();
+            }else{
+
+                student = data;
+            }
+        }
+
+
+        /* =================================================
+           4. RECUPERER LES REPONSES
+        ================================================= */
+
+        const {
+            data: answers,
+            error: answersError
+        } = await db
+            .from("answers")
+            .select("*")
+            .eq("attempt_id", attempt.id);
+
+        if(answersError){
+
+            console.error(answersError);
+
+            throw new Error(
+                "Impossible de récupérer les réponses."
+            );
+        }
+
+
+        /* =================================================
+           5. MAP DES REPONSES
+        ================================================= */
+
+        const answerMap =
+            new Map();
+
+        (answers || []).forEach(answer => {
+
+            const questionId =
+                String(answer.question_id);
+
+            /*
+             * Si plusieurs lignes existent pour
+             * la même question, la dernière est utilisée.
+             */
+            answerMap.set(
+                questionId,
+                answer
+            );
+
+        });
+
+
+        /* =================================================
+           6. RECUPERER LES QUESTIONS
+        ================================================= */
+
+        const questionIds =
+            [
+                ...new Set(
+                    (answers || [])
+                        .map(a => a.question_id)
+                        .filter(Boolean)
+                )
+            ];
+
+        let questions = [];
+
+
+        if(questionIds.length > 0){
+
+            const {
+                data,
+                error
+            } = await db
+                .from("questions")
+                .select(`
+                    id,
+                    test_id,
+                    question,
+                    option_a,
+                    option_b,
+                    option_c,
+                    option_d,
+                    points,
+                    ordre,
+                    bonne_reponse
+                `)
+                .in("id", questionIds);
+
+            if(error){
+
+                console.error(error);
+
+                throw new Error(
+                    "Impossible de récupérer les questions."
+                );
+            }
+
+            questions = data || [];
+        }
+
+
+        /* =================================================
+           7. RECUPERER LES TESTS
+        ================================================= */
+
+        const testIds =
+            [
+                ...new Set(
+                    questions
+                        .map(q => q.test_id)
+                        .filter(Boolean)
+                )
+            ];
+
+        let tests = [];
+
+        if(testIds.length > 0){
+
+            const {
+                data,
+                error
+            } = await db
+                .from("tests")
+                .select(`
+                    id,
+                    titre,
+                    classe_id,
+                    serie_id,
+                    subject_id,
+                    niveau,
+                    actif
+                `)
+                .in("id", testIds);
+
+            if(error){
+
+                console.error(error);
+
+                throw new Error(
+                    "Impossible de récupérer les tests."
+                );
+            }
+
+            tests = data || [];
+        }
+
+
+        /* =================================================
+           8. RECUPERER LES MATIERES
+        ================================================= */
+
+        const subjectIds =
+            [
+                ...new Set(
+                    tests
+                        .map(t => t.subject_id)
+                        .filter(Boolean)
+                )
+            ];
+
+        let subjects = [];
+
+        if(subjectIds.length > 0){
+
+            const {
+                data,
+                error
+            } = await db
+                .from("subjects")
+                .select("id, nom")
+                .in("id", subjectIds);
+
+            if(error){
+
+                console.error(error);
+
+                throw new Error(
+                    "Impossible de récupérer les matières."
+                );
+            }
+
+            subjects = data || [];
+        }
+
+
+        /* =================================================
+           9. MAPS
+        ================================================= */
+
+        const questionMap =
+            new Map(
+                questions.map(q => [
+                    String(q.id),
+                    q
+                ])
+            );
+
+        const testMap =
+            new Map(
+                tests.map(t => [
+                    String(t.id),
+                    t
+                ])
+            );
+
+        const subjectMap =
+            new Map(
+                subjects.map(s => [
+                    String(s.id),
+                    s
+                ])
+            );
+
+
+        /* =================================================
+           10. CALCUL DES STATISTIQUES
+        ================================================= */
+
+        const global = {
+
+            points:0,
+
+            totalPoints:0,
+
+            correct:0,
+
+            incorrect:0,
+
+            unanswered:0,
+
+            totalQuestions:0
+
+        };
+
+
+        const matieres = {};
+
+
+        questions.forEach(question => {
+
+            const qId =
+                String(question.id);
+
+            const answer =
+                answerMap.get(qId);
+
+            const test =
+                testMap.get(
+                    String(question.test_id)
+                );
+
+            if(!test){
+                return;
+            }
+
+            const subject =
+                subjectMap.get(
+                    String(test.subject_id)
+                );
+
+            const subjectId =
+                String(test.subject_id);
+
+            const subjectName =
+                subject
+                    ? subject.nom
+                    : "Matière inconnue";
+
+
+            if(!matieres[subjectId]){
+
+                matieres[subjectId] = {
+
+                    id:subjectId,
+
+                    nom:subjectName,
+
+                    points:0,
+
+                    totalPoints:0,
+
+                    correct:0,
+
+                    incorrect:0,
+
+                    unanswered:0,
+
+                    totalQuestions:0
+
+                };
+
+            }
+
+
+            const matiere =
+                matieres[subjectId];
+
+
+            const points =
+                Number(question.points) || 0;
+
+
+            matiere.totalQuestions++;
+
+            matiere.totalPoints += points;
+
+            global.totalQuestions++;
+
+            global.totalPoints += points;
+
+
+            let reponse = null;
+
+            if(answer){
+
+                reponse =
+                    answer.reponse;
+
+            }
+
+
+            const nonRepondu =
+                reponse === null ||
+                reponse === undefined ||
+                String(reponse).trim() === "";
+
+
+            if(nonRepondu){
+
+                matiere.unanswered++;
+
+                global.unanswered++;
 
                 return;
             }
 
 
-            afficherErreur();
+            /*
+             * On utilise la correction présente
+             * dans la table questions.
+             */
 
-            return;
+            const correcte =
+                String(reponse).trim().toUpperCase() ===
+                String(question.bonne_reponse || "")
+                    .trim()
+                    .toUpperCase();
+
+
+            if(correcte){
+
+                matiere.correct++;
+
+                global.correct++;
+
+                matiere.points += points;
+
+                global.points += points;
+
+            }else{
+
+                matiere.incorrect++;
+
+                global.incorrect++;
+            }
+
+        });
+
+
+        /* =================================================
+           11. NOTE GLOBALE
+        ================================================= */
+
+        let noteCalculee = 0;
+
+        if(global.totalPoints > 0){
+
+            noteCalculee =
+                (
+                    global.points /
+                    global.totalPoints
+                ) * 20;
+
         }
 
 
-        afficherResultat(data);
+        /*
+         * Si le résultat enregistré contient déjà
+         * une note valide, on la privilégie.
+         */
+
+        const noteResult =
+            Number(result.note);
+
+        const noteFinale =
+            Number.isFinite(noteResult)
+                ? noteResult
+                : noteCalculee;
+
+
+        const groupe =
+            result.niveau_estime ||
+            obtenirGroupe(noteFinale);
+
+
+        /* =================================================
+           12. INFORMATIONS ELEVE
+        ================================================= */
+
+        document.getElementById("nom")
+            .textContent =
+                student?.nom ||
+                localStorage.getItem("skillora_nom") ||
+                "—";
+
+
+        document.getElementById("prenom")
+            .textContent =
+                student?.prenom ||
+                localStorage.getItem("skillora_prenom") ||
+                "—";
+
+
+        document.getElementById("niveau")
+            .textContent =
+                student?.niveau ||
+                result.classe_resultat ||
+                localStorage.getItem("skillora_niveau") ||
+                "—";
+
+
+        document.getElementById("serie")
+            .textContent =
+                student?.serie ||
+                localStorage.getItem("skillora_serie") ||
+                "—";
+
+
+        /* =================================================
+           13. RESULTAT GLOBAL
+        ================================================= */
+
+        document.getElementById("note")
+            .textContent =
+                noteFinale.toFixed(2) + " / 20";
+
+
+        document.getElementById("score")
+            .textContent =
+                "Score : " +
+                global.points +
+                " / " +
+                global.totalPoints;
+
+
+        document.getElementById("groupe")
+            .textContent =
+                groupe;
+
+
+        document.getElementById("nbCorrect")
+            .textContent =
+                global.correct;
+
+
+        document.getElementById("nbIncorrect")
+            .textContent =
+                global.incorrect;
+
+
+        document.getElementById("nbNonRepondu")
+            .textContent =
+                global.unanswered;
+
+
+        document.getElementById("dateTest")
+            .textContent =
+                "Début : " +
+                formatDate(attempt.commence_at);
+
+
+        document.getElementById("dureeTest")
+            .textContent =
+                attempt.termine_at
+                    ? "Durée : " +
+                      calculerDuree(
+                          attempt.commence_at,
+                          attempt.termine_at
+                      )
+                    : "Durée : —";
+
+
+        /* =================================================
+           14. RESULTATS PAR MATIERE
+        ================================================= */
+
+        const matieresContainer =
+            document.getElementById("matieres");
+
+        matieresContainer.innerHTML = "";
+
+
+        const matieresArray =
+            Object.values(matieres);
+
+
+        if(matieresArray.length === 0){
+
+            matieresContainer.innerHTML =
+                "<p style='color:#aaa'>Aucun détail par matière disponible.</p>";
+
+        }else{
+
+            matieresArray.forEach(matiere => {
+
+                let noteMatiere = 0;
+
+                if(matiere.totalPoints > 0){
+
+                    noteMatiere =
+                        (
+                            matiere.points /
+                            matiere.totalPoints
+                        ) * 20;
+
+                }
+
+
+                const div =
+                    document.createElement("div");
+
+                div.className =
+                    "subject-card";
+
+
+                div.innerHTML = `
+
+                    <div class="subject-name">
+                        ${echapper(matiere.nom)}
+                    </div>
+
+                    <div class="subject-note">
+                        ${noteMatiere.toFixed(2)} / 20
+                    </div>
+
+                    <div class="subject-line">
+                        <span>Score</span>
+                        <strong>
+                            ${matiere.points}
+                            /
+                            ${matiere.totalPoints}
+                        </strong>
+                    </div>
+
+                    <div class="subject-line">
+                        <span>Questions</span>
+                        <strong>
+                            ${matiere.totalQuestions}
+                        </strong>
+                    </div>
+
+                    <div class="subject-line">
+                        <span>Correctes</span>
+                        <strong class="correct">
+                            ${matiere.correct}
+                        </strong>
+                    </div>
+
+                    <div class="subject-line">
+                        <span>Incorrectes</span>
+                        <strong class="incorrect">
+                            ${matiere.incorrect}
+                        </strong>
+                    </div>
+
+                    <div class="subject-line">
+                        <span>Non répondues</span>
+                        <strong class="unanswered">
+                            ${matiere.unanswered}
+                        </strong>
+                    </div>
+
+                `;
+
+
+                matieresContainer.appendChild(div);
+
+            });
+
+        }
+
+
+        /* =================================================
+           15. POINTS FORTS / FAIBLES
+        ================================================= */
+
+        let fortes = [];
+
+        let faibles = [];
+
+
+        matieresArray.forEach(matiere => {
+
+            let note = 0;
+
+            if(matiere.totalPoints > 0){
+
+                note =
+                    (
+                        matiere.points /
+                        matiere.totalPoints
+                    ) * 20;
+
+            }
+
+
+            if(note >= 14){
+
+                fortes.push(
+                    matiere.nom +
+                    " (" +
+                    note.toFixed(2) +
+                    "/20)"
+                );
+
+            }
+
+
+            if(note < 10){
+
+                faibles.push(
+                    matiere.nom +
+                    " (" +
+                    note.toFixed(2) +
+                    "/20)"
+                );
+
+            }
+
+        });
+
+
+        document.getElementById("pointsForts")
+            .textContent =
+                result.points_forts ||
+                (
+                    fortes.length
+                        ? fortes.join(" • ")
+                        : "Aucun point fort particulier identifié."
+                );
+
+
+        document.getElementById("pointsFaibles")
+            .textContent =
+                result.points_faibles ||
+                (
+                    faibles.length
+                        ? faibles.join(" • ")
+                        : "Aucune faiblesse majeure identifiée."
+                );
+
+
+        /* =================================================
+           16. RECOMMANDATIONS
+        ================================================= */
+
+        let recommandation =
+            result.recommandations;
+
+
+        if(!recommandation){
+
+            if(noteFinale >= 16){
+
+                recommandation =
+                    "Excellent résultat. Continuez à travailler régulièrement afin de maintenir ce niveau.";
+
+            }else if(noteFinale >= 10){
+
+                recommandation =
+                    "Résultat satisfaisant. Renforcez les matières les plus faibles afin de progresser.";
+
+            }else{
+
+                recommandation =
+                    "Des révisions supplémentaires sont nécessaires. Concentrez-vous en priorité sur les matières les plus faibles.";
+
+            }
+
+        }
+
+
+        document.getElementById("recommandations")
+            .textContent =
+                recommandation;
+
+
+        /* =================================================
+           17. SAUVEGARDE LOCALE
+        ================================================= */
+
+        localStorage.setItem(
+            "skillora_note",
+            noteFinale
+        );
+
+        localStorage.setItem(
+            "skillora_score",
+            global.points
+        );
+
+        localStorage.setItem(
+            "skillora_total",
+            global.totalPoints
+        );
+
+        localStorage.setItem(
+            "skillora_groupe",
+            groupe
+        );
+
+
+        /* =================================================
+           18. AFFICHAGE
+        ================================================= */
+
+        afficherResultat();
 
 
     }catch(error){
 
-        console.error(error);
-
-        afficherErreur();
-
-    }
-
-}
-
-
-/* =========================================================
-   AFFICHER RESULTAT
-========================================================= */
-
-function afficherResultat(data){
-
-    document.getElementById(
-        "chargement"
-    ).classList.add("hidden");
-
-
-    document.getElementById(
-        "resultat"
-    ).classList.remove("hidden");
-
-
-    const note =
-        Number(data.note || 0);
-
-
-    const score =
-        Number(data.score || 0);
-
-
-    const total =
-        Number(data.total || 0);
-
-
-    document.getElementById(
-        "note"
-    ).textContent =
-        note.toFixed(2);
-
-
-    document.getElementById(
-        "score"
-    ).textContent =
-        score;
-
-
-    document.getElementById(
-        "total"
-    ).textContent =
-        total;
-
-
-    let groupe =
-        data.niveau_estime || "";
-
-
-    /*
-       Sécurité :
-       si le groupe n'est pas enregistré,
-       on le recalcule.
-    */
-
-    if(!groupe){
-
-        if(note >= 16){
-
-            groupe =
-                "Groupe Étoile ⭐";
-
-        }else if(note >= 10){
-
-            groupe =
-                "Groupe Intermédiaire";
-
-        }else{
-
-            groupe =
-                "Non retenu";
-
-        }
-
-    }
-
-
-    document.getElementById(
-        "groupe"
-    ).textContent =
-        groupe;
-
-
-    /* =====================================================
-       MESSAGE
-    ===================================================== */
-
-    const message =
-        document.getElementById(
-            "messageResultat"
+        console.error(
+            "ERREUR RESULTAT :",
+            error
         );
 
-
-    if(note >= 16){
-
-        message.innerHTML =
-            `
-            <strong>Excellent résultat ! ⭐</strong>
-            <br><br>
-            Vous avez obtenu une note de
-            <strong>${note.toFixed(2)}/20</strong>.
-            <br>
-            Vous êtes classé dans le
-            <strong>Groupe Étoile</strong>.
-            `;
-
-
-    }else if(note >= 10){
-
-        message.innerHTML =
-            `
-            <strong>Bon résultat.</strong>
-            <br><br>
-            Vous avez obtenu une note de
-            <strong>${note.toFixed(2)}/20</strong>.
-            <br>
-            Vous êtes classé dans le
-            <strong>Groupe Intermédiaire</strong>.
-            `;
-
-
-    }else{
-
-        message.innerHTML =
-            `
-            <strong>Résultat insuffisant.</strong>
-            <br><br>
-            Vous avez obtenu une note de
-            <strong>${note.toFixed(2)}/20</strong>.
-            <br>
-            Vous n'atteignez pas le seuil de
-            <strong>10/20</strong>.
-            `;
-    }
-
-
-    /* =====================================================
-       RECOMMANDATION
-    ===================================================== */
-
-    const recommandation =
-        document.getElementById(
-            "recommandation"
+        afficherErreur(
+            error.message ||
+            "Une erreur est survenue lors du chargement du résultat."
         );
 
-
-    if(
-        data.recommandations &&
-        data.recommandations.trim() !== ""
-    ){
-
-        recommandation.innerHTML =
-            `
-            <strong>Recommandation :</strong>
-            <br>
-            ${echapperHTML(
-                data.recommandations
-            )}
-            `;
-
-    }else{
-
-        if(note >= 16){
-
-            recommandation.innerHTML =
-                `
-                <strong>Recommandation :</strong>
-                <br>
-                Continuez à maintenir votre niveau
-                et préparez-vous aux prochaines évaluations.
-                `;
-
-        }else if(note >= 10){
-
-            recommandation.innerHTML =
-                `
-                <strong>Recommandation :</strong>
-                <br>
-                Continuez vos révisions afin de progresser
-                et d'atteindre le Groupe Étoile.
-                `;
-
-        }else{
-
-            recommandation.innerHTML =
-                `
-                <strong>Recommandation :</strong>
-                <br>
-                Renforcez vos bases et reprenez les notions
-                qui vous posent des difficultés avant
-                une nouvelle préparation.
-                `;
-
-        }
-
     }
 
 }
 
 
 /* =========================================================
-   PROTECTION HTML
-========================================================= */
-
-function echapperHTML(texte){
-
-    if(
-        texte === null ||
-        texte === undefined
-    ){
-
-        return "";
-
-    }
-
-
-    return String(texte)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   ERREUR
-========================================================= */
-
-function afficherErreur(){
-
-    document.getElementById(
-        "chargement"
-    ).classList.add("hidden");
-
-
-    document.getElementById(
-        "resultat"
-    ).classList.add("hidden");
-
-
-    document.getElementById(
-        "erreur"
-    ).classList.remove("hidden");
-
-}
-
-
-/* =========================================================
-   LANCEMENT
+   DEMARRAGE
 ========================================================= */
 
 chargerResultat();
@@ -819,4 +1454,5 @@ chargerResultat();
 </script>
 
 </body>
+
 </html>

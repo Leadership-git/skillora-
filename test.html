@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Test — SKILLORA</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -239,6 +246,7 @@ button:disabled{
 }
 
 @media(max-width:600px){
+
     .container{
         width:96%;
     }
@@ -250,92 +258,178 @@ button:disabled{
     #timer{
         font-size:27px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
     <div class="logo">
         SKILL<span>ORA</span>
     </div>
+
 </header>
+
 
 <div class="container">
 
+
     <!-- INFORMATIONS ÉLÈVE -->
+
     <div class="card">
-        <h1>Évaluation SKILLORA</h1>
-        <p>Bienvenue dans votre test d'évaluation.</p>
+
+        <h1>
+            Évaluation SKILLORA
+        </h1>
+
+        <p>
+            Bienvenue dans votre test d'évaluation.
+        </p>
+
 
         <div class="info">
 
             <div class="info-box">
-                <strong>Nom</strong>
+
+                <strong>
+                    Nom
+                </strong>
+
                 <br>
-                <span id="nomEleve">---</span>
+
+                <span id="nomEleve">
+                    ---
+                </span>
+
             </div>
 
-            <div class="info-box">
-                <strong>Prénom</strong>
-                <br>
-                <span id="prenomEleve">---</span>
-            </div>
 
             <div class="info-box">
-                <strong>Niveau</strong>
+
+                <strong>
+                    Prénom
+                </strong>
+
                 <br>
-                <span id="niveauEleve">---</span>
+
+                <span id="prenomEleve">
+                    ---
+                </span>
+
             </div>
 
+
             <div class="info-box">
-                <strong>Série</strong>
+
+                <strong>
+                    Niveau
+                </strong>
+
                 <br>
-                <span id="serieEleve">---</span>
+
+                <span id="niveauEleve">
+                    ---
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    Série
+                </strong>
+
+                <br>
+
+                <span id="serieEleve">
+                    ---
+                </span>
+
             </div>
 
         </div>
+
     </div>
 
 
-    <!-- CHOIX DES MATIÈRES -->
-    <div class="card" id="choixMatieres">
 
-        <h2>Choisissez 3 matières</h2>
+    <!-- CHOIX DES MATIÈRES -->
+
+    <div
+        class="card"
+        id="choixMatieres"
+    >
+
+        <h2>
+            Choisissez 3 matières
+        </h2>
 
         <p>
+
             Vous devez sélectionner exactement
-            <strong>3 matières</strong>
+
+            <strong>
+                3 matières
+            </strong>
+
             pour commencer l'évaluation.
+
         </p>
 
-        <div id="listeMatieres" class="subjects">
+
+        <div
+            id="listeMatieres"
+            class="subjects"
+        >
             Chargement des matières...
         </div>
 
+
         <div id="messageMatieres"></div>
 
-        <button id="startButton" disabled>
+
+        <button
+            id="startButton"
+            disabled
+        >
             Commencer le test
         </button>
 
     </div>
 
 
+
     <!-- ZONE DU TEST -->
-    <div class="card hidden" id="zoneTest">
+
+    <div
+        class="card hidden"
+        id="zoneTest"
+    >
 
         <div id="timer">
             30:00
         </div>
 
+
         <div class="progress-container">
+
             <div id="progress"></div>
+
         </div>
 
-        <div id="questionsContainer" style="margin-top:20px;">
+
+        <div
+            id="questionsContainer"
+            style="margin-top:20px;"
+        >
         </div>
+
 
         <button id="terminerButton">
             Terminer le test
@@ -346,7 +440,9 @@ button:disabled{
 </div>
 
 
+
 <script>
+
 
 /* =========================================================
    CONFIGURATION SUPABASE
@@ -355,8 +451,10 @@ button:disabled{
 const SUPABASE_URL =
     "https://wvwlotoczizpmcllqeyd.supabase.co";
 
+
 const SUPABASE_KEY =
     "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
+
 
 const db =
     window.supabase.createClient(
@@ -365,64 +463,107 @@ const db =
     );
 
 
+
 /* =========================================================
    SESSION ÉLÈVE
 ========================================================= */
 
 const studentId =
-    localStorage.getItem("skillora_student_id");
+    localStorage.getItem(
+        "skillora_student_id"
+    );
+
 
 const codeId =
-    localStorage.getItem("skillora_code_id");
+    localStorage.getItem(
+        "skillora_code_id"
+    );
+
 
 const nom =
-    localStorage.getItem("skillora_nom") || "";
+    localStorage.getItem(
+        "skillora_nom"
+    ) || "";
+
 
 const prenom =
-    localStorage.getItem("skillora_prenom") || "";
+    localStorage.getItem(
+        "skillora_prenom"
+    ) || "";
+
 
 const niveau =
-    localStorage.getItem("skillora_niveau") || "";
+    localStorage.getItem(
+        "skillora_niveau"
+    ) || "";
+
 
 const niveauId =
-    localStorage.getItem("skillora_niveau_id");
+    localStorage.getItem(
+        "skillora_niveau_id"
+    );
+
 
 const serie =
-    localStorage.getItem("skillora_serie") || "";
+    localStorage.getItem(
+        "skillora_serie"
+    ) || "";
+
 
 const serieId =
-    localStorage.getItem("skillora_serie_id");
+    localStorage.getItem(
+        "skillora_serie_id"
+    );
+
 
 
 /* =========================================================
    VÉRIFICATION SESSION
 ========================================================= */
 
-if(!studentId || !codeId || !niveauId){
+if(
+    !studentId ||
+    !codeId ||
+    !niveauId
+){
 
     alert(
         "Session invalide. Veuillez recommencer l'inscription."
     );
 
-    window.location.href = "inscription.html";
+    window.location.href =
+        "inscription.html";
 }
+
 
 
 /* =========================================================
    AFFICHAGE INFORMATIONS
 ========================================================= */
 
-document.getElementById("nomEleve").textContent =
+document.getElementById(
+    "nomEleve"
+).textContent =
     nom || "---";
 
-document.getElementById("prenomEleve").textContent =
+
+document.getElementById(
+    "prenomEleve"
+).textContent =
     prenom || "---";
 
-document.getElementById("niveauEleve").textContent =
+
+document.getElementById(
+    "niveauEleve"
+).textContent =
     niveau || "---";
 
-document.getElementById("serieEleve").textContent =
+
+document.getElementById(
+    "serieEleve"
+).textContent =
     serie || "Aucune";
+
 
 
 /* =========================================================
@@ -443,6 +584,11 @@ let timerInterval = null;
 
 let attemptId = null;
 
+let demarrageEnCours = false;
+
+let validationEnCours = false;
+
+
 
 /* =========================================================
    ÉCHAPPER HTML
@@ -450,9 +596,15 @@ let attemptId = null;
 
 function echapperHTML(texte){
 
-    if(texte === null || texte === undefined){
+    if(
+        texte === null ||
+        texte === undefined
+    ){
+
         return "";
+
     }
+
 
     return String(texte)
         .replace(/&/g,"&amp;")
@@ -460,7 +612,69 @@ function echapperHTML(texte){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
+
 }
+
+
+
+/* =========================================================
+   VÉRIFIER SI LE CODE A DÉJÀ UNE TENTATIVE
+========================================================= */
+
+async function verifierCodeDejaUtilise(){
+
+    if(!codeId){
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("attempts")
+        .select(`
+            id,
+            student_id,
+            termine,
+            commence_at
+        `)
+        .eq(
+            "access_code_id",
+            codeId
+        )
+        .limit(1);
+
+
+    if(error){
+
+        console.error(
+            "Erreur vérification code :",
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    if(
+        data &&
+        data.length > 0
+    ){
+
+        return true;
+
+    }
+
+
+    return false;
+
+}
+
 
 
 /* =========================================================
@@ -470,74 +684,165 @@ function echapperHTML(texte){
 async function chargerTests(){
 
     const message =
-        document.getElementById("messageMatieres");
+        document.getElementById(
+            "messageMatieres"
+        );
+
 
     message.innerHTML =
-        `<div class="message warning">
-            Recherche des matières disponibles...
-        </div>`;
+        `
+        <div class="message warning">
 
-    let requete =
-        db
-        .from("tests")
-        .select(`
-            id,
-            titre,
-            classe_id,
-            serie_id,
-            subject_id,
-            niveau,
-            actif
-        `)
-        .eq("classe_id", Number(niveauId))
-        .eq("actif", true)
-        .order("id", {ascending:true});
+            Vérification de votre code
+            et recherche des matières disponibles...
+
+        </div>
+        `;
 
 
-    const { data, error } =
-        await requete;
+    try{
+
+        /*
+           Vérification importante :
+
+           Si le code possède déjà une tentative,
+           l'élève ne peut pas commencer un autre test.
+        */
+
+        const codeDejaUtilise =
+            await verifierCodeDejaUtilise();
 
 
-    if(error){
+        if(codeDejaUtilise){
 
-        console.error(error);
+            message.innerHTML =
+                `
+                <div class="message error">
 
-        message.innerHTML =
-            `<div class="message error">
-                Impossible de charger les tests.
-                <br><br>
-                ${echapperHTML(error.message)}
-            </div>`;
+                    <strong>
+                        Ce code a déjà été utilisé pour un test.
+                    </strong>
 
-        return;
-    }
+                    <br><br>
+
+                    Vous ne pouvez pas utiliser
+                    ce même code pour passer un autre test.
+
+                </div>
+                `;
 
 
-    testsDisponibles = data || [];
+            document.getElementById(
+                "startButton"
+            ).disabled = true;
 
 
-    /*
-       Pour 2nde, 1ère et Terminale :
-       on garde les tests de la série choisie.
+            return;
 
-       Pour les autres niveaux :
-       on garde les tests sans série.
-    */
+        }
 
-    if(
-        Number(niveauId) === 6 ||
-        Number(niveauId) === 7 ||
-        Number(niveauId) === 8
-    ){
 
-        if(serieId){
 
-            testsDisponibles =
-                testsDisponibles.filter(
-                    test =>
-                        Number(test.serie_id) ===
-                        Number(serieId)
-                );
+        /* =================================================
+           CHARGEMENT DES TESTS
+        ================================================= */
+
+        const {
+            data,
+            error
+        } =
+            await db
+            .from("tests")
+            .select(`
+                id,
+                titre,
+                classe_id,
+                serie_id,
+                subject_id,
+                niveau,
+                actif
+            `)
+            .eq(
+                "classe_id",
+                Number(niveauId)
+            )
+            .eq(
+                "actif",
+                true
+            )
+            .order(
+                "id",
+                {
+                    ascending:true
+                }
+            );
+
+
+        if(error){
+
+            console.error(error);
+
+            message.innerHTML =
+                `
+                <div class="message error">
+
+                    Impossible de charger les tests.
+
+                    <br><br>
+
+                    ${echapperHTML(
+                        error.message
+                    )}
+
+                </div>
+                `;
+
+            return;
+
+        }
+
+
+        testsDisponibles =
+            data || [];
+
+
+
+        /*
+           Pour 2nde, 1ère et Terminale :
+           on garde les tests de la série choisie.
+
+           Pour les autres niveaux :
+           on garde les tests sans série.
+        */
+
+        if(
+            Number(niveauId) === 6 ||
+            Number(niveauId) === 7 ||
+            Number(niveauId) === 8
+        ){
+
+            if(serieId){
+
+                testsDisponibles =
+                    testsDisponibles.filter(
+                        test =>
+                            Number(
+                                test.serie_id
+                            ) ===
+                            Number(
+                                serieId
+                            )
+                    );
+
+            }else{
+
+                testsDisponibles =
+                    testsDisponibles.filter(
+                        test =>
+                            test.serie_id === null
+                    );
+
+            }
 
         }else{
 
@@ -549,66 +854,105 @@ async function chargerTests(){
 
         }
 
-    }else{
+
+
+        /*
+           Une seule épreuve par matière.
+        */
+
+        const map =
+            new Map();
+
+
+        testsDisponibles.forEach(
+            test => {
+
+                const subjectId =
+                    Number(
+                        test.subject_id
+                    );
+
+
+                if(
+                    subjectId &&
+                    !map.has(subjectId)
+                ){
+
+                    map.set(
+                        subjectId,
+                        test
+                    );
+
+                }
+
+            }
+        );
+
 
         testsDisponibles =
-            testsDisponibles.filter(
-                test =>
-                    test.serie_id === null
+            Array.from(
+                map.values()
             );
 
-    }
 
-
-    /*
-       Une seule épreuve par matière.
-    */
-
-    const map =
-        new Map();
-
-
-    testsDisponibles.forEach(test => {
-
-        const subjectId =
-            Number(test.subject_id);
 
         if(
-            subjectId &&
-            !map.has(subjectId)
+            testsDisponibles.length < 3
         ){
 
-            map.set(subjectId,test);
+            message.innerHTML =
+                `
+                <div class="message error">
+
+                    Pas assez de matières disponibles
+                    pour ce niveau et cette série.
+
+                    <br><br>
+
+                    Matières disponibles :
+                    ${testsDisponibles.length}
+
+                </div>
+                `;
+
+            return;
 
         }
 
-    });
+
+        await chargerNomsMatieres();
+
+        afficherChoixMatieres();
 
 
-    testsDisponibles =
-        Array.from(map.values());
+    }catch(error){
 
+        console.error(
+            "Erreur chargerTests :",
+            error
+        );
 
-    if(testsDisponibles.length < 3){
 
         message.innerHTML =
-            `<div class="message error">
-                Pas assez de matières disponibles
-                pour ce niveau et cette série.
-                <br><br>
-                Matières disponibles :
-                ${testsDisponibles.length}
-            </div>`;
+            `
+            <div class="message error">
 
-        return;
+                Une erreur est survenue
+                lors de la vérification du code.
+
+                <br><br>
+
+                ${echapperHTML(
+                    error.message
+                )}
+
+            </div>
+            `;
+
     }
 
-
-    await chargerNomsMatieres();
-
-    afficherChoixMatieres();
-
 }
+
 
 
 /* =========================================================
@@ -621,47 +965,75 @@ async function chargerNomsMatieres(){
         [
             ...new Set(
                 testsDisponibles
-                    .map(test =>
-                        Number(test.subject_id)
+                    .map(
+                        test =>
+                            Number(
+                                test.subject_id
+                            )
                     )
                     .filter(Boolean)
             )
         ];
 
 
-    if(ids.length === 0){
+    if(
+        ids.length === 0
+    ){
+
         matieres = [];
+
         return;
+
     }
 
 
-    const { data, error } =
+    const {
+        data,
+        error
+    } =
         await db
         .from("subjects")
-        .select("id,nom")
-        .in("id",ids);
+        .select(
+            "id,nom"
+        )
+        .in(
+            "id",
+            ids
+        );
 
 
     if(error){
 
         console.error(error);
 
+
         document.getElementById(
             "messageMatieres"
         ).innerHTML =
-            `<div class="message error">
-                Impossible de charger les matières.
-                <br><br>
-                ${echapperHTML(error.message)}
-            </div>`;
+            `
+            <div class="message error">
 
-        return;
+                Impossible de charger les matières.
+
+                <br><br>
+
+                ${echapperHTML(
+                    error.message
+                )}
+
+            </div>
+            `;
+
+        throw error;
+
     }
 
 
-    matieres = data || [];
+    matieres =
+        data || [];
 
 }
+
 
 
 /* =========================================================
@@ -671,70 +1043,100 @@ async function chargerNomsMatieres(){
 function afficherChoixMatieres(){
 
     const container =
-        document.getElementById("listeMatieres");
+        document.getElementById(
+            "listeMatieres"
+        );
 
 
     container.innerHTML = "";
 
 
-    testsDisponibles.forEach(test => {
+    testsDisponibles.forEach(
+        test => {
 
-        const matiere =
-            matieres.find(
-                m =>
-                    Number(m.id) ===
-                    Number(test.subject_id)
+            const matiere =
+                matieres.find(
+                    m =>
+                        Number(m.id) ===
+                        Number(
+                            test.subject_id
+                        )
+                );
+
+
+            if(!matiere){
+
+                return;
+
+            }
+
+
+            const div =
+                document.createElement(
+                    "label"
+                );
+
+
+            div.className =
+                "subject";
+
+
+            div.innerHTML =
+                `
+                <input
+                    type="checkbox"
+                    value="${test.id}"
+                    class="matiereCheck"
+                >
+
+                <strong>
+                    ${echapperHTML(
+                        matiere.nom
+                    )}
+                </strong>
+                `;
+
+
+            container.appendChild(
+                div
             );
 
-
-        if(!matiere){
-            return;
         }
+    );
 
-
-        const div =
-            document.createElement("label");
-
-        div.className = "subject";
-
-
-        div.innerHTML = `
-            <input
-                type="checkbox"
-                value="${test.id}"
-                class="matiereCheck"
-            >
-            <strong>
-                ${echapperHTML(matiere.nom)}
-            </strong>
-        `;
-
-
-        container.appendChild(div);
-
-    });
 
 
     document
-        .querySelectorAll(".matiereCheck")
-        .forEach(check => {
+        .querySelectorAll(
+            ".matiereCheck"
+        )
+        .forEach(
+            check => {
 
-            check.addEventListener(
-                "change",
-                gererSelectionMatieres
-            );
+                check.addEventListener(
+                    "change",
+                    gererSelectionMatieres
+                );
 
-        });
+            }
+        );
+
 
 
     document.getElementById(
         "messageMatieres"
     ).innerHTML =
-        `<div class="message">
-            Sélectionnez exactement 3 matières.
-        </div>`;
+        `
+        <div class="message">
+
+            Sélectionnez exactement
+            3 matières.
+
+        </div>
+        `;
 
 }
+
 
 
 /* =========================================================
@@ -751,68 +1153,115 @@ function gererSelectionMatieres(){
         );
 
 
-    if(checks.length > 3){
+    if(
+        checks.length > 3
+    ){
 
-        this.checked = false;
+        this.checked =
+            false;
+
 
         document.getElementById(
             "messageMatieres"
         ).innerHTML =
-            `<div class="message warning">
+            `
+            <div class="message warning">
+
                 Vous pouvez sélectionner seulement
                 3 matières.
-            </div>`;
+
+            </div>
+            `;
 
         return;
+
     }
 
 
+
     document
-        .querySelectorAll(".subject")
-        .forEach(box => {
+        .querySelectorAll(
+            ".subject"
+        )
+        .forEach(
+            box => {
 
-            const input =
-                box.querySelector("input");
+                const input =
+                    box.querySelector(
+                        "input"
+                    );
 
-            if(input.checked){
-                box.classList.add("selected");
-            }else{
-                box.classList.remove("selected");
+
+                if(
+                    input.checked
+                ){
+
+                    box.classList.add(
+                        "selected"
+                    );
+
+                }else{
+
+                    box.classList.remove(
+                        "selected"
+                    );
+
+                }
+
             }
+        );
 
-        });
 
 
     const startButton =
-        document.getElementById("startButton");
+        document.getElementById(
+            "startButton"
+        );
 
 
-    if(checks.length === 3){
 
-        startButton.disabled = false;
+    if(
+        checks.length === 3
+    ){
+
+        startButton.disabled =
+            false;
+
 
         document.getElementById(
             "messageMatieres"
         ).innerHTML =
-            `<div class="message success">
+            `
+            <div class="message success">
+
                 3 matières sélectionnées.
                 Vous pouvez commencer.
-            </div>`;
+
+            </div>
+            `;
 
     }else{
 
-        startButton.disabled = true;
+        startButton.disabled =
+            true;
+
 
         document.getElementById(
             "messageMatieres"
         ).innerHTML =
-            `<div class="message warning">
-                ${checks.length}/3 matière(s) sélectionnée(s).
-            </div>`;
+            `
+            <div class="message warning">
+
+                ${checks.length}/3
+                matière(s) sélectionnée(s).
+
+            </div>
+            `;
 
     }
 
 }
+
 
 
 /* =========================================================
@@ -820,52 +1269,152 @@ function gererSelectionMatieres(){
 ========================================================= */
 
 document
-.getElementById("startButton")
-.addEventListener("click", async () => {
-
-    const checks =
-        Array.from(
-            document.querySelectorAll(
-                ".matiereCheck:checked"
-            )
-        );
+    .getElementById(
+        "startButton"
+    )
+    .addEventListener(
+        "click",
+        async () => {
 
 
-    if(checks.length !== 3){
+            /*
+               Empêcher le double clic.
+            */
 
-        alert(
-            "Vous devez sélectionner exactement 3 matières."
-        );
+            if(
+                demarrageEnCours
+            ){
 
-        return;
-    }
+                return;
 
-
-    testsSelectionnes =
-        checks.map(check => {
-
-            return testsDisponibles.find(
-                test =>
-                    Number(test.id) ===
-                    Number(check.value)
-            );
-
-        }).filter(Boolean);
+            }
 
 
-    document.getElementById(
-        "choixMatieres"
-    ).classList.add("hidden");
+            const checks =
+                Array.from(
+                    document.querySelectorAll(
+                        ".matiereCheck:checked"
+                    )
+                );
 
 
-    document.getElementById(
-        "zoneTest"
-    ).classList.remove("hidden");
+            if(
+                checks.length !== 3
+            ){
+
+                alert(
+                    "Vous devez sélectionner exactement 3 matières."
+                );
+
+                return;
+
+            }
 
 
-    await preparerTest();
+            demarrageEnCours =
+                true;
 
-});
+
+            const bouton =
+                document.getElementById(
+                    "startButton"
+                );
+
+
+            bouton.disabled =
+                true;
+
+
+            try{
+
+                /*
+                   Deuxième vérification juste avant
+                   la création de l attempt.
+
+                   Cela évite qu'un autre démarrage
+                   ait utilisé le code entre-temps.
+                */
+
+                const codeDejaUtilise =
+                    await verifierCodeDejaUtilise();
+
+
+                if(
+                    codeDejaUtilise
+                ){
+
+                    alert(
+                        "Ce code a déjà été utilisé pour un test."
+                    );
+
+                    return;
+
+                }
+
+
+
+                testsSelectionnes =
+                    checks
+                    .map(
+                        check => {
+
+                            return testsDisponibles.find(
+                                test =>
+                                    Number(
+                                        test.id
+                                    ) ===
+                                    Number(
+                                        check.value
+                                    )
+                            );
+
+                        }
+                    )
+                    .filter(Boolean);
+
+
+
+                if(
+                    testsSelectionnes.length !== 3
+                ){
+
+                    alert(
+                        "Impossible de déterminer les 3 tests sélectionnés."
+                    );
+
+                    return;
+
+                }
+
+
+
+                await preparerTest();
+
+
+            }catch(error){
+
+                console.error(
+                    "Erreur démarrage :",
+                    error
+                );
+
+
+                alert(
+                    "Impossible de démarrer le test : " +
+                    error.message
+                );
+
+
+            }finally{
+
+                demarrageEnCours =
+                    false;
+
+            }
+
+        }
+    );
+
 
 
 /* =========================================================
@@ -878,16 +1427,33 @@ async function preparerTest(){
 
         await chargerQuestionsDesTroisTests();
 
-        if(questions.length === 0){
+
+        if(
+            questions.length === 0
+        ){
 
             alert(
                 "Aucune question disponible pour les matières sélectionnées."
             );
 
-            window.location.reload();
+            document.getElementById(
+                "choixMatieres"
+            ).classList.remove(
+                "hidden"
+            );
+
+
+            document.getElementById(
+                "zoneTest"
+            ).classList.add(
+                "hidden"
+            );
+
 
             return;
+
         }
+
 
 
         /*
@@ -902,48 +1468,85 @@ async function preparerTest(){
             testsSelectionnes[0];
 
 
+
         const nouvelAttemptId =
             crypto.randomUUID();
 
 
-        const { error } =
+
+        const {
+            error
+        } =
             await db
             .from("attempts")
             .insert({
 
-                id: nouvelAttemptId,
+                id:
+                    nouvelAttemptId,
 
-                student_id: studentId,
+                student_id:
+                    studentId,
 
-                test_id: Number(
-                    premierTest.id
-                ),
+                test_id:
+                    Number(
+                        premierTest.id
+                    ),
 
-                access_code_id: codeId,
+                access_code_id:
+                    codeId,
 
                 commence_at:
                     new Date().toISOString(),
 
-                termine: false
+                termine:
+                    false
 
             });
 
 
+
         if(error){
 
-            console.error(error);
-
-            alert(
-                "Impossible de démarrer le test : " +
-                error.message
+            console.error(
+                "Erreur création attempt :",
+                error
             );
 
+
+            /*
+               23505 = violation d'une contrainte unique.
+
+               Ici, cela signifie que le code est déjà
+               associé à une tentative.
+            */
+
+            if(
+                error.code === "23505"
+            ){
+
+                alert(
+                    "Ce code a déjà été utilisé pour un test. Vous ne pouvez pas passer un autre test avec ce code."
+                );
+
+            }else{
+
+                alert(
+                    "Impossible de démarrer le test : " +
+                    error.message
+                );
+
+            }
+
+
             return;
+
         }
+
 
 
         attemptId =
             nouvelAttemptId;
+
 
 
         localStorage.setItem(
@@ -952,23 +1555,48 @@ async function preparerTest(){
         );
 
 
+
         localStorage.setItem(
             "skillora_test_ids",
             JSON.stringify(
                 testsSelectionnes.map(
-                    test => Number(test.id)
+                    test =>
+                        Number(
+                            test.id
+                        )
                 )
             )
         );
+
+
+
+        document.getElementById(
+            "choixMatieres"
+        ).classList.add(
+            "hidden"
+        );
+
+
+        document.getElementById(
+            "zoneTest"
+        ).classList.remove(
+            "hidden"
+        );
+
 
 
         afficherQuestions();
 
         demarrerChronometre();
 
+
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Erreur preparerTest :",
+            error
+        );
+
 
         alert(
             "Une erreur est survenue lors du démarrage du test."
@@ -977,6 +1605,7 @@ async function preparerTest(){
     }
 
 }
+
 
 
 /* =========================================================
@@ -992,7 +1621,10 @@ async function chargerQuestionsDesTroisTests(){
         const test of testsSelectionnes
     ){
 
-        const { data, error } =
+        const {
+            data,
+            error
+        } =
             await db
             .from("questions")
             .select(`
@@ -1008,11 +1640,15 @@ async function chargerQuestionsDesTroisTests(){
             `)
             .eq(
                 "test_id",
-                Number(test.id)
+                Number(
+                    test.id
+                )
             )
             .order(
                 "ordre",
-                {ascending:true}
+                {
+                    ascending:true
+                }
             );
 
 
@@ -1024,34 +1660,44 @@ async function chargerQuestionsDesTroisTests(){
                 error
             );
 
-            continue;
+            throw error;
+
         }
+
 
 
         const matiere =
             matieres.find(
                 m =>
-                    Number(m.id) ===
-                    Number(test.subject_id)
+                    Number(
+                        m.id
+                    ) ===
+                    Number(
+                        test.subject_id
+                    )
             );
 
 
-        (data || []).forEach(q => {
 
-            questions.push({
+        (data || []).forEach(
+            q => {
 
-                ...q,
+                questions.push({
 
-                matiere:
-                    matiere
-                    ? matiere.nom
-                    : "Matière"
+                    ...q,
 
-            });
+                    matiere:
+                        matiere
+                        ? matiere.nom
+                        : "Matière"
 
-        });
+                });
+
+            }
+        );
 
     }
+
 
 
     /*
@@ -1059,14 +1705,19 @@ async function chargerQuestionsDesTroisTests(){
     */
 
     for(
-        let i = questions.length - 1;
+        let i =
+            questions.length - 1;
+
         i > 0;
+
         i--
     ){
 
         const j =
             Math.floor(
-                Math.random() * (i + 1)
+                Math.random()
+                *
+                (i + 1)
             );
 
 
@@ -1084,6 +1735,7 @@ async function chargerQuestionsDesTroisTests(){
 }
 
 
+
 /* =========================================================
    AFFICHER QUESTIONS
 ========================================================= */
@@ -1099,69 +1751,117 @@ function afficherQuestions(){
     container.innerHTML = "";
 
 
+
     questions.forEach(
         (q,index) => {
 
+
             const questionDiv =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             questionDiv.className =
                 "question";
 
 
-            questionDiv.innerHTML = `
+
+            questionDiv.innerHTML =
+                `
 
                 <div class="question-number">
-                    Question ${index + 1}
-                    / ${questions.length}
+
+                    Question
+                    ${index + 1}
+                    /
+                    ${questions.length}
+
                 </div>
+
 
                 <div class="matiere">
-                    ${echapperHTML(q.matiere)}
+
+                    ${echapperHTML(
+                        q.matiere
+                    )}
+
                 </div>
 
+
                 <h3>
-                    ${echapperHTML(q.question)}
+
+                    ${echapperHTML(
+                        q.question
+                    )}
+
                 </h3>
 
+
                 <label class="option">
+
                     <input
                         type="radio"
                         name="question_${q.id}"
                         value="A"
                     >
-                    A. ${echapperHTML(q.option_a)}
+
+                    A.
+                    ${echapperHTML(
+                        q.option_a
+                    )}
+
                 </label>
 
+
                 <label class="option">
+
                     <input
                         type="radio"
                         name="question_${q.id}"
                         value="B"
                     >
-                    B. ${echapperHTML(q.option_b)}
+
+                    B.
+                    ${echapperHTML(
+                        q.option_b
+                    )}
+
                 </label>
 
+
                 <label class="option">
+
                     <input
                         type="radio"
                         name="question_${q.id}"
                         value="C"
                     >
-                    C. ${echapperHTML(q.option_c)}
+
+                    C.
+                    ${echapperHTML(
+                        q.option_c
+                    )}
+
                 </label>
 
+
                 <label class="option">
+
                     <input
                         type="radio"
                         name="question_${q.id}"
                         value="D"
                     >
-                    D. ${echapperHTML(q.option_d)}
+
+                    D.
+                    ${echapperHTML(
+                        q.option_d
+                    )}
+
                 </label>
 
-            `;
+                `;
 
 
             container.appendChild(
@@ -1172,9 +1872,11 @@ function afficherQuestions(){
     );
 
 
+
     mettreAJourProgression();
 
 }
+
 
 
 /* =========================================================
@@ -1187,23 +1889,34 @@ function mettreAJourProgression(){
         questions.length;
 
 
-    if(total === 0){
+    if(
+        total === 0
+    ){
+
         return;
+
     }
 
 
     const repondu =
-        questions.filter(q => {
+        questions.filter(
+            q => {
 
-            return document.querySelector(
-                `input[name="question_${q.id}"]:checked`
-            );
+                return document.querySelector(
+                    `input[name="question_${q.id}"]:checked`
+                );
 
-        }).length;
+            }
+        ).length;
 
 
     const pourcentage =
-        (repondu / total) * 100;
+        (
+            repondu /
+            total
+        )
+        *
+        100;
 
 
     document.getElementById(
@@ -1212,6 +1925,7 @@ function mettreAJourProgression(){
         pourcentage + "%";
 
 }
+
 
 
 /* =========================================================
@@ -1236,6 +1950,7 @@ document.addEventListener(
 );
 
 
+
 /* =========================================================
    CHRONOMÈTRE
 ========================================================= */
@@ -1246,30 +1961,36 @@ function demarrerChronometre(){
 
 
     timerInterval =
-        setInterval(() => {
+        setInterval(
+            () => {
 
-            tempsRestant--;
-
-
-            afficherTemps();
+                tempsRestant--;
 
 
-            if(
-                tempsRestant <= 0
-            ){
-
-                clearInterval(
-                    timerInterval
-                );
+                afficherTemps();
 
 
-                terminerTest(true);
+                if(
+                    tempsRestant <= 0
+                ){
 
-            }
+                    clearInterval(
+                        timerInterval
+                    );
 
-        },1000);
+
+                    terminerTest(
+                        true
+                    );
+
+                }
+
+            },
+            1000
+        );
 
 }
+
 
 
 /* =========================================================
@@ -1280,20 +2001,32 @@ function afficherTemps(){
 
     const minutes =
         Math.floor(
-            tempsRestant / 60
+            tempsRestant /
+            60
         );
 
 
     const secondes =
-        tempsRestant % 60;
+        tempsRestant %
+        60;
 
 
     const affichage =
-        String(minutes).padStart(2,"0")
+        String(
+            minutes
+        ).padStart(
+            2,
+            "0"
+        )
         +
         ":"
         +
-        String(secondes).padStart(2,"0");
+        String(
+            secondes
+        ).padStart(
+            2,
+            "0"
+        );
 
 
     const timer =
@@ -1319,36 +2052,64 @@ function afficherTemps(){
 }
 
 
+
 /* =========================================================
    BOUTON TERMINER
 ========================================================= */
 
 document
-.getElementById("terminerButton")
-.addEventListener(
-    "click",
-    () => {
+    .getElementById(
+        "terminerButton"
+    )
+    .addEventListener(
+        "click",
+        () => {
 
-        terminerTest(false);
+            terminerTest(
+                false
+            );
 
-    }
-);
+        }
+    );
+
 
 
 /* =========================================================
    TERMINER LE TEST
 ========================================================= */
 
-async function terminerTest(tempsEcoule){
+async function terminerTest(
+    tempsEcoule
+){
 
-    if(!attemptId){
+    /*
+       Empêcher une deuxième validation.
+    */
+
+    if(
+        validationEnCours
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        !attemptId
+    ){
 
         alert(
             "Session du test introuvable."
         );
 
         return;
+
     }
+
+
+    validationEnCours =
+        true;
 
 
     const bouton =
@@ -1357,10 +2118,13 @@ async function terminerTest(tempsEcoule){
         );
 
 
-    bouton.disabled = true;
+    bouton.disabled =
+        true;
 
 
-    if(timerInterval){
+    if(
+        timerInterval
+    ){
 
         clearInterval(
             timerInterval
@@ -1369,353 +2133,529 @@ async function terminerTest(tempsEcoule){
     }
 
 
-    /*
-       Empêcher plusieurs validations.
-    */
 
-    const reponses = [];
+    try{
 
 
-    for(
-        const q of questions
-    ){
+        /* =================================================
+           RÉCUPÉRER LES RÉPONSES
+        ================================================= */
 
-        const choix =
-            document.querySelector(
-                `input[name="question_${q.id}"]:checked`
-            );
-
-
-        const reponse =
-            choix
-            ? choix.value
-            : null;
-
-
-        reponses.push({
-
-            question_id:
-                Number(q.id),
-
-            reponse:
-                reponse
-
-        });
-
-    }
-
-
-    /*
-       Charger les bonnes réponses uniquement
-       au moment de la correction.
-    */
-
-    let scoreTotal = 0;
-
-    let pointsTotal = 0;
-
-
-    for(
-        const test of testsSelectionnes
-    ){
-
-        const questionsTest =
-            questions.filter(
-                q =>
-                    Number(q.test_id) ===
-                    Number(test.id)
-            );
-
-
-        if(
-            questionsTest.length === 0
-        ){
-            continue;
-        }
-
-
-        const questionIds =
-            questionsTest.map(
-                q => Number(q.id)
-            );
-
-
-        const { data, error } =
-            await db
-            .from("questions")
-            .select(`
-                id,
-                bonne_reponse,
-                points
-            `)
-            .in(
-                "id",
-                questionIds
-            );
-
-
-        if(error){
-
-            console.error(error);
-
-            bouton.disabled = false;
-
-            alert(
-                "Erreur pendant la correction : " +
-                error.message
-            );
-
-            return;
-        }
-
-
-        const corrections =
-            data || [];
+        const reponses = [];
 
 
         for(
-            const correction of corrections
+            const q of questions
         ){
 
-            const reponseEleve =
-                reponses.find(
-                    r =>
-                        Number(r.question_id) ===
-                        Number(correction.id)
+            const choix =
+                document.querySelector(
+                    `input[name="question_${q.id}"]:checked`
                 );
 
 
-            const estCorrect =
-                reponseEleve &&
-                reponseEleve.reponse &&
-                String(
-                    reponseEleve.reponse
-                ).toUpperCase() ===
-                String(
-                    correction.bonne_reponse
-                ).toUpperCase();
+            const reponse =
+                choix
+                ? choix.value
+                : null;
 
 
-            const points =
-                Number(
-                    correction.points || 0
-                );
-
-
-            pointsTotal += points;
-
-
-            if(estCorrect){
-
-                scoreTotal += points;
-
-            }
-
-
-            await db
-            .from("answers")
-            .insert({
-
-                attempt_id:
-                    attemptId,
+            reponses.push({
 
                 question_id:
-                    Number(correction.id),
+                    Number(
+                        q.id
+                    ),
 
                 reponse:
-                    reponseEleve
-                    ? reponseEleve.reponse
-                    : null,
-
-                est_correct:
-                    !!estCorrect,
-
-                points_obtenus:
-                    estCorrect
-                    ? points
-                    : 0
+                    reponse
 
             });
 
         }
 
-    }
 
 
-    /*
-       Marquer l attempt terminé.
-    */
+        /* =================================================
+           CORRECTION
+        ================================================= */
 
-    const { error: updateError } =
-        await db
-        .from("attempts")
-        .update({
+        let scoreTotal = 0;
 
-            termine: true,
-
-            termine_at:
-                new Date().toISOString()
-
-        })
-        .eq(
-            "id",
-            attemptId
-        );
+        let pointsTotal = 0;
 
 
-    if(updateError){
+        for(
+            const test of testsSelectionnes
+        ){
 
-        console.error(
-            updateError
-        );
-
-        bouton.disabled = false;
-
-        alert(
-            "Le test a été corrigé mais la session n'a pas pu être clôturée : " +
-            updateError.message
-        );
-
-        return;
-    }
-
-
-    /*
-       Calcul de la note sur 20.
-    */
-
-    let note = 0;
+            const questionsTest =
+                questions.filter(
+                    q =>
+                        Number(
+                            q.test_id
+                        ) ===
+                        Number(
+                            test.id
+                        )
+                );
 
 
-    if(pointsTotal > 0){
+            if(
+                questionsTest.length === 0
+            ){
+
+                continue;
+
+            }
+
+
+            const questionIds =
+                questionsTest.map(
+                    q =>
+                        Number(
+                            q.id
+                        )
+                );
+
+
+            const {
+                data,
+                error
+            } =
+                await db
+                .from("questions")
+                .select(`
+                    id,
+                    bonne_reponse,
+                    points
+                `)
+                .in(
+                    "id",
+                    questionIds
+                );
+
+
+            if(error){
+
+                console.error(
+                    error
+                );
+
+                throw new Error(
+                    "Erreur pendant la correction : " +
+                    error.message
+                );
+
+            }
+
+
+            const corrections =
+                data || [];
+
+
+            for(
+                const correction of corrections
+            ){
+
+                const reponseEleve =
+                    reponses.find(
+                        r =>
+                            Number(
+                                r.question_id
+                            ) ===
+                            Number(
+                                correction.id
+                            )
+                    );
+
+
+                const estCorrect =
+                    reponseEleve &&
+                    reponseEleve.reponse &&
+                    String(
+                        reponseEleve.reponse
+                    ).toUpperCase() ===
+                    String(
+                        correction.bonne_reponse
+                    ).toUpperCase();
+
+
+                const points =
+                    Number(
+                        correction.points || 0
+                    );
+
+
+                pointsTotal +=
+                    points;
+
+
+                if(
+                    estCorrect
+                ){
+
+                    scoreTotal +=
+                        points;
+
+                }
+
+
+
+                const {
+                    error: answerError
+                } =
+                    await db
+                    .from("answers")
+                    .insert({
+
+                        attempt_id:
+                            attemptId,
+
+                        question_id:
+                            Number(
+                                correction.id
+                            ),
+
+                        reponse:
+                            reponseEleve
+                            ? reponseEleve.reponse
+                            : null,
+
+                        est_correct:
+                            !!estCorrect,
+
+                        points_obtenus:
+                            estCorrect
+                            ? points
+                            : 0
+
+                    });
+
+
+
+                if(answerError){
+
+                    console.error(
+                        "Erreur réponse :",
+                        answerError
+                    );
+
+
+                    throw new Error(
+                        "Impossible d'enregistrer une réponse : " +
+                        answerError.message
+                    );
+
+                }
+
+            }
+
+        }
+
+
+
+        /* =================================================
+           MARQUER L'ATTEMPT TERMINÉ
+        ================================================= */
+
+        const {
+            error: updateError
+        } =
+            await db
+            .from("attempts")
+            .update({
+
+                termine:
+                    true,
+
+                termine_at:
+                    new Date().toISOString()
+
+            })
+            .eq(
+                "id",
+                attemptId
+            )
+            .eq(
+                "student_id",
+                studentId
+            );
+
+
+        if(updateError){
+
+            console.error(
+                "Erreur fermeture attempt :",
+                updateError
+            );
+
+
+            throw new Error(
+                "La session n'a pas pu être clôturée : " +
+                updateError.message
+            );
+
+        }
+
+
+
+        /*
+           Vérification supplémentaire.
+
+           On relit la tentative pour confirmer
+           qu'elle est réellement terminée.
+        */
+
+        const {
+            data: attemptVerifie,
+            error: verificationError
+        } =
+            await db
+            .from("attempts")
+            .select(
+                "id,termine,termine_at"
+            )
+            .eq(
+                "id",
+                attemptId
+            )
+            .eq(
+                "student_id",
+                studentId
+            )
+            .maybeSingle();
+
+
+        if(verificationError){
+
+            console.error(
+                verificationError
+            );
+
+            throw new Error(
+                "Impossible de vérifier la fermeture de la session."
+            );
+
+        }
+
+
+        if(
+            !attemptVerifie ||
+            attemptVerifie.termine !== true
+        ){
+
+            throw new Error(
+                "La session du test n'est pas correctement clôturée."
+            );
+
+        }
+
+
+
+        /* =================================================
+           CALCUL NOTE /20
+        ================================================= */
+
+        let note = 0;
+
+
+        if(
+            pointsTotal > 0
+        ){
+
+            note =
+                (
+                    scoreTotal /
+                    pointsTotal
+                )
+                *
+                20;
+
+        }
+
 
         note =
-            (scoreTotal / pointsTotal) * 20;
-
-    }
-
-
-    note =
-        Math.round(
-            note * 100
-        ) / 100;
+            Math.round(
+                note * 100
+            )
+            /
+            100;
 
 
-    /*
-       Détermination du groupe.
-    */
 
-    let groupe = "";
+        /* =================================================
+           GROUPE
+        ================================================= */
 
-    if(note >= 16){
-
-        groupe =
-            "Groupe Étoile";
-
-    }else if(note >= 10){
-
-        groupe =
-            "Groupe Intermédiaire";
-
-    }else{
-
-        groupe =
-            "Non retenu";
-
-    }
+        let groupe = "";
 
 
-    /*
-       Créer le résultat.
-    */
+        if(
+            note >= 16
+        ){
 
-    const { error: resultError } =
-        await db
-        .from("results")
-        .insert({
+            groupe =
+                "Groupe Étoile";
 
-            attempt_id:
-                attemptId,
+        }else if(
+            note >= 10
+        ){
 
-            score:
-                scoreTotal,
+            groupe =
+                "Groupe Intermédiaire";
 
-            total:
-                pointsTotal,
+        }else{
 
-            note:
-                note,
+            groupe =
+                "Non retenu";
 
-            classe_resultat:
-                niveau,
-
-            niveau_estime:
-                groupe,
-
-            points_forts:
-                "",
-
-            points_faibles:
-                "",
-
-            recommandations:
-                groupe === "Groupe Étoile"
-                ? "Excellent résultat."
-                : groupe === "Groupe Intermédiaire"
-                ? "Résultat satisfaisant. Continuez vos efforts."
-                : "Des révisions supplémentaires sont recommandées."
-
-        });
+        }
 
 
-    if(resultError){
+
+        /* =================================================
+           CRÉER LE RÉSULTAT
+        ================================================= */
+
+        const {
+            error: resultError
+        } =
+            await db
+            .from("results")
+            .insert({
+
+                attempt_id:
+                    attemptId,
+
+                score:
+                    scoreTotal,
+
+                total:
+                    pointsTotal,
+
+                note:
+                    note,
+
+                classe_resultat:
+                    niveau,
+
+                niveau_estime:
+                    groupe,
+
+                points_forts:
+                    "",
+
+                points_faibles:
+                    "",
+
+                recommandations:
+
+                    groupe ===
+                    "Groupe Étoile"
+
+                    ? "Excellent résultat."
+
+                    :
+
+                    groupe ===
+                    "Groupe Intermédiaire"
+
+                    ? "Résultat satisfaisant. Continuez vos efforts."
+
+                    :
+
+                    "Des révisions supplémentaires sont recommandées."
+
+            });
+
+
+
+        if(resultError){
+
+            console.error(
+                "Erreur résultat :",
+                resultError
+            );
+
+
+            throw new Error(
+                "Le test est terminé, mais le résultat n'a pas pu être enregistré : " +
+                resultError.message
+            );
+
+        }
+
+
+
+        /* =================================================
+           STOCKAGE POUR RESULTAT.HTML
+        ================================================= */
+
+        localStorage.setItem(
+            "skillora_note",
+            String(
+                note
+            )
+        );
+
+
+        localStorage.setItem(
+            "skillora_score",
+            String(
+                scoreTotal
+            )
+        );
+
+
+        localStorage.setItem(
+            "skillora_total",
+            String(
+                pointsTotal
+            )
+        );
+
+
+        localStorage.setItem(
+            "skillora_groupe",
+            groupe
+        );
+
+
+
+        /* =================================================
+           REDIRECTION
+        ================================================= */
+
+        window.location.href =
+            "resultat.html";
+
+
+    }catch(error){
 
         console.error(
-            resultError
+            "Erreur terminerTest :",
+            error
         );
+
+
+        bouton.disabled =
+            false;
+
+
+        validationEnCours =
+            false;
+
 
         alert(
-            "Le test est terminé, mais le résultat n'a pas pu être enregistré : " +
-            resultError.message
+            error.message ||
+            "Une erreur est survenue pendant la validation du test."
         );
 
-        return;
     }
 
-
-    /*
-       Stockage temporaire pour la page résultat.
-    */
-
-    localStorage.setItem(
-        "skillora_note",
-        String(note)
-    );
-
-    localStorage.setItem(
-        "skillora_score",
-        String(scoreTotal)
-    );
-
-    localStorage.setItem(
-        "skillora_total",
-        String(pointsTotal)
-    );
-
-    localStorage.setItem(
-        "skillora_groupe",
-        groupe
-    );
-
-
-    /*
-       Redirection.
-    */
-
-    window.location.href =
-        "resultat.html";
-
 }
+
 
 
 /* =========================================================
@@ -1727,4 +2667,5 @@ chargerTests();
 </script>
 
 </body>
+
 </html>
