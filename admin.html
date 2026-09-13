@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -15,108 +16,210 @@
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
+
+/* =========================================================
+   BODY
+========================================================= */
+
 body{
-
     font-family:Arial,sans-serif;
-
     background:#050505;
-
     color:#fff;
-
     min-height:100vh;
 }
 
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 header{
-
     background:#080808;
-
     border-bottom:1px solid #c99700;
-
     padding:20px;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     gap:15px;
-
     position:sticky;
-
     top:0;
-
     z-index:10;
 }
 
 .admin-title{
-
     color:#f5c518;
-
     font-size:22px;
-
     font-weight:bold;
 }
 
 .admin-subtitle{
+    color:#aaa;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn{
+    border:none;
+    border-radius:8px;
+    padding:11px 15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-refresh{
+    background:#f5c518;
+    color:#000;
+}
+
+.btn-generate{
+    background:#00c853;
+    color:#fff;
+}
+
+.btn-logout{
+    background:#b00020;
+    color:#fff;
+}
+
+.btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:95%;
+    max-width:1400px;
+    margin:25px auto;
+}
+
+
+/* =========================================================
+   GÉNÉRATEUR DE CODE
+========================================================= */
+
+.code-generator{
+
+    background:#101010;
+
+    border:1px solid #c99700;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    margin-bottom:25px;
+
+    text-align:center;
+
+}
+
+.code-generator h2{
+
+    color:#f5c518;
+
+    font-size:19px;
+
+    margin-bottom:8px;
+
+}
+
+.code-generator p{
 
     color:#aaa;
 
     font-size:13px;
 
-    margin-top:5px;
+    margin-bottom:15px;
+
 }
 
-.header-right{
+.generated-code{
 
-    display:flex;
+    display:none;
 
-    align-items:center;
+    margin-top:18px;
 
-    gap:10px;
+    padding:15px;
+
+    background:#050505;
+
+    border:1px solid #333;
+
+    border-radius:10px;
+
 }
 
-.btn{
+.generated-code-label{
 
-    border:none;
+    color:#aaa;
 
-    border-radius:8px;
+    font-size:12px;
 
-    padding:11px 15px;
+    margin-bottom:8px;
+
+}
+
+.generated-code-value{
+
+    color:#f5c518;
+
+    font-family:monospace;
+
+    font-size:25px;
 
     font-weight:bold;
 
-    cursor:pointer;
+    letter-spacing:2px;
+
+    word-break:break-all;
+
 }
 
-.btn-refresh{
+.copy-btn{
+
+    margin-top:12px;
 
     background:#f5c518;
 
     color:#000;
+
+    border:none;
+
+    border-radius:7px;
+
+    padding:9px 14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
 }
 
-.btn-logout{
 
-    background:#b00020;
-
-    color:#fff;
-}
-
-.container{
-
-    width:95%;
-
-    max-width:1200px;
-
-    margin:25px auto;
-}
+/* =========================================================
+   STATISTIQUES
+========================================================= */
 
 .stats{
 
@@ -128,6 +231,7 @@ header{
     gap:15px;
 
     margin-bottom:25px;
+
 }
 
 .stat{
@@ -141,6 +245,7 @@ header{
     padding:20px;
 
     text-align:center;
+
 }
 
 .stat-number{
@@ -152,6 +257,7 @@ header{
     color:#f5c518;
 
     margin-bottom:8px;
+
 }
 
 .stat-label{
@@ -159,7 +265,13 @@ header{
     color:#aaa;
 
     font-size:14px;
+
 }
+
+
+/* =========================================================
+   RECHERCHE
+========================================================= */
 
 .search-box{
 
@@ -172,6 +284,7 @@ header{
     padding:15px;
 
     margin-bottom:20px;
+
 }
 
 .search-box input{
@@ -189,12 +302,19 @@ header{
     border-radius:8px;
 
     outline:none;
+
 }
 
 .search-box input:focus{
 
     border-color:#f5c518;
+
 }
+
+
+/* =========================================================
+   TABLEAU DESKTOP
+========================================================= */
 
 .table-container{
 
@@ -205,6 +325,7 @@ header{
     border:1px solid #292929;
 
     border-radius:12px;
+
 }
 
 table{
@@ -213,7 +334,8 @@ table{
 
     border-collapse:collapse;
 
-    min-width:900px;
+    min-width:1200px;
+
 }
 
 th{
@@ -229,6 +351,7 @@ th{
     font-size:13px;
 
     border-bottom:1px solid #333;
+
 }
 
 td{
@@ -238,24 +361,207 @@ td{
     border-bottom:1px solid #222;
 
     font-size:13px;
+
 }
 
 tr:hover{
 
     background:#151515;
+
 }
+
+
+/* =========================================================
+   INFORMATIONS
+========================================================= */
 
 .note{
 
     font-weight:bold;
 
     color:#f5c518;
+
 }
 
 .groupe{
 
     font-weight:bold;
+
 }
+
+.code{
+
+    color:#f5c518;
+
+    font-weight:bold;
+
+    font-family:monospace;
+
+}
+
+.code-status{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:11px;
+
+}
+
+.code-used{
+
+    color:#ff7777;
+
+}
+
+.code-free{
+
+    color:#6cff9a;
+
+}
+
+
+/* =========================================================
+   CARTES MOBILE
+========================================================= */
+
+.cards-container{
+
+    display:none;
+
+}
+
+.candidat-card{
+
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+}
+
+.candidat-card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    padding-bottom:14px;
+
+    margin-bottom:14px;
+
+    border-bottom:1px solid #292929;
+
+}
+
+.candidat-name{
+
+    color:#f5c518;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+.candidat-number{
+
+    color:#777;
+
+    font-size:12px;
+
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #1f1f1f;
+
+}
+
+.info-label{
+
+    color:#888;
+
+    font-size:13px;
+
+}
+
+.info-value{
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    text-align:right;
+
+    word-break:break-word;
+
+}
+
+.card-note{
+
+    color:#f5c518;
+
+}
+
+.card-groupe{
+
+    color:#fff;
+
+}
+
+.card-code{
+
+    color:#f5c518;
+
+    font-family:monospace;
+
+}
+
+.card-code-status{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:11px;
+
+    text-align:right;
+
+}
+
+.card-date{
+
+    color:#aaa;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
 
 .loading{
 
@@ -264,6 +570,7 @@ tr:hover{
     padding:40px;
 
     color:#aaa;
+
 }
 
 .message{
@@ -273,7 +580,13 @@ tr:hover{
     padding:30px;
 
     color:#aaa;
+
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
@@ -282,16 +595,127 @@ tr:hover{
         align-items:flex-start;
 
         flex-direction:column;
+
+        padding:18px;
+
+    }
+
+    .admin-title{
+
+        font-size:21px;
+
     }
 
     .header-right{
 
         width:100%;
+
+        display:grid;
+
+        grid-template-columns:
+        1fr 1fr;
+
+        gap:8px;
+
     }
 
-    .btn{
+    .header-right .btn{
 
-        flex:1;
+        width:100%;
+
+    }
+
+    .header-right .btn-generate{
+
+        grid-column:
+        1 / -1;
+
+    }
+
+    .container{
+
+        width:94%;
+
+        margin:20px auto;
+
+    }
+
+    .code-generator{
+
+        padding:18px;
+
+    }
+
+    .generated-code-value{
+
+        font-size:21px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:
+        1fr 1fr;
+
+        gap:10px;
+
+    }
+
+    .stat{
+
+        padding:16px 10px;
+
+    }
+
+    .stat-number{
+
+        font-size:26px;
+
+    }
+
+    .stat-label{
+
+        font-size:12px;
+
+    }
+
+    .table-container{
+
+        display:none;
+
+    }
+
+    .cards-container{
+
+        display:block;
+
+    }
+
+}
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+========================================================= */
+
+@media(max-width:380px){
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .header-right{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .header-right .btn-generate{
+
+        grid-column:auto;
+
     }
 
 }
@@ -300,184 +724,294 @@ tr:hover{
 
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-    <div>
+<div>
 
-        <div class="admin-title">
-            SKILLORA — ADMINISTRATION
-        </div>
-
-        <div class="admin-subtitle">
-            Tableau de bord des candidats
-        </div>
-
+    <div class="admin-title">
+        SKILLORA — ADMINISTRATION
     </div>
 
-    <div class="header-right">
-
-        <button
-            class="btn btn-refresh"
-            onclick="chargerDonnees()"
-        >
-            Actualiser
-        </button>
-
-        <button
-            class="btn btn-logout"
-            onclick="deconnexion()"
-        >
-            Déconnexion
-        </button>
-
+    <div class="admin-subtitle">
+        Tableau de bord des candidats
     </div>
+
+</div>
+
+
+<div class="header-right">
+
+    <button
+        class="btn btn-generate"
+        onclick="genererNouveauCode()"
+    >
+        + Générer un code
+    </button>
+
+
+    <button
+        class="btn btn-refresh"
+        onclick="chargerDonnees()"
+    >
+        Actualiser
+    </button>
+
+
+    <button
+        class="btn btn-logout"
+        onclick="deconnexion()"
+    >
+        Déconnexion
+    </button>
+
+</div>
 
 </header>
 
 
 <div class="container">
 
-    <div class="stats">
 
-        <div class="stat">
+<!-- =====================================================
+     GÉNÉRATION DE CODE
+===================================================== -->
 
-            <div
-                class="stat-number"
-                id="totalCandidats"
-            >
-                0
-            </div>
+<div class="code-generator">
 
-            <div class="stat-label">
-                Candidats
-            </div>
+    <h2>
+        🎟️ Nouveau code d'accès
+    </h2>
 
+    <p>
+        Génère un code unique qui pourra être donné à un nouvel élève.
+    </p>
+
+
+    <button
+        class="btn btn-generate"
+        id="boutonGenererCode"
+        onclick="genererNouveauCode()"
+    >
+        Générer un nouveau code
+    </button>
+
+
+    <div
+        class="generated-code"
+        id="generatedCodeBox"
+    >
+
+        <div class="generated-code-label">
+            Nouveau code disponible
         </div>
 
 
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="totalEtoile"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Groupe Étoile ⭐
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="totalIntermediaire"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Groupe Intermédiaire
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="totalNonRetenu"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Non retenus
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="recherche"
-            placeholder="Rechercher par nom, prénom, niveau, série ou WhatsApp..."
-            oninput="filtrerTableau()"
+        <div
+            class="generated-code-value"
+            id="generatedCode"
         >
+        </div>
 
-    </div>
 
-
-    <div class="table-container">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>#</th>
-
-                    <th>Nom</th>
-
-                    <th>Prénom</th>
-
-                    <th>WhatsApp</th>
-
-                    <th>Niveau</th>
-
-                    <th>Série</th>
-
-                    <th>Note</th>
-
-                    <th>Groupe</th>
-
-                    <th>Date</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="tableau">
-
-                <tr>
-
-                    <td
-                        colspan="9"
-                        class="loading"
-                    >
-                        Chargement...
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
+        <button
+            class="copy-btn"
+            onclick="copierCode()"
+        >
+            Copier le code
+        </button>
 
     </div>
 
 </div>
 
 
+<!-- =====================================================
+     STATISTIQUES
+===================================================== -->
+
+<div class="stats">
+
+
+    <div class="stat">
+
+        <div
+            class="stat-number"
+            id="totalCandidats"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Candidats
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div
+            class="stat-number"
+            id="totalEtoile"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Groupe Étoile ⭐
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div
+            class="stat-number"
+            id="totalIntermediaire"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Groupe Intermédiaire
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div
+            class="stat-number"
+            id="totalNonRetenu"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Non retenus
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     RECHERCHE
+===================================================== -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="recherche"
+        placeholder="Rechercher par nom, prénom, niveau, série, WhatsApp ou code..."
+        oninput="filtrerTableau()"
+    >
+
+</div>
+
+
+<!-- =====================================================
+     TABLEAU DESKTOP
+===================================================== -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>#</th>
+
+    <th>Nom</th>
+
+    <th>Prénom</th>
+
+    <th>WhatsApp</th>
+
+    <th>Niveau</th>
+
+    <th>Série</th>
+
+    <th>Note</th>
+
+    <th>Groupe</th>
+
+    <th>Code</th>
+
+    <th>Date</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="tableau">
+
+<tr>
+
+    <td
+        colspan="10"
+        class="loading"
+    >
+        Chargement...
+    </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- =====================================================
+     CARTES MOBILE
+===================================================== -->
+
+<div
+    class="cards-container"
+    id="cartesCandidats"
+>
+
+    <div class="loading">
+        Chargement...
+    </div>
+
+</div>
+
+
+</div>
+
+
 <script>
+
+
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
     "https://wvwlotoczizpmcllqeyd.supabase.co";
 
+
 const SUPABASE_KEY =
     "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
+
 
 const db =
     supabase.createClient(
@@ -489,9 +1023,9 @@ const db =
 let toutesLesDonnees = [];
 
 
-/* =========================
-   VÉRIFICATION ADMIN
-========================= */
+/* =========================================================
+   VÉRIFICATION ADMINISTRATEUR
+========================================================= */
 
 async function verifierAdministrateur(){
 
@@ -509,6 +1043,7 @@ async function verifierAdministrateur(){
             "admin-login.html";
 
         return false;
+
     }
 
 
@@ -518,16 +1053,18 @@ async function verifierAdministrateur(){
             "admin-login.html";
 
         return false;
+
     }
 
 
     return true;
+
 }
 
 
-/* =========================
+/* =========================================================
    DÉCONNEXION
-========================= */
+========================================================= */
 
 async function deconnexion(){
 
@@ -544,22 +1081,293 @@ async function deconnexion(){
         );
 
         return;
+
     }
 
 
     window.location.href =
         "admin-login.html";
+
 }
 
 
-/* =========================
+/* =========================================================
+   CRÉER UN CODE ALÉATOIRE
+========================================================= */
+
+function creerCodeAleatoire(){
+
+    const caracteres =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+    let partie1 = "";
+
+    let partie2 = "";
+
+
+    for(
+        let i = 0;
+        i < 4;
+        i++
+    ){
+
+        partie1 +=
+            caracteres[
+                Math.floor(
+                    Math.random() *
+                    caracteres.length
+                )
+            ];
+
+    }
+
+
+    for(
+        let i = 0;
+        i < 4;
+        i++
+    ){
+
+        partie2 +=
+            caracteres[
+                Math.floor(
+                    Math.random() *
+                    caracteres.length
+                )
+            ];
+
+    }
+
+
+    return (
+        "SKL-" +
+        partie1 +
+        "-" +
+        partie2
+    );
+
+}
+
+
+/* =========================================================
+   GÉNÉRER UN NOUVEAU CODE
+========================================================= */
+
+async function genererNouveauCode(){
+
+    const bouton =
+        document.getElementById(
+            "boutonGenererCode"
+        );
+
+
+    try{
+
+        bouton.disabled = true;
+
+        bouton.textContent =
+            "Génération...";
+
+
+        let codeGenere = null;
+
+        let succes = false;
+
+
+        /*
+         * On tente plusieurs fois.
+         *
+         * La base possède déjà une contrainte
+         * UNIQUE sur access_codes.code.
+         */
+
+        for(
+            let tentative = 0;
+            tentative < 10;
+            tentative++
+        ){
+
+            const nouveauCode =
+                creerCodeAleatoire();
+
+
+            const {
+                error
+            } = await db
+                .from("access_codes")
+                .insert({
+
+                    code: nouveauCode,
+
+                    test_id: null,
+
+                    student_id: null,
+
+                    utilise: false,
+
+                    session_id: null,
+
+                    date_expiration: null
+
+                });
+
+
+            if(!error){
+
+                codeGenere =
+                    nouveauCode;
+
+                succes = true;
+
+                break;
+
+            }
+
+
+            /*
+             * 23505 = violation de contrainte UNIQUE.
+             *
+             * Dans ce cas, le code existe déjà :
+             * on en génère simplement un autre.
+             */
+
+            if(
+                error.code === "23505"
+            ){
+
+                continue;
+
+            }
+
+
+            throw error;
+
+        }
+
+
+        if(!succes){
+
+            throw new Error(
+                "Impossible de générer un nouveau code unique après plusieurs tentatives."
+            );
+
+        }
+
+
+        document.getElementById(
+            "generatedCode"
+        ).textContent =
+            codeGenere;
+
+
+        document.getElementById(
+            "generatedCodeBox"
+        ).style.display =
+            "block";
+
+
+        alert(
+            "Nouveau code généré :\n\n" +
+            codeGenere
+        );
+
+
+        /*
+         * Actualise le tableau.
+         *
+         * Le nouveau code n'est pas encore
+         * lié à un étudiant, donc il n'apparaîtra
+         * pas dans les lignes des candidats.
+         */
+
+        await chargerDonnees();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        alert(
+            "Impossible de générer le code.\n\n" +
+            error.message
+        );
+
+    }
+    finally{
+
+        bouton.disabled = false;
+
+        bouton.textContent =
+            "Générer un nouveau code";
+
+    }
+
+}
+
+
+/* =========================================================
+   COPIER LE CODE
+========================================================= */
+
+async function copierCode(){
+
+    const code =
+        document.getElementById(
+            "generatedCode"
+        ).textContent.trim();
+
+
+    if(!code){
+
+        return;
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            code
+        );
+
+
+        alert(
+            "Code copié : " +
+            code
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Impossible de copier automatiquement le code."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
    CHARGEMENT DES DONNÉES
-========================= */
+========================================================= */
 
 async function chargerDonnees(){
 
     const tableau =
-        document.getElementById("tableau");
+        document.getElementById(
+            "tableau"
+        );
+
+
+    const cartes =
+        document.getElementById(
+            "cartesCandidats"
+        );
 
 
     tableau.innerHTML = `
@@ -567,7 +1375,7 @@ async function chargerDonnees(){
         <tr>
 
             <td
-                colspan="9"
+                colspan="10"
                 class="loading"
             >
                 Chargement des données...
@@ -578,7 +1386,17 @@ async function chargerDonnees(){
     `;
 
 
+    cartes.innerHTML = `
+
+        <div class="loading">
+            Chargement des données...
+        </div>
+
+    `;
+
+
     try{
+
 
         /* =========================
            ÉTUDIANTS
@@ -601,6 +1419,7 @@ async function chargerDonnees(){
         if(studentsError){
 
             throw studentsError;
+
         }
 
 
@@ -619,6 +1438,7 @@ async function chargerDonnees(){
         if(classesError){
 
             throw classesError;
+
         }
 
 
@@ -637,6 +1457,7 @@ async function chargerDonnees(){
         if(seriesError){
 
             throw seriesError;
+
         }
 
 
@@ -655,6 +1476,7 @@ async function chargerDonnees(){
         if(attemptsError){
 
             throw attemptsError;
+
         }
 
 
@@ -673,6 +1495,33 @@ async function chargerDonnees(){
         if(resultsError){
 
             throw resultsError;
+
+        }
+
+
+        /* =========================
+           CODES
+        ========================= */
+
+        const {
+            data: accessCodes,
+            error: codesError
+        } = await db
+            .from("access_codes")
+            .select(`
+                id,
+                code,
+                student_id,
+                utilise,
+                session_id,
+                date_expiration
+            `);
+
+
+        if(codesError){
+
+            throw codesError;
+
         }
 
 
@@ -684,11 +1533,14 @@ async function chargerDonnees(){
             (students || []).map(
                 student => {
 
+
                     const classe =
                         (classes || []).find(
                             c =>
                                 Number(c.id) ===
-                                Number(student.classe_id)
+                                Number(
+                                    student.classe_id
+                                )
                         );
 
 
@@ -696,7 +1548,9 @@ async function chargerDonnees(){
                         (series || []).find(
                             s =>
                                 Number(s.id) ===
-                                Number(student.serie_id)
+                                Number(
+                                    student.serie_id
+                                )
                         );
 
 
@@ -726,22 +1580,33 @@ async function chargerDonnees(){
 
                         if(trouve){
 
-                            result = trouve;
+                            result =
+                                trouve;
 
                             break;
+
                         }
 
                     }
 
 
-                    let groupe =
-                        "";
+                    const code =
+                        (accessCodes || []).find(
+                            c =>
+                                c.student_id ===
+                                student.id
+                        );
+
+
+                    let groupe = "";
 
 
                     if(result){
 
                         const note =
-                            Number(result.note);
+                            Number(
+                                result.note
+                            );
 
 
                         if(note >= 16){
@@ -760,6 +1625,7 @@ async function chargerDonnees(){
 
                             groupe =
                                 "Non retenu";
+
                         }
 
                     }
@@ -775,7 +1641,9 @@ async function chargerDonnees(){
 
                         result,
 
-                        groupe
+                        groupe,
+
+                        code
 
                     };
 
@@ -784,6 +1652,11 @@ async function chargerDonnees(){
 
 
         afficherTableau(
+            toutesLesDonnees
+        );
+
+
+        afficherCartesMobile(
             toutesLesDonnees
         );
 
@@ -804,14 +1677,40 @@ async function chargerDonnees(){
             <tr>
 
                 <td
-                    colspan="9"
+                    colspan="10"
                     class="message"
                 >
+
                     Erreur lors du chargement
                     des données.
+
+                    <br><br>
+
+                    ${echapperHTML(
+                        error.message
+                    )}
+
                 </td>
 
             </tr>
+
+        `;
+
+
+        cartes.innerHTML = `
+
+            <div class="message">
+
+                Erreur lors du chargement
+                des données.
+
+                <br><br>
+
+                ${echapperHTML(
+                    error.message
+                )}
+
+            </div>
 
         `;
 
@@ -820,9 +1719,9 @@ async function chargerDonnees(){
 }
 
 
-/* =========================
-   AFFICHER TABLEAU
-========================= */
+/* =========================================================
+   AFFICHER TABLEAU DESKTOP
+========================================================= */
 
 function afficherTableau(
     donnees
@@ -844,7 +1743,7 @@ function afficherTableau(
             <tr>
 
                 <td
-                    colspan="9"
+                    colspan="10"
                     class="message"
                 >
                     Aucun candidat enregistré.
@@ -855,12 +1754,14 @@ function afficherTableau(
         `;
 
         return;
+
     }
 
 
     tableau.innerHTML =
         donnees.map(
             (item,index) => {
+
 
                 const student =
                     item.student;
@@ -878,6 +1779,10 @@ function afficherTableau(
                     item.result;
 
 
+                const code =
+                    item.code;
+
+
                 const note =
                     result
                     ? Number(
@@ -887,7 +1792,8 @@ function afficherTableau(
 
 
                 const groupe =
-                    item.groupe || "—";
+                    item.groupe ||
+                    "—";
 
 
                 const date =
@@ -900,6 +1806,38 @@ function afficherTableau(
                     : "—";
 
 
+                const codeHTML =
+                    code
+                    ? `
+
+                        <span class="code">
+
+                            ${echapperHTML(
+                                code.code
+                            )}
+
+                        </span>
+
+                        <span
+                            class="code-status ${
+                                code.utilise
+                                ? "code-used"
+                                : "code-free"
+                            }"
+                        >
+
+                            ${
+                                code.utilise
+                                ? "Utilisé"
+                                : "Disponible"
+                            }
+
+                        </span>
+
+                    `
+                    : "—";
+
+
                 return `
 
                     <tr>
@@ -908,11 +1846,13 @@ function afficherTableau(
                             ${index + 1}
                         </td>
 
+
                         <td>
                             ${echapperHTML(
                                 student.nom || ""
                             )}
                         </td>
+
 
                         <td>
                             ${echapperHTML(
@@ -920,11 +1860,14 @@ function afficherTableau(
                             )}
                         </td>
 
+
                         <td>
                             ${echapperHTML(
-                                student.whatsapp_eleve || "—"
+                                student.whatsapp_eleve ||
+                                "—"
                             )}
                         </td>
+
 
                         <td>
                             ${echapperHTML(
@@ -934,6 +1877,7 @@ function afficherTableau(
                             )}
                         </td>
 
+
                         <td>
                             ${echapperHTML(
                                 serie
@@ -941,6 +1885,7 @@ function afficherTableau(
                                 : "—"
                             )}
                         </td>
+
 
                         <td class="note">
 
@@ -952,6 +1897,7 @@ function afficherTableau(
 
                         </td>
 
+
                         <td class="groupe">
 
                             ${echapperHTML(
@@ -960,8 +1906,18 @@ function afficherTableau(
 
                         </td>
 
+
                         <td>
+
+                            ${codeHTML}
+
+                        </td>
+
+
+                        <td>
+
                             ${date}
+
                         </td>
 
                     </tr>
@@ -974,9 +1930,307 @@ function afficherTableau(
 }
 
 
-/* =========================
+/* =========================================================
+   AFFICHER CARTES MOBILE
+========================================================= */
+
+function afficherCartesMobile(
+    donnees
+){
+
+    const cartes =
+        document.getElementById(
+            "cartesCandidats"
+        );
+
+
+    if(
+        !donnees ||
+        donnees.length === 0
+    ){
+
+        cartes.innerHTML = `
+
+            <div class="message">
+
+                Aucun candidat enregistré.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    cartes.innerHTML =
+        donnees.map(
+            (item,index) => {
+
+
+                const student =
+                    item.student;
+
+
+                const classe =
+                    item.classe;
+
+
+                const serie =
+                    item.serie;
+
+
+                const result =
+                    item.result;
+
+
+                const code =
+                    item.code;
+
+
+                const note =
+                    result
+                    ? Number(
+                        result.note
+                    ).toFixed(2)
+                    : "—";
+
+
+                const groupe =
+                    item.groupe ||
+                    "—";
+
+
+                const date =
+                    student.created_at
+                    ? new Date(
+                        student.created_at
+                    ).toLocaleString(
+                        "fr-FR"
+                    )
+                    : "—";
+
+
+                let codeHTML =
+                    "—";
+
+
+                if(code){
+
+                    codeHTML = `
+
+                        <span class="card-code">
+
+                            ${echapperHTML(
+                                code.code
+                            )}
+
+                        </span>
+
+                        <span
+                            class="card-code-status ${
+                                code.utilise
+                                ? "code-used"
+                                : "code-free"
+                            }"
+                        >
+
+                            ${
+                                code.utilise
+                                ? "Utilisé"
+                                : "Disponible"
+                            }
+
+                        </span>
+
+                    `;
+
+                }
+
+
+                return `
+
+                    <div class="candidat-card">
+
+
+                        <div
+                            class="candidat-card-header"
+                        >
+
+                            <div>
+
+                                <div class="candidat-name">
+
+                                    ${echapperHTML(
+                                        (
+                                            student.nom ||
+                                            ""
+                                        ) +
+                                        " " +
+                                        (
+                                            student.prenom ||
+                                            ""
+                                        )
+                                    )}
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="candidat-number">
+
+                                #${index + 1}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                WhatsApp
+                            </span>
+
+                            <span class="info-value">
+
+                                ${echapperHTML(
+                                    student.whatsapp_eleve ||
+                                    "—"
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Niveau
+                            </span>
+
+                            <span class="info-value">
+
+                                ${echapperHTML(
+                                    classe
+                                    ? classe.nom
+                                    : "—"
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Série
+                            </span>
+
+                            <span class="info-value">
+
+                                ${echapperHTML(
+                                    serie
+                                    ? serie.nom
+                                    : "—"
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Note
+                            </span>
+
+                            <span
+                                class="info-value card-note"
+                            >
+
+                                ${
+                                    note === "—"
+                                    ? "—"
+                                    : note + " /20"
+                                }
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Groupe
+                            </span>
+
+                            <span
+                                class="info-value card-groupe"
+                            >
+
+                                ${echapperHTML(
+                                    groupe
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Code
+                            </span>
+
+                            <span class="info-value">
+
+                                ${codeHTML}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Date
+                            </span>
+
+                            <span
+                                class="info-value card-date"
+                            >
+
+                                ${echapperHTML(
+                                    date
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =========================================================
    STATISTIQUES
-========================= */
+========================================================= */
 
 function mettreAJourStatistiques(
     donnees
@@ -997,6 +2251,7 @@ function mettreAJourStatistiques(
 
     donnees.forEach(
         item => {
+
 
             if(
                 item.groupe ===
@@ -1047,9 +2302,9 @@ function mettreAJourStatistiques(
 }
 
 
-/* =========================
+/* =========================================================
    RECHERCHE
-========================= */
+========================================================= */
 
 function filtrerTableau(){
 
@@ -1069,13 +2324,19 @@ function filtrerTableau(){
             toutesLesDonnees
         );
 
+        afficherCartesMobile(
+            toutesLesDonnees
+        );
+
         return;
+
     }
 
 
     const resultats =
         toutesLesDonnees.filter(
             item => {
+
 
                 const student =
                     item.student;
@@ -1109,7 +2370,11 @@ function filtrerTableau(){
                     ? item.result.note
                     : "",
 
-                    item.groupe
+                    item.groupe,
+
+                    item.code
+                    ? item.code.code
+                    : ""
 
                 ]
                 .join(" ")
@@ -1128,34 +2393,44 @@ function filtrerTableau(){
         resultats
     );
 
+
+    afficherCartesMobile(
+        resultats
+    );
+
 }
 
 
-/* =========================
-   PROTECTION CONTRE HTML
-========================= */
+/* =========================================================
+   PROTECTION HTML
+========================================================= */
 
 function echapperHTML(
     texte
 ){
 
     return String(texte)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
@@ -1164,9 +2439,9 @@ function echapperHTML(
 }
 
 
-/* =========================
+/* =========================================================
    DÉMARRAGE
-========================= */
+========================================================= */
 
 verifierAdministrateur().then(
     autorise => {
@@ -1182,5 +2457,7 @@ verifierAdministrateur().then(
 
 </script>
 
+
 </body>
+
 </html>
