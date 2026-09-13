@@ -1,956 +1,1503 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SKILLORA — Inscription</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Inscription — SKILLORA</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
-:root{
-    --bg:#02040a;
-    --card:rgba(10,20,35,.78);
-    --green:#00f5a0;
-    --cyan:#00d9ff;
-    --purple:#9b6cff;
-    --white:#fff;
-    --muted:#9aaabd;
-    --border:rgba(255,255,255,.10);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body{
+
     min-height:100vh;
-    font-family:Arial,Helvetica,sans-serif;
-    color:var(--white);
+
     background:
-        radial-gradient(circle at 15% 10%,rgba(0,245,160,.12),transparent 30%),
-        radial-gradient(circle at 90% 30%,rgba(0,217,255,.10),transparent 30%),
-        var(--bg);
-    overflow-x:hidden;
-}
+        radial-gradient(
+            circle at top left,
+            rgba(212,175,55,.20),
+            transparent 35%
+        ),
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-    background-size:45px 45px;
-    z-index:-1;
-}
+        radial-gradient(
+            circle at bottom right,
+            rgba(120,80,10,.20),
+            transparent 40%
+        ),
 
-/* HEADER */
+        #050505;
 
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    padding:16px 20px;
-    background:rgba(2,4,10,.78);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
+    color:#fff;
 
-.navbar{
-    max-width:1100px;
-    margin:auto;
     display:flex;
+
+    justify-content:center;
+
     align-items:center;
-    justify-content:space-between;
+
+    padding:20px;
+
 }
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22,22,22,.98),
+            rgba(8,8,8,.98)
+        );
+
+    border:
+
+        1px solid
+        rgba(212,175,55,.45);
+
+    border-radius:25px;
+
+    padding:30px 22px;
+
+    box-shadow:
+
+        0 0 35px
+        rgba(212,175,55,.10),
+
+        inset 0 0 30px
+        rgba(212,175,55,.025);
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo{
-    font-size:27px;
-    font-weight:1000;
-    letter-spacing:3px;
-}
 
-.logo span{
-    color:var(--green);
-    text-shadow:0 0 20px rgba(0,245,160,.5);
-}
-
-.back{
-    color:#dbe7ef;
-    text-decoration:none;
-    font-size:13px;
-    padding:10px 15px;
-    border-radius:10px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.04);
-}
-
-/* MAIN */
-
-.main{
-    width:100%;
-    max-width:1100px;
-    margin:auto;
-    padding:65px 20px 80px;
-}
-
-.intro{
     text-align:center;
-    margin-bottom:40px;
-}
 
-.badge{
-    display:inline-block;
-    padding:9px 15px;
-    border-radius:50px;
-    background:rgba(255,77,103,.08);
-    border:1px solid rgba(255,77,103,.22);
-    color:#ff9aaa;
-    font-size:11px;
+    font-size:36px;
+
     font-weight:900;
+
     letter-spacing:1px;
+
+    margin-bottom:8px;
+
 }
 
-.intro h1{
-    margin-top:20px;
-    font-size:45px;
-    line-height:1.1;
+.skill{
+
+    color:#d4af37;
+
+    text-shadow:
+        0 0 12px
+        rgba(212,175,55,.25);
+
 }
 
-.gradient{
-    background:linear-gradient(
-        90deg,
-        var(--green),
-        var(--cyan),
-        var(--purple)
-    );
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+.ora{
+
+    color:#fff;
+
 }
 
-.intro p{
-    max-width:650px;
-    margin:15px auto 0;
-    color:var(--muted);
-    line-height:1.7;
-    font-size:15px;
-}
 
-/* GRID */
+/* =========================================================
+   SLOGAN
+========================================================= */
 
-.content{
-    display:grid;
-    grid-template-columns:.85fr 1.15fr;
-    gap:25px;
-}
+.slogan{
 
-/* PACK */
+    text-align:center;
 
-.pack-card{
-    position:relative;
-    padding:30px;
-    border-radius:25px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.02)
-        );
-    border:1px solid var(--border);
-    overflow:hidden;
-}
+    color:#aaa;
 
-.pack-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:3px;
-    background:linear-gradient(
-        90deg,
-        var(--green),
-        var(--cyan),
-        var(--purple)
-    );
-}
-
-.pack-label{
-    color:var(--green);
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.pack-name{
-    margin-top:12px;
-    font-size:28px;
-    font-weight:1000;
-}
-
-.pack-content{
-    margin-top:15px;
-    color:#a9bac8;
-    line-height:1.7;
     font-size:14px;
+
+    margin-bottom:28px;
+
 }
 
-.price-box{
-    margin-top:25px;
-    padding:20px;
-    border-radius:17px;
-    background:rgba(0,0,0,.25);
-    border:1px solid rgba(255,255,255,.07);
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+h1{
+
+    text-align:center;
+
+    font-size:24px;
+
+    margin-bottom:25px;
+
+    color:#f1d77a;
+
 }
 
-.old-price{
-    color:#697b8b;
-    text-decoration:line-through;
-    font-size:13px;
-}
 
-.new-price{
-    margin-top:5px;
-    color:var(--green);
-    font-size:38px;
-    font-weight:1000;
-}
-
-.promo{
-    margin-top:10px;
-    color:#ffcf70;
-    font-size:11px;
-    font-weight:bold;
-}
-
-/* REFERRAL */
-
-.ref-box{
-    display:none;
-    margin-top:20px;
-    padding:15px;
-    border-radius:13px;
-    background:rgba(155,108,255,.08);
-    border:1px solid rgba(155,108,255,.2);
-}
-
-.ref-box strong{
-    color:#c5adff;
-    font-size:12px;
-}
-
-.ref-code{
-    margin-top:6px;
-    color:white;
-    font-size:14px;
-    font-weight:bold;
-}
-
-/* FORM */
-
-.form-card{
-    padding:30px;
-    border-radius:25px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.02)
-        );
-    border:1px solid var(--border);
-}
-
-.form-card h2{
-    font-size:25px;
-}
-
-.form-card > p{
-    margin-top:8px;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.6;
-}
-
-.form-group{
-    margin-top:20px;
-}
+/* =========================================================
+   LABEL
+========================================================= */
 
 label{
+
     display:block;
-    margin-bottom:8px;
-    color:#dce7ee;
-    font-size:12px;
+
+    margin:15px 0 7px;
+
     font-weight:bold;
+
+    color:#e9e9e9;
+
 }
+
+
+/* =========================================================
+   INPUT + SELECT
+========================================================= */
 
 input,
 select{
+
     width:100%;
+
     padding:15px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.10);
-    outline:none;
-    background:rgba(0,0,0,.28);
+
+    border-radius:13px;
+
+    border:
+
+        1px solid
+        #3c3521;
+
+    background:#111;
+
     color:white;
-    font-size:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.2s;
+
 }
 
 input:focus,
 select:focus{
-    border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(0,245,160,.07);
+
+    border-color:#d4af37;
+
+    box-shadow:
+
+        0 0 0 2px
+        rgba(212,175,55,.10);
+
 }
+
 
 select option{
-    background:#07111f;
-    color:white;
+
+    background:#111;
+
+    color:#fff;
+
 }
 
-.submit{
+
+/* =========================================================
+   SÉRIE
+========================================================= */
+
+#serieContainer{
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   BOUTON
+========================================================= */
+
+button{
+
     width:100%;
-    margin-top:25px;
-    padding:17px;
+
+    margin-top:27px;
+
+    padding:16px;
+
     border:none;
-    border-radius:13px;
+
+    border-radius:14px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #b8860b,
+            #d4af37,
+            #f1d77a,
+            #d4af37,
+            #b8860b
+        );
+
+    background-size:200% 100%;
+
+    color:#080808;
+
+    font-size:16px;
+
+    font-weight:900;
+
     cursor:pointer;
-    color:#00130e;
-    background:linear-gradient(
-        135deg,
-        var(--green),
-        var(--cyan)
-    );
-    font-size:14px;
-    font-weight:1000;
-    box-shadow:0 15px 40px rgba(0,245,160,.12);
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(212,175,55,.18);
+
     transition:.25s;
+
 }
 
-.submit:hover{
-    transform:translateY(-3px);
+button:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(212,175,55,.28);
+
 }
 
-.security{
-    margin-top:17px;
+button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:14px;
+
+    border-radius:12px;
+
     text-align:center;
-    color:#687b8b;
-    font-size:11px;
-    line-height:1.6;
+
+    line-height:1.5;
+
+    font-size:14px;
+
 }
 
-/* COUNTDOWN */
 
-.countdown-card{
-    margin-top:25px;
-    padding:22px;
-    border-radius:20px;
-    background:rgba(0,0,0,.23);
-    border:1px solid rgba(255,255,255,.07);
-}
+/* =========================================================
+   ERREUR
+========================================================= */
 
-.countdown-title{
-    text-align:center;
-    color:#aebdca;
-    font-size:11px;
-    font-weight:bold;
-}
+.erreur{
 
-.countdown{
-    margin-top:15px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:7px;
-}
-
-.time{
-    padding:12px 3px;
-    text-align:center;
-    border-radius:11px;
-    background:rgba(255,255,255,.04);
-}
-
-.time strong{
     display:block;
-    font-size:22px;
+
+    background:
+        rgba(255,50,50,.08);
+
+    border:
+        1px solid
+        rgba(255,80,80,.35);
+
+    color:#ff9292;
+
 }
 
-.time span{
-    color:#718494;
-    font-size:8px;
-    text-transform:uppercase;
+
+/* =========================================================
+   SUCCÈS
+========================================================= */
+
+.succes{
+
+    display:block;
+
+    background:
+        rgba(212,175,55,.08);
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    color:#f1d77a;
+
 }
 
-/* FOOTER */
 
-footer{
-    padding:35px 20px;
+/* =========================================================
+   INFO
+========================================================= */
+
+.info{
+
     text-align:center;
-    border-top:1px solid rgba(255,255,255,.07);
-    background:#010309;
-}
 
-footer strong{
-    letter-spacing:2px;
-}
+    color:#777;
 
-footer strong span{
-    color:var(--green);
-}
+    font-size:12px;
 
-footer p{
-    margin-top:8px;
-    color:#526576;
-    font-size:11px;
-}
+    line-height:1.6;
 
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .content{
-        grid-template-columns:1fr;
-    }
+    margin-top:20px;
 
 }
 
-@media(max-width:600px){
 
-    .main{
-        padding:45px 15px 60px;
-    }
+/* =========================================================
+   PETIT TRAIT DORÉ
+========================================================= */
 
-    .intro h1{
-        font-size:34px;
-    }
+.gold-line{
 
-    .pack-card,
-    .form-card{
-        padding:23px 18px;
-    }
+    width:70px;
 
-    .pack-name{
-        font-size:24px;
-    }
+    height:3px;
 
-    .new-price{
-        font-size:33px;
-    }
+    background:#d4af37;
 
-    .logo{
-        font-size:23px;
-    }
+    margin:
+
+        0 auto
+        22px;
+
+    border-radius:10px;
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<header>
 
-<div class="navbar">
+<div class="container">
 
-<div class="logo">
-SKILL<span>ORA</span>
-</div>
 
-<a href="index.html" class="back">
-← Retour
-</a>
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
 
-</div>
+    <div class="logo">
 
-</header>
+        <span class="skill">
+            SKILL
+        </span>
 
+        <span class="ora">
+            ORA
+        </span>
 
-<main class="main">
+    </div>
 
-<div class="intro">
 
-<div class="badge">
-🔥 OFFRE LIMITÉE
-</div>
+    <div class="slogan">
 
-<h1>
-Inscris-toi sur
-<span class="gradient">
-SKILLORA
-</span>
-</h1>
+        Plateforme éducative et d'évaluation
 
-<p>
-Remplis le formulaire ci-dessous pour confirmer
-ta demande. Tu seras ensuite redirigé vers WhatsApp
-pour finaliser ta commande.
-</p>
+    </div>
 
-</div>
 
+    <div class="gold-line"></div>
 
-<div class="content">
 
+    <h1>
+        Accéder au test
+    </h1>
 
-<!-- PACK -->
 
-<div>
+    <!-- =====================================================
+         FORMULAIRE
+    ====================================================== -->
 
-<div class="pack-card">
+    <form id="inscriptionForm">
 
-<div class="pack-label">
-FORMATION SÉLECTIONNÉE
-</div>
 
-<div class="pack-name" id="packNom">
-Pack SKILLORA
-</div>
+        <!-- NOM -->
 
-<div class="pack-content" id="packContenu">
-Toutes les formations digitales SKILLORA.
-</div>
+        <label for="nom">
+            Nom
+        </label>
 
-<div class="price-box">
+        <input
+            type="text"
+            id="nom"
+            placeholder="Votre nom"
+            required
+        >
 
-<div class="old-price" id="ancienPrix">
-Prix normal
-</div>
 
-<div class="new-price" id="prix">
-Prix promotionnel
-</div>
+        <!-- PRÉNOM -->
 
-<div class="promo">
-🔥 Tarif spécial jusqu'au 07 septembre 2026 à 20h00
-</div>
+        <label for="prenom">
+            Prénom
+        </label>
 
-</div>
+        <input
+            type="text"
+            id="prenom"
+            placeholder="Votre prénom"
+            required
+        >
 
-<div class="ref-box" id="refBox">
 
-<strong>🎁 Parrainage détecté</strong>
+        <!-- WHATSAPP -->
 
-<div class="ref-code" id="refCode"></div>
+        <label for="whatsapp">
+            Numéro WhatsApp
+        </label>
 
-</div>
+        <input
+            type="tel"
+            id="whatsapp"
+            placeholder="Ex : 0700000000"
+            required
+        >
 
-</div>
 
+        <!-- CLASSE -->
 
-<div class="countdown-card">
+        <label for="classe">
+            Classe / Niveau
+        </label>
 
-<div class="countdown-title">
-⏳ TEMPS RESTANT POUR PROFITER DE L'OFFRE
-</div>
+        <select
+            id="classe"
+            required
+        >
 
-<div class="countdown">
+            <option value="">
+                Chargement des classes...
+            </option>
 
-<div class="time">
-<strong id="days">00</strong>
-<span>Jours</span>
-</div>
+        </select>
 
-<div class="time">
-<strong id="hours">00</strong>
-<span>Heures</span>
-</div>
 
-<div class="time">
-<strong id="minutes">00</strong>
-<span>Minutes</span>
-</div>
+        <!-- SÉRIE -->
 
-<div class="time">
-<strong id="seconds">00</strong>
-<span>Secondes</span>
-</div>
+        <div id="serieContainer">
 
-</div>
+            <label for="serie">
+                Série
+            </label>
 
-</div>
+            <select id="serie">
 
-</div>
+                <option value="">
+                    Sélectionnez votre série
+                </option>
 
+            </select>
 
-<!-- FORMULAIRE -->
+        </div>
 
-<div class="form-card">
 
-<h2>
-📝 Finaliser l'inscription
-</h2>
+        <!-- CODE -->
 
-<p>
-Entre tes informations. Après validation,
-WhatsApp s'ouvrira automatiquement.
-</p>
+        <label for="code">
+            Code d'accès
+        </label>
 
+        <input
+            type="text"
+            id="code"
+            placeholder="Ex : SKILLORA-UNIVERSEL"
+            required
+            autocomplete="off"
+            autocapitalize="characters"
+        >
 
-<form id="inscriptionForm">
 
+        <!-- BOUTON -->
 
-<div class="form-group">
+        <button
+            type="submit"
+            id="btn"
+        >
 
-<label for="nom">
-Nom et prénom
-</label>
+            ACCÉDER AU TEST
 
-<input
-type="text"
-id="nom"
-placeholder="Ex : Koné Ibrahim"
-required
->
+        </button>
 
-</div>
 
+    </form>
 
-<div class="form-group">
 
-<label for="telephone">
-Ton numéro WhatsApp
-</label>
+    <!-- MESSAGE -->
 
-<input
-type="tel"
-id="telephone"
-placeholder="Ex : 07 XX XX XX XX"
-required
->
+    <div
+        id="message"
+        class="message"
+    ></div>
 
-</div>
 
+    <!-- INFORMATION -->
 
-<div class="form-group">
+    <div class="info">
 
-<label for="contact">
-Choisir le numéro SKILLORA
-</label>
+        Le code d'accès ne peut être utilisé qu'une seule fois.
 
-<select id="contact" required>
+        <br>
 
-<option value="">
--- Choisir un contact --
-</option>
+        Vérifiez votre classe et votre série avant de continuer.
 
-<option value="2250508123533">
-WhatsApp 1 — 05 08 12 35 33
-</option>
+    </div>
 
-<option value="2250585564273">
-WhatsApp 2 — 05 85 56 42 73
-</option>
-
-</select>
 
 </div>
 
-
-<button
-type="submit"
-class="submit"
->
-🚀 CONTINUER SUR WHATSAPP
-</button>
-
-</form>
-
-
-<div class="security">
-🔒 Tes informations servent uniquement à traiter
-ta demande d'inscription.
-</div>
-
-</div>
-
-</div>
-
-</main>
-
-
-<footer>
-
-<strong>
-SKILL<span>ORA</span>
-</strong>
-
-<p>
-INSPIRER. FORMER ET TRANSFORMER.
-</p>
-
-</footer>
 
 
 <script>
 
-/* =========================================
-   PACKS SKILLORA
-========================================= */
+/* =========================================================
+   CONFIGURATION SUPABASE
+========================================================= */
 
-const packs = {
+const SUPABASE_URL =
+    "https://wvwlotoczizpmcllqeyd.supabase.co";
 
-    "Bureautique":{
-        nom:"🟢 Pack Bureautique",
-        contenu:"Word + Excel + PowerPoint",
-        ancien:"8 000 F",
-        prix:"2 095 F"
-    },
-
-    "Créateur Digital":{
-        nom:"🔵 Pack Créateur Digital",
-        contenu:"Canva + CapCut + IA + Suno AI",
-        ancien:"12 000 F",
-        prix:"3 095 F"
-    },
-
-    "Marketing & Vente":{
-        nom:"🟣 Pack Marketing & Vente",
-        contenu:"Marketing digital + Publicité + Vente en ligne + WhatsApp Business",
-        ancien:"15 000 F",
-        prix:"3 595 F"
-    },
-
-    "Business Digital":{
-        nom:"🟠 Pack Business Digital",
-        contenu:"IA + Marketing + Création de contenu + Vente en ligne",
-        ancien:"15 000 F",
-        prix:"3 595 F"
-    },
-
-    "Pack Ultime":{
-        nom:"🔥 Pack Ultime",
-        contenu:"Toutes les formations SKILLORA",
-        ancien:"50 000 F",
-        prix:"12 380 F"
-    }
-
-};
+const SUPABASE_KEY =
+    "sb_publishable_JB4Y4NC9rEjS9IrazmBG5g_FiXIlY-0";
 
 
-/* =========================================
-   RÉCUPÉRATION DES PARAMÈTRES
-========================================= */
-
-const params =
-new URLSearchParams(window.location.search);
-
-const packChoisi =
-params.get("pack");
-
-const codeParrainage =
-params.get("ref");
+const db =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-/* =========================================
-   AFFICHAGE DU PACK
-========================================= */
+/* =========================================================
+   ÉLÉMENTS
+========================================================= */
 
-const pack =
-packs[packChoisi] || packs["Pack Ultime"];
-
-document.getElementById("packNom").textContent =
-pack.nom;
-
-document.getElementById("packContenu").textContent =
-pack.contenu;
-
-document.getElementById("ancienPrix").textContent =
-"Prix normal : " + pack.ancien;
-
-document.getElementById("prix").textContent =
-pack.prix;
+const form =
+    document.getElementById(
+        "inscriptionForm"
+    );
 
 
-/* =========================================
-   PARRAINAGE
-========================================= */
+const nomInput =
+    document.getElementById(
+        "nom"
+    );
 
-if(codeParrainage){
 
-    document.getElementById("refBox").style.display =
-    "block";
+const prenomInput =
+    document.getElementById(
+        "prenom"
+    );
 
-    document.getElementById("refCode").textContent =
-    "Code : " + codeParrainage;
+
+const whatsappInput =
+    document.getElementById(
+        "whatsapp"
+    );
+
+
+const classeSelect =
+    document.getElementById(
+        "classe"
+    );
+
+
+const serieSelect =
+    document.getElementById(
+        "serie"
+    );
+
+
+const serieContainer =
+    document.getElementById(
+        "serieContainer"
+    );
+
+
+const codeInput =
+    document.getElementById(
+        "code"
+    );
+
+
+const btn =
+    document.getElementById(
+        "btn"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+/* =========================================================
+   AFFICHER MESSAGE
+========================================================= */
+
+function afficherMessage(
+    texte,
+    type
+){
+
+    message.textContent =
+        texte;
+
+    message.className =
+        "message " + type;
+
+    message.style.display =
+        "block";
 
 }
 
 
-/* =========================================
-   COMPTE À REBOURS
-   Côte d'Ivoire = UTC+0
-========================================= */
+/* =========================================================
+   CHARGER LES CLASSES
+========================================================= */
 
-const dateFin =
-new Date("2026-09-07T20:00:00+00:00").getTime();
+async function chargerClasses(){
 
-function mettreAJourCompteur(){
-
-    const difference =
-    dateFin - Date.now();
-
-    const days =
-    document.getElementById("days");
-
-    const hours =
-    document.getElementById("hours");
-
-    const minutes =
-    document.getElementById("minutes");
-
-    const seconds =
-    document.getElementById("seconds");
-
-    if(difference <= 0){
-
-        days.textContent = "00";
-        hours.textContent = "00";
-        minutes.textContent = "00";
-        seconds.textContent = "00";
-
-        return;
-    }
-
-    const d =
-    Math.floor(
-        difference /
-        (1000 * 60 * 60 * 24)
-    );
-
-    const h =
-    Math.floor(
-        (difference /
-        (1000 * 60 * 60)) % 24
-    );
-
-    const m =
-    Math.floor(
-        (difference /
-        (1000 * 60)) % 60
-    );
-
-    const s =
-    Math.floor(
-        (difference / 1000) % 60
-    );
-
-    days.textContent =
-    String(d).padStart(2,"0");
-
-    hours.textContent =
-    String(h).padStart(2,"0");
-
-    minutes.textContent =
-    String(m).padStart(2,"0");
-
-    seconds.textContent =
-    String(s).padStart(2,"0");
-}
-
-mettreAJourCompteur();
-
-setInterval(
-    mettreAJourCompteur,
-    1000
-);
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("classes")
+        .select(
+            "id, nom, ordre"
+        )
+        .order(
+            "ordre",
+            {
+                ascending:true
+            }
+        );
 
 
-/* =========================================
-   FORMULAIRE → WHATSAPP
-========================================= */
+    if(error){
 
-document
-.getElementById("inscriptionForm")
-.addEventListener(
-"submit",
-function(event){
+        console.error(
+            "Erreur classes :",
+            error
+        );
 
-    event.preventDefault();
+        classeSelect.innerHTML =
+            '<option value="">Erreur de chargement</option>';
 
-    const nom =
-    document.getElementById("nom")
-    .value
-    .trim();
-
-    const telephone =
-    document.getElementById("telephone")
-    .value
-    .trim();
-
-    const numero =
-    document.getElementById("contact")
-    .value;
-
-
-    if(!nom || !telephone || !numero){
-
-        alert(
-        "Veuillez remplir tous les champs."
+        afficherMessage(
+            "Impossible de charger les classes : " +
+            error.message,
+            "erreur"
         );
 
         return;
-    }
-
-
-    let message =
-    "🔥 *NOUVELLE INSCRIPTION SKILLORA*%0A%0A";
-
-    message +=
-    "👤 *Nom :* " +
-    nom +
-    "%0A";
-
-    message +=
-    "📱 *WhatsApp :* " +
-    telephone +
-    "%0A%0A";
-
-    message +=
-    "🎓 *Formation :* " +
-    pack.nom +
-    "%0A";
-
-    message +=
-    "📚 *Contenu :* " +
-    pack.contenu +
-    "%0A";
-
-    message +=
-    "💰 *Prix promotionnel :* " +
-    pack.prix +
-    "%0A";
-
-
-    if(codeParrainage){
-
-        message +=
-        "🎁 *Code parrainage :* " +
-        codeParrainage +
-        "%0A";
 
     }
 
 
-    message +=
-    "%0A🔥 *Promotion :* " +
-    "du 04 septembre au 07 septembre 2026 à 20h00.";
+    classeSelect.innerHTML =
+        '<option value="">Sélectionnez votre classe</option>';
 
 
-    const url =
-    "https://wa.me/" +
-    numero +
-    "?text=" +
-    encodeURIComponent(
-        decodeURIComponent(message)
+    data.forEach(
+        classe => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                classe.id;
+
+
+            option.textContent =
+                classe.nom;
+
+
+            classeSelect.appendChild(
+                option
+            );
+
+        }
     );
 
+}
 
-    window.location.href = url;
 
-});
+/* =========================================================
+   CHARGER LES SÉRIES
+========================================================= */
+
+async function chargerSeries(){
+
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("series")
+        .select(
+            "id, nom"
+        )
+        .order(
+            "id",
+            {
+                ascending:true
+            }
+        );
+
+
+    if(error){
+
+        console.error(
+            "Erreur séries :",
+            error
+        );
+
+        serieSelect.innerHTML =
+            '<option value="">Erreur de chargement</option>';
+
+        return;
+
+    }
+
+
+    serieSelect.innerHTML =
+        '<option value="">Sélectionnez votre série</option>';
+
+
+    data.forEach(
+        serie => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                serie.id;
+
+
+            option.textContent =
+                serie.nom;
+
+
+            serieSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   AFFICHER LA SÉRIE
+   6 = 2nde
+   7 = 1ère
+   8 = Terminale
+========================================================= */
+
+classeSelect.addEventListener(
+    "change",
+    function(){
+
+        const classeId =
+            Number(
+                this.value
+            );
+
+
+        if(
+
+            classeId === 6 ||
+            classeId === 7 ||
+            classeId === 8
+
+        ){
+
+            serieContainer.style.display =
+                "block";
+
+
+            serieSelect.required =
+                true;
+
+        }else{
+
+            serieContainer.style.display =
+                "none";
+
+
+            serieSelect.required =
+                false;
+
+
+            serieSelect.value =
+                "";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   VÉRIFIER LE CODE
+========================================================= */
+
+async function verifierCode(
+    code
+){
+
+    const codePropre =
+        code
+        .trim()
+        .toUpperCase();
+
+
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("access_codes")
+        .select(`
+            id,
+            code,
+            test_id,
+            student_id,
+            utilise,
+            date_expiration,
+            session_id
+        `)
+        .eq(
+            "code",
+            codePropre
+        )
+        .maybeSingle();
+
+
+    if(error){
+
+        console.error(
+            "Erreur vérification code :",
+            error
+        );
+
+        throw new Error(
+            "Erreur lors de la vérification du code : " +
+            error.message
+        );
+
+    }
+
+
+    if(!data){
+
+        throw new Error(
+            "Code d'accès incorrect."
+        );
+
+    }
+
+
+    if(data.utilise === true){
+
+        throw new Error(
+            "Ce code a déjà été utilisé."
+        );
+
+    }
+
+
+    if(data.date_expiration){
+
+        const maintenant =
+            new Date();
+
+
+        const expiration =
+            new Date(
+                data.date_expiration
+            );
+
+
+        if(
+            maintenant > expiration
+        ){
+
+            throw new Error(
+                "Ce code d'accès a expiré."
+            );
+
+        }
+
+    }
+
+
+    return data;
+
+}
+
+
+/* =========================================================
+   CRÉER L'ÉLÈVE
+========================================================= */
+
+async function creerStudent(
+
+    nom,
+    prenom,
+    whatsapp,
+    classeId,
+    serieId
+
+){
+
+    /*
+       Nous générons nous-mêmes l'ID.
+
+       Cela évite d'utiliser :
+
+       .insert(...).select().single()
+
+       qui peut provoquer un blocage RLS
+       lors de la lecture de la ligne créée.
+    */
+
+    const studentId =
+        crypto.randomUUID();
+
+
+    const {
+        error
+    } =
+        await db
+        .from("students")
+        .insert({
+
+            id:
+                studentId,
+
+            nom:
+                nom,
+
+            prenom:
+                prenom,
+
+            classe_id:
+                classeId,
+
+            serie_id:
+                serieId,
+
+            whatsapp_eleve:
+                whatsapp
+
+        });
+
+
+    if(error){
+
+        console.error(
+            "Erreur student :",
+            error
+        );
+
+        throw new Error(
+            "Erreur lors de l'enregistrement de l'élève : " +
+            error.message
+        );
+
+    }
+
+
+    return {
+
+        id:
+            studentId
+
+    };
+
+}
+
+
+/* =========================================================
+   UTILISER LE CODE
+========================================================= */
+
+async function utiliserCode(
+
+    accessCodeId,
+    studentId
+
+){
+
+    /*
+       IMPORTANT :
+
+       Aucun .select() ici.
+
+       Nous voulons uniquement mettre à jour
+       le code.
+    */
+
+    const {
+        error
+    } =
+        await db
+        .from("access_codes")
+        .update({
+
+            student_id:
+                studentId,
+
+            utilise:
+                true
+
+        })
+        .eq(
+            "id",
+            accessCodeId
+        )
+        .eq(
+            "utilise",
+            false
+        );
+
+
+    if(error){
+
+        console.error(
+            "Erreur utilisation code :",
+            error
+        );
+
+        throw new Error(
+            "Erreur lors de la validation du code : " +
+            error.message
+        );
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        message.style.display =
+            "none";
+
+
+        btn.disabled =
+            true;
+
+
+        btn.textContent =
+            "VÉRIFICATION...";
+
+
+        try{
+
+
+            /* =================================================
+               DONNÉES
+            ================================================= */
+
+            const nom =
+                nomInput.value.trim();
+
+
+            const prenom =
+                prenomInput.value.trim();
+
+
+            const whatsapp =
+                whatsappInput.value.trim();
+
+
+            const classeId =
+                Number(
+                    classeSelect.value
+                );
+
+
+            if(!nom){
+
+                throw new Error(
+                    "Veuillez entrer votre nom."
+                );
+
+            }
+
+
+            if(!prenom){
+
+                throw new Error(
+                    "Veuillez entrer votre prénom."
+                );
+
+            }
+
+
+            if(!whatsapp){
+
+                throw new Error(
+                    "Veuillez entrer votre numéro WhatsApp."
+                );
+
+            }
+
+
+            if(!classeId){
+
+                throw new Error(
+                    "Veuillez sélectionner votre classe."
+                );
+
+            }
+
+
+            const niveau =
+                classeSelect
+                .options[
+                    classeSelect.selectedIndex
+                ]
+                .textContent;
+
+
+            /* =================================================
+               SÉRIE
+            ================================================= */
+
+            let serieId =
+                null;
+
+
+            let serie =
+                "";
+
+
+            if(
+
+                classeId === 6 ||
+                classeId === 7 ||
+                classeId === 8
+
+            ){
+
+                if(!serieSelect.value){
+
+                    throw new Error(
+                        "Veuillez sélectionner votre série."
+                    );
+
+                }
+
+
+                serieId =
+                    Number(
+                        serieSelect.value
+                    );
+
+
+                serie =
+                    serieSelect
+                    .options[
+                        serieSelect.selectedIndex
+                    ]
+                    .textContent;
+
+            }
+
+
+            /* =================================================
+               CODE
+            ================================================= */
+
+            const code =
+                codeInput.value
+                .trim()
+                .toUpperCase();
+
+
+            if(!code){
+
+                throw new Error(
+                    "Veuillez entrer votre code d'accès."
+                );
+
+            }
+
+
+            /* =================================================
+               VÉRIFICATION CODE
+            ================================================= */
+
+            const accessCode =
+                await verifierCode(
+                    code
+                );
+
+
+            /* =================================================
+               CRÉATION ÉLÈVE
+            ================================================= */
+
+            btn.textContent =
+                "ENREGISTREMENT...";
+
+
+            const student =
+                await creerStudent(
+
+                    nom,
+                    prenom,
+                    whatsapp,
+                    classeId,
+                    serieId
+
+                );
+
+
+            /* =================================================
+               UTILISER LE CODE
+            ================================================= */
+
+            btn.textContent =
+                "VALIDATION...";
+
+
+            await utiliserCode(
+
+                accessCode.id,
+                student.id
+
+            );
+
+
+            /* =================================================
+               LOCAL STORAGE
+            ================================================= */
+
+            localStorage.setItem(
+                "skillora_student_id",
+                student.id
+            );
+
+
+            localStorage.setItem(
+                "skillora_code_id",
+                accessCode.id
+            );
+
+
+            localStorage.setItem(
+                "skillora_nom",
+                nom
+            );
+
+
+            localStorage.setItem(
+                "skillora_prenom",
+                prenom
+            );
+
+
+            localStorage.setItem(
+                "skillora_whatsapp",
+                whatsapp
+            );
+
+
+            localStorage.setItem(
+                "skillora_niveau",
+                niveau
+            );
+
+
+            localStorage.setItem(
+                "skillora_niveau_id",
+                classeId
+            );
+
+
+            localStorage.setItem(
+                "skillora_serie",
+                serie
+            );
+
+
+            localStorage.setItem(
+                "skillora_serie_id",
+                serieId === null
+                    ? ""
+                    : serieId
+            );
+
+
+            /*
+               Suppression de l'ancien test_id
+               pour éviter qu'un ancien test
+               reste dans le navigateur.
+            */
+
+            localStorage.removeItem(
+                "skillora_test_id"
+            );
+
+
+            localStorage.removeItem(
+                "skillora_test_ids"
+            );
+
+
+            /* =================================================
+               SUCCÈS
+            ================================================= */
+
+            afficherMessage(
+                "Accès validé ! Votre test va commencer.",
+                "succes"
+            );
+
+
+            btn.textContent =
+                "ACCÈS VALIDÉ";
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "test.html";
+
+                },
+                800
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "ERREUR FINALE :",
+                error
+            );
+
+
+            afficherMessage(
+
+                error.message ||
+                "Une erreur est survenue.",
+
+                "erreur"
+
+            );
+
+
+            btn.disabled =
+                false;
+
+
+            btn.textContent =
+                "ACCÉDER AU TEST";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+async function initialiser(){
+
+    await chargerClasses();
+
+    await chargerSeries();
+
+}
+
+
+initialiser();
 
 </script>
 
